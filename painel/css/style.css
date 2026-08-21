@@ -1,0 +1,122 @@
+/* Reset básico */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--color-primary) !important;
+  border-bottom: 2px solid var(--color-secondary);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: var(--color-dark) !important;
+}
+
+.nav-link {
+  color: var(--color-dark) !important;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: orange !important; /* agora fica laranja */
+}
+
+/* Botão administrativo */
+.btn-outline-success {
+  background-color: var(--color-secondary); /* amarelo constante */
+  border: 2px solid var(--color-secondary);
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Mantém amarelo no hover */
+.btn-outline-success:hover {
+  background-color: var(--color-secondary);
+  border: 2px solid var(--color-secondary);
+  color: #fff;
+}
+
+/* Estado ativo/focus do botão (corrige verde padrão do Bootstrap) */
+.btn-outline-success:active,
+.btn-outline-success:focus,
+.btn-outline-success:visited {
+  background-color: orange; /* laranja no clique */
+  border: 2px solid orange;
+  color: #fff;
+  box-shadow: none; /* remove o brilho verde padrão */
+}
+
+/* Conteúdo principal */
+main {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  margin-top: auto;
+  flex-shrink: 0;
+  background: var(--color-primary); /* igual à navbar */
+  color: var(--color-dark);
+  border-top: 2px solid var(--color-secondary);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.footer h2 {
+  font-size: 22px;
+  margin-bottom: 18px;
+  border-left: 4px solid var(--color-secondary);
+  padding-left: 10px;
+  color: var(--color-dark);
+}
+
+.footer p {
+  line-height: 1.7;
+  color: var(--color-dark);
+}
+
+.footer-links,
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.footer a {
+  color: var(--color-dark);
+  text-decoration: none;
+  margin: 8px 0;
+  transition: .3s;
+}
+
+.footer a:hover {
+  color: orange; /* agora fica laranja igual às guias */
+  padding-left: 8px;
+}
+
+
+.footer-copy {
+  text-align: center;
+  padding: 15px;
+  background: var(--color-secondary);
+  font-size: 14px;
+  border-top: 1px solid rgba(0,0,0,.15);
+  color: #fff;
+}

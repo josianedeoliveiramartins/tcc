@@ -1,0 +1,7 @@
+:root {
+  --color-primary: #FFF8DC;   /* Amarelo pastel suave */
+  --color-secondary: #F4C430; /* Amarelo ouro mais discreto */
+  --color-light: #FAFAF5;     /* Fundo claro */
+  --color-dark: #333333;      /* Texto escuro */
+  --color-accent: #3A6EA5;    /* Azul suave para contraste */
+}
