@@ -46,11 +46,11 @@ if ($erro) {
             <form class="login100-form validate-form" action="../autentica.php" method="POST">
               <div class="form-group first">
                 <label for="email_operador">Usuário</label>
-                <input type="text" class="form-control" id="email_operador" name="email_operador" required placeholder="your-email@gmail.com">
+                <input type="text" class="form-control" id="email_operador" name="email_operador" required placeholder="seu-email@gmail.com">
               </div>
               <div class="form-group last mb-3">
                 <label for="senha_operador">Senha</label>
-                <input type="password" class="form-control" id="senha_operador" name="senha_operador" required placeholder="Your Password">
+                <input type="password" class="form-control" id="senha_operador" name="senha_operador" required placeholder="Sua Senha">
               </div>
               
               <div class="text-center p-t-12">
