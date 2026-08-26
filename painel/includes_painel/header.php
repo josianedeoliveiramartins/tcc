@@ -17,17 +17,15 @@
         <li class="nav-item"><a class="nav-link active" href="index.php">Início</a></li>
 
         <!-- Cadastros -->
-        <li class="nav-item"><a class="nav-link" href="#">Cadastros</a></li>
+        <li class="nav-item"><a class="nav-link" href="cadastro.php">Cadastros</a></li>
 
         <!-- Gerenciamento -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Gerenciamento</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Sobre</a></li>
-            <li><a class="dropdown-item" href="#">Catálogo de colônias</a></li>
-            <li><a class="dropdown-item" href="#">Padrão de caixas</a></li>
-            <li><a class="dropdown-item" href="#">Projeto</a></li>
-            <li><a class="dropdown-item" href="#">Mídias</a></li>
+            <li><a class="dropdown-item" href="#">Relatórios</a></li>
+            <li><a class="dropdown-item" href="#">Permissões</a></li>
+            <li><a class="dropdown-item" href="#">Configurações de acesso</a></li>
           </ul>
         </li>
 

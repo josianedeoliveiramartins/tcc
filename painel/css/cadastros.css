@@ -1,0 +1,57 @@
+/* Estilos gerais da página de cadastros */
+main h1 {
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #333;
+    text-align: center; /* centraliza o título */
+}
+
+/* Cartões */
+.card {
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    background-color: #fff;
+    padding: 1rem; /* espaço interno para respirar */
+}
+
+/* Efeito ao passar o mouse */
+.card:hover {
+    transform: translateY(-5px); /* levanta um pouco o cartão */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* sombra suave */
+}
+
+/* Ícones (imagens) dentro dos cartões */
+.card img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 12px;
+    object-fit: contain; /* garante que a imagem não distorça */
+}
+
+/* Títulos */
+.card-title {
+    font-weight: 600;
+    margin-top: 1rem;
+    color: #222;
+}
+
+/* Texto */
+.card-text {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Container dos cartões: dois em cima e dois embaixo */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;       /* permite quebrar linha */
+    gap: 20px;             /* espaço entre os cartões */
+    justify-content: center;
+}
+
+/* Cada cartão ocupa metade da largura (mais comprido) */
+.cards-container .card {
+    flex: 1 1 calc(50% - 20px); /* dois cartões por linha */
+    max-width: 600px;           /* aumentei a largura máxima */
+}
