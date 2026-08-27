@@ -11,14 +11,16 @@ main h1 {
     border: none;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
-    background-color: #fff;
+    background-color: rgba(255, 215, 0, 0.2); /* amarelo transparente */
     padding: 1rem; /* espaço interno para respirar */
+    border-radius: 8px; /* cantos arredondados como no footer */
 }
 
 /* Efeito ao passar o mouse */
 .card:hover {
     transform: translateY(-5px); /* levanta um pouco o cartão */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* sombra suave */
+    background-color: rgba(255, 215, 0, 0.35); /* aumenta a intensidade do amarelo no hover */
 }
 
 /* Ícones (imagens) dentro dos cartões */
@@ -50,8 +52,7 @@ main h1 {
     justify-content: center;
 }
 
-/* Cada cartão ocupa metade da largura (mais comprido) */
 .cards-container .card {
     flex: 1 1 calc(50% - 20px); /* dois cartões por linha */
-    max-width: 600px;           /* aumentei a largura máxima */
+    max-width: 600px;           /* mais compridos pros lados */
 }
