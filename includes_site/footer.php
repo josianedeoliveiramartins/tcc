@@ -20,11 +20,11 @@
         <!-- Endereço -->
         <div class="footer-links">
             <h2>Endereço</h2>
-
-            <p>
+            
+            <a href="https://www.google.com/maps/place/Col%C3%A9gio+Estadual+Dr.+Dorvalino+Luciano+De+Souza/@-27.608603,-53.1685033,753m/data=!3m2!1e3!4b1!4m6!3m5!1s0x94fc9c7a449afacd:0x8f0cc9a34a5e507d!8m2!3d-27.608603!4d-53.165923!16s%2Fg%2F11cks68j6p?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDgyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank">
                 Av. 20 de Dezembro, 564<br>
                 Cerro Grande - RS, 98340-000
-            </p>
+            </a>
         </div>
 
         <!-- Redes sociais -->
@@ -32,11 +32,11 @@
             <h2>Redes Sociais</h2>
 
             <a href="https://www.instagram.com/coop_ceedo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" target="_blank">
-                Instagram - Meliponário CEEDO
+                Instagram - COOPCEEDO
             </a>
 
             <a href="https://www.instagram.com/cpe.ceedo/" target="_blank">
-                Instagram - Coop CEEDO
+                Instagram - CPE CEEDO
             </a>
         </div>
 
