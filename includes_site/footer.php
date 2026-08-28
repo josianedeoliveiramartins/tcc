@@ -1,33 +1,52 @@
 <footer class="footer">
     <div class="footer-content">
 
-        <!-- Sobre -->
+        <!-- Entre em contato -->
         <div class="footer-about">
             <h2>Entre em contato</h2>
+
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Entre em contato conosco para saber mais sobre a Cooperativa CEEDO,
+                nossos serviços e informações.
+            </p>
+
+            <p>
+                Telefone: (55) 3756-1099<br>
+                Celular: (55) 99203-4549<br>
+                E-mail: meliponario.ceedo@gmail.com
             </p>
         </div>
 
-        <!-- Links -->
+        <!-- Endereço -->
         <div class="footer-links">
             <h2>Endereço</h2>
-            <a href="#">Nossos Serviços</a>
-            <a href="#">Política de Privacidade</a>
-            <a href="#">Termos de Serviço</a>
+
+            <p>
+                Av. 20 de Dezembro, 564<br>
+                Cerro Grande - RS, 98340-000
+            </p>
         </div>
 
         <!-- Redes sociais -->
         <div class="footer-social">
             <h2>Redes Sociais</h2>
-            <a href="https://www.instagram.com/suelen_dossantos7/" target="_blank">
-                Instagram
+
+            <a href="https://www.instagram.com/coop_ceedo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" target="_blank">
+                Instagram - Meliponário CEEDO
+            </a>
+
+            <a href="https://www.instagram.com/cpe.ceedo/" target="_blank">
+                Instagram - Coop CEEDO
             </a>
         </div>
 
     </div>
 
+    <!-- Copyright e desenvolvimento -->
     <div class="footer-copy">
-        <p> © 2026 Suélen Dos Santos Alexandre e Josiane de Oliveira Martins. Todos os direitos reservados.</p>
+        <p>
+            © 2026 Suélen Dos Santos Alexandre e Josiane de Oliveira Martins.
+            Todos os direitos reservados.
+        </p>
     </div>
 </footer>
