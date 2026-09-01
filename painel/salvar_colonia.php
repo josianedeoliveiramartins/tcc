@@ -15,6 +15,11 @@ if (empty($nome) || empty($especie) || empty($origem) || empty($data) || empty($
     exit;
 }
 
+// Ajuste para mês/ano → adiciona dia 01
+if (preg_match('/^\d{4}-\d{2}$/', $data)) {
+    $data .= "-01";
+}
+
 // Upload da foto (obrigatória)
 $foto = null;
 if (!empty($_FILES['foto']['name'])) {

@@ -31,55 +31,56 @@ $totalCaixas   = mysqli_fetch_assoc(mysqli_query($conexao, "SELECT COUNT(*) AS t
             <button class="btn-nav" onclick="mostrarSecao('lista-caixas', this)">Catálogo de Caixas</button>
         </div>
 
-        <!-- Formulário Colônia -->
-        <section id="form-colonia" class="secao">
-            <h3>Cadastro de Colônia</h3>
-            <div class="d-flex gap-3 mb-4">
-                <div class="card p-3">
-                    <h5>Total de Colônias</h5>
-                    <p class="fs-4"><?php echo $totalColonias; ?></p>
-                </div>
-                <div class="card p-3">
-                    <h5>Total de Caixas Registradas</h5>
-                    <p class="fs-4"><?php echo $totalCaixas; ?></p>
-                </div>
-            </div>
-            <form method="POST" action="salvar_colonia.php" enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label class="form-label">Foto da Abelha (perfil)</label>
-                    <input type="file" name="foto" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Banner (opcional)</label>
-                    <input type="file" name="banner" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Nome da Colônia</label>
-                    <input type="text" name="nomeColonia" class="form-control" placeholder="Ex: Jataí" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Espécie</label>
-                    <input type="text" name="especie" class="form-control" placeholder="Ex: Tetragonisca angustula" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Origem / Procedência</label>
-                    <input type="text" name="origem" class="form-control" placeholder="Ex: Doação de Fulano" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Data de Aquisição</label>
-                    <input type="month" name="data_aquisicao" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Localização</label>
-                    <input type="text" name="localizacao" class="form-control" placeholder="Ex: Meliponário CEEDO" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Descrição (opcional)</label>
-                    <textarea name="descricao" class="form-control" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-success">Salvar Colônia</button>
-            </form>
-        </section>
+       <!-- Cadastro de Colônia -->
+<section id="cadastro-colonia" class="secao">
+    <h3>Cadastrar Nova Colônia</h3>
+    <form action="salvar_colonia.php" method="post" enctype="multipart/form-data">
+        
+        <div class="mb-3">
+            <label for="nomeColonia" class="form-label">Nome da Colônia</label>
+            <input type="text" name="nomeColonia" id="nomeColonia" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="especie" class="form-label">Espécie</label>
+            <input type="text" name="especie" id="especie" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="origem" class="form-label">Origem</label>
+            <input type="text" name="origem" id="origem" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="data_aquisicao" class="form-label">Data de Aquisição</label>
+            <!-- Agora com data completa -->
+            <input type="date" name="data_aquisicao" id="data_aquisicao" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="localizacao" class="form-label">Localização</label>
+            <input type="text" name="localizacao" id="localizacao" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição</label>
+            <textarea name="descricao" id="descricao" class="form-control"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="foto" class="form-label">Foto da Abelha (Obrigatória)</label>
+            <input type="file" name="foto" id="foto" class="form-control" accept="image/*" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="banner" class="form-label">Banner (Opcional)</label>
+            <input type="file" name="banner" id="banner" class="form-control" accept="image/*">
+        </div>
+
+        <button type="submit" class="btn btn-success">Salvar Colônia</button>
+    </form>
+</section>
+
 
         <!-- Formulário Caixa -->
         <section id="form-caixa" class="secao" style="display:none;">
@@ -124,41 +125,109 @@ $totalCaixas   = mysqli_fetch_assoc(mysqli_query($conexao, "SELECT COUNT(*) AS t
         </section>
 
         <!-- Lista Colônias -->
-        <section id="lista-colonias" class="secao" style="display:none;">
-            <h3>Catálogo de Colônias</h3>
-            <div class="mb-3">
-                <strong>Total de Colônias:</strong> <?php echo $totalColonias; ?>
-            </div>
-            <table class="table table-striped">
-                <thead>
-                    <tr><th>ID</th><th>Nome</th><th>Espécie</th><th>Ações</th></tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $result = mysqli_query($conexao, "SELECT * FROM colonias");
-                    while($row = mysqli_fetch_assoc($result)) {
-                        echo "<tr>
-                                <td>{$row['id']}</td>
-                                <td>{$row['nome']}</td>
-                                <td>{$row['especie']}</td>
-                                <td><a href='editar_colonia.php?id={$row['id']}' class='btn btn-sm btn-primary'>Editar</a></td>
-                              </tr>";
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </section>
+<section id="lista-colonias" class="secao" style="display:none;">
+    <h3>Catálogo de Colônias</h3>
+    <div class="mb-3">
+        <strong>Total de Colônias:</strong> <?php echo $totalColonias; ?>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Espécie</th>
+                <th>Origem</th>
+                <th>Data Aquisição</th>
+                <th>Localização</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $result = mysqli_query($conexao, "SELECT * FROM colonias");
+            while($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>
+                        <td>{$row['id']}</td>
+                        <td>{$row['nome']}</td>
+                        <td>{$row['especie']}</td>
+                        <td>{$row['origem']}</td>
+                        <td>";
+                // Exibe a data completa no formato brasileiro
+                if (!empty($row['data_aquisicao']) && $row['data_aquisicao'] != "0000-00-00") {
+                    echo date("d/m/Y", strtotime($row['data_aquisicao']));
+                } else {
+                    echo "-";
+                }
+                echo "</td>
+                        <td>{$row['localizacao']}</td>
+                        <td>
+                            <a href='editar_colonia.php?id={$row['id']}' class='btn btn-sm btn-primary'>Editar</a>
+                            <a href='excluir_colonia.php?id={$row['id']}' class='btn btn-sm btn-danger'>Excluir</a>
+                        </td>
+                      </tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</section>
 
-        <!-- Lista Caixas -->
-        <section id="lista-caixas" class="secao" style="display:none;">
-            <h3>Catálogo de Caixas</h3>
-            <div class="mb-3">
-                <strong>Total de Caixas:</strong> <?php echo $totalCaixas; ?>
-            </div>
-            <table class="table table-striped">
-                <thead>
-                    <tr><th>ID</th><th>Dimensões</th><th>Espécies</th><th>Ações</th></tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $result = mysqli_query($conexao, "SELECT * FROM caixas
+    <!-- Lista Caixas -->
+<section id="lista-caixas" class="secao" style="display:none;">
+    <h3>Catálogo de Caixas</h3>
+    <div class="mb-3">
+        <strong>Total de Caixas:</strong> <?php echo $totalCaixas; ?>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Imagem</th>
+                <th>Dimensões</th>
+                <th>Altura Módulo</th>
+                <th>Ângulo Corte</th>
+                <th>Espécies Recomendadas</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $result = mysqli_query($conexao, "SELECT * FROM caixas");
+            while($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>
+                        <td>{$row['id']}</td>
+                        <td><img src='{$row['imagem']}' alt='Imagem da Caixa' style='width:80px;'></td>
+                        <td>{$row['dimensoes']}</td>
+                        <td>{$row['altura_modulo']}</td>
+                        <td>{$row['angulo_corte']}</td>
+                        <td>{$row['especies_recomendadas']}</td>
+                        <td>{$row['descricao']}</td>
+                        <td>
+                            <a href='editar_caixa.php?id={$row['id']}' class='btn btn-sm btn-primary'>Editar</a>
+                            <a href='excluir_caixa.php?id={$row['id']}' class='btn btn-sm btn-danger'>Excluir</a>
+                        </td>
+                      </tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+    </main>
+
+    <?php include 'includes_painel/footer.php'?>
+
+    <script>
+        function mostrarSecao(id, btn) {
+            document.querySelectorAll('.secao').forEach(sec => sec.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+
+            document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
+</body>
+</html>
