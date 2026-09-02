@@ -4,20 +4,15 @@ include('conexao.php');
 // Recebe os dados do formulário
 $nome        = trim($_POST['nomeColonia']);
 $especie     = trim($_POST['especie']);
-$origem      = trim($_POST['origem']);
+$procedencia = trim($_POST['procedencia']); // novo campo
 $data        = trim($_POST['data_aquisicao']);
 $localizacao = trim($_POST['localizacao']);
 $descricao   = trim($_POST['descricao']);
 
 // Validação: não permitir campos obrigatórios vazios
-if (empty($nome) || empty($especie) || empty($origem) || empty($data) || empty($localizacao)) {
+if (empty($nome) || empty($especie) || empty($procedencia) || empty($data) || empty($localizacao)) {
     echo "⚠️ Preencha todos os campos obrigatórios antes de salvar.";
     exit;
-}
-
-// Ajuste para mês/ano → adiciona dia 01
-if (preg_match('/^\d{4}-\d{2}$/', $data)) {
-    $data .= "-01";
 }
 
 // Upload da foto (obrigatória)
@@ -38,11 +33,10 @@ if (!empty($_FILES['banner']['name'])) {
 }
 
 // Query de inserção
-$sql = "INSERT INTO colonias (nome, especie, origem, data_aquisicao, localizacao, descricao, foto, banner)
-        VALUES ('$nome', '$especie', '$origem', '$data', '$localizacao', '$descricao', '$foto', '$banner')";
+$sql = "INSERT INTO colonias (nome, especie, procedencia, data_aquisicao, localizacao, descricao, foto, banner)
+        VALUES ('$nome', '$especie', '$procedencia', '$data', '$localizacao', '$descricao', '$foto', '$banner')";
 
 if (mysqli_query($conexao, $sql)) {
-    // Volta para a mesma página (colonias.php) com campos limpos
     header("Location: colonias.php");
     exit;
 } else {

@@ -25,17 +25,27 @@ $totalCaixas   = mysqli_fetch_assoc(mysqli_query($conexao, "SELECT COUNT(*) AS t
 
         <!-- Botões de navegação -->
         <div class="d-flex justify-content-center gap-3 mb-4">
-            <button class="btn-nav active" onclick="mostrarSecao('form-colonia', this)">Cadastrar Colônia</button>
+            <button class="btn-nav active" onclick="mostrarSecao('cadastro-colonia', this)">Cadastrar Colônia</button>
             <button class="btn-nav" onclick="mostrarSecao('form-caixa', this)">Cadastrar Padrão de Caixa</button>
             <button class="btn-nav" onclick="mostrarSecao('lista-colonias', this)">Catálogo de Colônias</button>
             <button class="btn-nav" onclick="mostrarSecao('lista-caixas', this)">Catálogo de Caixas</button>
         </div>
 
        <!-- Cadastro de Colônia -->
-<section id="cadastro-colonia" class="secao">
+   <section id="cadastro-colonia" class="secao">
     <h3>Cadastrar Nova Colônia</h3>
     <form action="salvar_colonia.php" method="post" enctype="multipart/form-data">
-        
+
+        <div class="mb-3">
+            <label for="foto" class="form-label">Foto da Abelha (Obrigatória)</label>
+            <input type="file" name="foto" id="foto" class="form-control" accept="image/*" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="banner" class="form-label">Banner (Opcional)</label>
+            <input type="file" name="banner" id="banner" class="form-control" accept="image/*">
+        </div>
+
         <div class="mb-3">
             <label for="nomeColonia" class="form-label">Nome da Colônia</label>
             <input type="text" name="nomeColonia" id="nomeColonia" class="form-control" required>
@@ -47,13 +57,12 @@ $totalCaixas   = mysqli_fetch_assoc(mysqli_query($conexao, "SELECT COUNT(*) AS t
         </div>
 
         <div class="mb-3">
-            <label for="origem" class="form-label">Origem</label>
-            <input type="text" name="origem" id="origem" class="form-control" required>
+            <label for="procedencia" class="form-label">Procedência</label>
+            <input type="text" name="procedencia" id="procedencia" class="form-control" placeholder="Ex: Doação, Compra, Captura" required>
         </div>
 
         <div class="mb-3">
             <label for="data_aquisicao" class="form-label">Data de Aquisição</label>
-            <!-- Agora com data completa -->
             <input type="date" name="data_aquisicao" id="data_aquisicao" class="form-control" required>
         </div>
 
@@ -67,19 +76,10 @@ $totalCaixas   = mysqli_fetch_assoc(mysqli_query($conexao, "SELECT COUNT(*) AS t
             <textarea name="descricao" id="descricao" class="form-control"></textarea>
         </div>
 
-        <div class="mb-3">
-            <label for="foto" class="form-label">Foto da Abelha (Obrigatória)</label>
-            <input type="file" name="foto" id="foto" class="form-control" accept="image/*" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="banner" class="form-label">Banner (Opcional)</label>
-            <input type="file" name="banner" id="banner" class="form-control" accept="image/*">
-        </div>
-
         <button type="submit" class="btn btn-success">Salvar Colônia</button>
-    </form>
-</section>
+     </form>
+    </section>
+
 
 
         <!-- Formulário Caixa -->
@@ -117,8 +117,8 @@ $totalCaixas   = mysqli_fetch_assoc(mysqli_query($conexao, "SELECT COUNT(*) AS t
                     <input type="text" name="especies_recomendadas" class="form-control" placeholder="Ex: Jataí, Mandaçaia" required>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Descrição</label>
-                    <textarea name="descricao" class="form-control" rows="3" required></textarea>
+                    <label class="form-label">Descrição (Opcional)</label>
+                    <textarea name="descricao" class="form-control" rows="3"></textarea>
                 </div>
                 <button type="submit" class="btn btn-success">Salvar Caixa</button>
             </form>
@@ -136,7 +136,7 @@ $totalCaixas   = mysqli_fetch_assoc(mysqli_query($conexao, "SELECT COUNT(*) AS t
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Espécie</th>
-                <th>Origem</th>
+                <th>Procedência</th>
                 <th>Data Aquisição</th>
                 <th>Localização</th>
                 <th>Ações</th>
@@ -150,14 +150,11 @@ $totalCaixas   = mysqli_fetch_assoc(mysqli_query($conexao, "SELECT COUNT(*) AS t
                         <td>{$row['id']}</td>
                         <td>{$row['nome']}</td>
                         <td>{$row['especie']}</td>
-                        <td>{$row['origem']}</td>
+                        <td>{$row['procedencia']}</td>
                         <td>";
-                // Exibe a data completa no formato brasileiro
-                if (!empty($row['data_aquisicao']) && $row['data_aquisicao'] != "0000-00-00") {
-                    echo date("d/m/Y", strtotime($row['data_aquisicao']));
-                } else {
-                    echo "-";
-                }
+                echo (!empty($row['data_aquisicao']) && $row['data_aquisicao'] != "0000-00-00") 
+                    ? date("d/m/Y", strtotime($row['data_aquisicao'])) 
+                    : "-";
                 echo "</td>
                         <td>{$row['localizacao']}</td>
                         <td>
@@ -170,6 +167,9 @@ $totalCaixas   = mysqli_fetch_assoc(mysqli_query($conexao, "SELECT COUNT(*) AS t
         </tbody>
     </table>
 </section>
+
+
+
 
     <!-- Lista Caixas -->
 <section id="lista-caixas" class="secao" style="display:none;">
