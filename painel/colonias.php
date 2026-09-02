@@ -32,10 +32,22 @@ $totalCaixas   = mysqli_fetch_assoc(mysqli_query($conexao, "SELECT COUNT(*) AS t
         </div>
 
        <!-- Cadastro de Colônia -->
-   <section id="cadastro-colonia" class="secao">
+<section id="cadastro-colonia" class="secao">
     <h3>Cadastrar Nova Colônia</h3>
-    <form action="salvar_colonia.php" method="post" enctype="multipart/form-data">
 
+    <!-- Bloco de totais -->
+    <div class="d-flex gap-3 mb-4">
+        <div class="card p-3">
+            <h5>Total de Colônias</h5>
+            <p class="fs-4"><?php echo $totalColonias; ?></p>
+        </div>
+        <div class="card p-3">
+            <h5>Total de Caixas Registradas</h5>
+            <p class="fs-4"><?php echo $totalCaixas; ?></p>
+        </div>
+    </div>
+
+    <form action="salvar_colonia.php" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="foto" class="form-label">Foto da Abelha (Obrigatória)</label>
             <input type="file" name="foto" id="foto" class="form-control" accept="image/*" required>
@@ -77,8 +89,9 @@ $totalCaixas   = mysqli_fetch_assoc(mysqli_query($conexao, "SELECT COUNT(*) AS t
         </div>
 
         <button type="submit" class="btn btn-success">Salvar Colônia</button>
-     </form>
-    </section>
+    </form>
+</section>
+
 
 
 

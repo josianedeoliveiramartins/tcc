@@ -6,10 +6,10 @@ $dimensoes   = trim($_POST['dimensoes']);
 $altura      = trim($_POST['altura_modulo']);
 $angulo      = trim($_POST['angulo_corte']);
 $especies    = trim($_POST['especies_recomendadas']);
-$descricao   = trim($_POST['descricao']);
+$descricao   = !empty($_POST['descricao']) ? trim($_POST['descricao']) : null; // agora opcional
 
-// Validação: todos os campos obrigatórios
-if (empty($dimensoes) || empty($altura) || empty($angulo) || empty($especies) || empty($descricao)) {
+// Validação: apenas campos obrigatórios
+if (empty($dimensoes) || empty($altura) || empty($angulo) || empty($especies)) {
     echo "⚠️ Preencha todos os campos obrigatórios antes de salvar.";
     exit;
 }
@@ -29,10 +29,10 @@ if (!empty($_FILES['imagem']['name'])) {
 
 // Query de inserção
 $sql = "INSERT INTO caixas (imagem, dimensoes, altura_modulo, angulo_corte, especies_recomendadas, descricao)
-        VALUES ('$imagem', '$dimensoes', '$altura', '$angulo', '$especies', '$descricao')";
+        VALUES ('$imagem', '$dimensoes', '$altura', '$angulo', '$especies', " . 
+        ($descricao !== null ? "'$descricao'" : "NULL") . ")";
 
 if (mysqli_query($conexao, $sql)) {
-    // Volta para a mesma página (colonias.php) com campos limpos
     header("Location: colonias.php");
     exit;
 } else {
