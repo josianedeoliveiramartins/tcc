@@ -23,41 +23,10 @@
         <li class="nav-item"><a class="nav-link" href="#">Histórico de projetos</a></li>
 
         <!-- Meliponário -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Meliponário</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Sobre</a></li>
-            <li><a class="dropdown-item" href="#">Catálogo de colônias</a></li>
-            <li><a class="dropdown-item" href="#">Padrão de caixas</a></li>
-            <li><a class="dropdown-item" href="#">Projeto</a></li>
-            <li><a class="dropdown-item" href="#">Mídias</a></li>
-          </ul>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="#">Meliponário</a></li>
 
         <!-- CPE CEEDO -->
         <li class="nav-item"><a class="nav-link" href="#">CPE CEEDO</a></li>
-
-        <!-- Xadrez Gigante -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Xadrez Gigante</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Projeto</a></li>
-            <li><a class="dropdown-item" href="#">Manual</a></li>
-            <li><a class="dropdown-item" href="#">Xadrez Gigante 2022</a></li>
-            <li><a class="dropdown-item" href="#">Xadrez Gigante 2025</a></li>
-            <li><a class="dropdown-item" href="#">Jogar on-line</a></li>
-          </ul>
-        </li>
-
-        <!-- Caminho das Palmeiras -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Caminho das Palmeiras</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Projeto</a></li>
-            <li><a class="dropdown-item" href="#">Imagens</a></li>
-          </ul>
-        </li>
-      </ul>
 
       <!-- Botão administrativo -->
       <div class="d-flex">
