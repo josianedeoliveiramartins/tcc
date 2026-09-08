@@ -156,28 +156,39 @@ $totalCaixas   = mysqli_fetch_assoc(mysqli_query($conexao, "SELECT COUNT(*) AS t
             </tr>
         </thead>
         <tbody>
-            <?php
-            $result = mysqli_query($conexao, "SELECT * FROM colonias");
-            while($row = mysqli_fetch_assoc($result)) {
-                echo "<tr>
-                        <td>{$row['id']}</td>
-                        <td>{$row['nome']}</td>
-                        <td>{$row['especie']}</td>
-                        <td>{$row['procedencia']}</td>
-                        <td>";
+    <?php
+    $result = mysqli_query($conexao, "SELECT * FROM colonias");
+    while($row = mysqli_fetch_assoc($result)) {
+    ?>
+        <tr>
+            <td><?php echo $row['id']; ?></td>
+            <td><?php echo $row['nome']; ?></td>
+            <td><?php echo $row['especie']; ?></td>
+            <td><?php echo $row['procedencia']; ?></td>
+            <td>
+                <?php 
                 echo (!empty($row['data_aquisicao']) && $row['data_aquisicao'] != "0000-00-00") 
                     ? date("d/m/Y", strtotime($row['data_aquisicao'])) 
                     : "-";
-                echo "</td>
-                        <td>{$row['localizacao']}</td>
-                        <td>
-                            <a href='editar_colonia.php?id={$row['id']}' class='btn btn-sm btn-primary'>Editar</a>
-                            <a href='excluir_colonia.php?id={$row['id']}' class='btn btn-sm btn-danger'>Excluir</a>
-                        </td>
-                      </tr>";
-            }
-            ?>
-        </tbody>
+                ?>
+            </td>
+            <td><?php echo $row['localizacao']; ?></td>
+            <td>
+                <a href="editar_colonia.php?id=<?php echo $row['id']; ?>" 
+                   class="btn btn-sm btn-primary">Editar</a>
+
+                <a href="excluir_colonia.php?id=<?php echo $row['id']; ?>" 
+                   class="btn btn-sm btn-danger" 
+                   onclick="return confirm('Tem certeza que deseja excluir esta colônia?')">
+                   Excluir
+                </a>
+            </td>
+        </tr>
+    <?php
+    }
+    ?>
+</tbody>
+
     </table>
 </section>
 
@@ -203,26 +214,35 @@ $totalCaixas   = mysqli_fetch_assoc(mysqli_query($conexao, "SELECT COUNT(*) AS t
                 <th>Ações</th>
             </tr>
         </thead>
-        <tbody>
-            <?php
-            $result = mysqli_query($conexao, "SELECT * FROM caixas");
-            while($row = mysqli_fetch_assoc($result)) {
-                echo "<tr>
-                        <td>{$row['id']}</td>
-                        <td><img src='{$row['imagem']}' alt='Imagem da Caixa' style='width:80px;'></td>
-                        <td>{$row['dimensoes']}</td>
-                        <td>{$row['altura_modulo']}</td>
-                        <td>{$row['angulo_corte']}</td>
-                        <td>{$row['especies_recomendadas']}</td>
-                        <td>{$row['descricao']}</td>
-                        <td>
-                            <a href='editar_caixa.php?id={$row['id']}' class='btn btn-sm btn-primary'>Editar</a>
-                            <a href='excluir_caixa.php?id={$row['id']}' class='btn btn-sm btn-danger'>Excluir</a>
-                        </td>
-                      </tr>";
-            }
-            ?>
-        </tbody>
+       <tbody>
+    <?php
+    $result = mysqli_query($conexao, "SELECT * FROM caixas");
+    while($row = mysqli_fetch_assoc($result)) {
+    ?>
+        <tr>
+            <td><?php echo $row['id']; ?></td>
+            <td><img src="<?php echo $row['imagem']; ?>" alt="Imagem da Caixa" style="width:80px;"></td>
+            <td><?php echo $row['dimensoes']; ?></td>
+            <td><?php echo $row['altura_modulo']; ?></td>
+            <td><?php echo $row['angulo_corte']; ?></td>
+            <td><?php echo $row['especies_recomendadas']; ?></td>
+            <td><?php echo $row['descricao']; ?></td>
+            <td>
+                <a href="editar_caixa.php?id=<?php echo $row['id']; ?>" 
+                   class="btn btn-sm btn-primary">Editar</a>
+
+                <a href="excluir_caixa.php?id=<?php echo $row['id']; ?>" 
+                   class="btn btn-sm btn-danger" 
+                   onclick="return confirm('Tem certeza que deseja excluir esta caixa?')">
+                   Excluir
+                </a>
+            </td>
+        </tr>
+    <?php
+    }
+    ?>
+</tbody>
+
     </table>
 </section>
 
