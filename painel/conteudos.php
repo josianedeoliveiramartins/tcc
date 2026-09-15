@@ -1,0 +1,66 @@
+<?php include('verifica_login.php'); ?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteúdos | COOPCEEDO</title>
+
+    <!--------------- HEAD ---------------->
+        <?php include 'includes_painel/head.php'?>
+    <!------------------------------------->
+
+    <link rel="stylesheet" href="css/cadastros.css">
+</head>
+<body>
+    <!--------------- HEADER ---------------->
+        <?php include 'includes_painel/header.php'?>
+    <!--------------------------------------->
+
+    <main class="container my-4">
+        <h1 class="mb-4">Gerenciar Conteúdos</h1>
+
+        <div class="cards-container">
+            <!-- Notícias e Comunicados -->
+            <a href="noticias.php" class="card text-center shadow-sm text-decoration-none">
+                <div class="card-body">
+                    <img src="midias/icones/noticias.png" alt="Notícias e Comunicados" width="64" height="64">
+                    <h5 class="card-title mt-3">Notícias e Comunicados</h5>
+                    <p class="card-text">Gerenciar avisos e notícias internas</p>
+                </div>
+            </a>
+
+            <!-- Mídias -->
+            <a href="midias.php" class="card text-center shadow-sm text-decoration-none">
+                <div class="card-body">
+                    <img src="midias/icones/midias.png" alt="Mídias" width="64" height="64">
+                    <h5 class="card-title mt-3">Mídias</h5>
+                    <p class="card-text">Gerenciar imagens, vídeos e documentos</p>
+                </div>
+            </a>
+
+            <!-- Publicações -->
+            <a href="publicacoes.php" class="card text-center shadow-sm text-decoration-none">
+                <div class="card-body">
+                    <img src="midias/icones/publicacoes.png" alt="Publicações" width="64" height="64">
+                    <h5 class="card-title mt-3">Publicações</h5>
+                    <p class="card-text">Gerenciar manuais, regulamentos e artigos</p>
+                </div>
+            </a>
+
+            <!-- CPE -->
+            <a href="cpe.php" class="card text-center shadow-sm text-decoration-none">
+                <div class="card-body">
+                    <img src="midias/icones/cpe.png" alt="CPE" width="64" height="64">
+                    <h5 class="card-title mt-3">CPE</h5>
+                    <p class="card-text">Conteúdo específico da cooperativa</p>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <!--------------- FOOTER ---------------->
+        <?php include 'includes_painel/footer.php'?>
+    <!--------------------------------------->
+</body>
+</html>

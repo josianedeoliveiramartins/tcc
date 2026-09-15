@@ -30,7 +30,7 @@
         </li>
 
         <!-- Conteúdos -->
-        <li class="nav-item"><a class="nav-link" href="#">Conteúdos</a></li>
+        <li class="nav-item"><a class="nav-link" href="conteudos.php">Conteúdos</a></li>
 
         <!-- Eventos -->
         <li class="nav-item"><a class="nav-link" href="#">Eventos</a></li>
