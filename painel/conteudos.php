@@ -33,7 +33,7 @@
             <!-- Mídias -->
             <a href="midias.php" class="card text-center shadow-sm text-decoration-none">
                 <div class="card-body">
-                    <img src="midias/icones/midias.png" alt="Mídias" width="64" height="64">
+                    <img src="midias/icones/loudspeaker.png" alt="Mídias" width="64" height="64">
                     <h5 class="card-title mt-3">Mídias</h5>
                     <p class="card-text">Gerenciar imagens, vídeos e documentos</p>
                 </div>

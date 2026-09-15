@@ -20,14 +20,8 @@
         <li class="nav-item"><a class="nav-link" href="cadastro.php">Cadastros</a></li>
 
         <!-- Gerenciamento -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Gerenciamento</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Relatórios</a></li>
-            <li><a class="dropdown-item" href="#">Permissões</a></li>
-            <li><a class="dropdown-item" href="#">Configurações de acesso</a></li>
-          </ul>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="conteudos.php">Gerenciamento</a></li>
+
 
         <!-- Conteúdos -->
         <li class="nav-item"><a class="nav-link" href="conteudos.php">Conteúdos</a></li>

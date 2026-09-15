@@ -31,7 +31,7 @@
       <!-- Botão administrativo -->
       <div class="d-flex">
         <a href="login">
-        <button class="btn btn-outline-success" type="button">Painel administrativo</button>
+        <button class="btn btn-outline-success" type="button" right>Painel administrativo</button>
         </a>
       </div>
     </div>
