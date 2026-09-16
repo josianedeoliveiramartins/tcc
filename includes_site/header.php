@@ -1,8 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">
-      <img src="midias/logocoop.png" width="65" height="35" class="d-inline-block align-text-top" alt="Logo COOPCEEDO">
-      COOPCEEDO
+      <img src="midias/logo.png" width="85" height="55" class="d-inline-block align-text-top" alt="Logo COOPCEEDO">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
@@ -14,16 +13,16 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <!-- Início -->
-        <li class="nav-item"><a class="nav-link active" href="index.php">Início</a></li>
+        <li class="nav-item"><a class="nav-link active" href="index.php">INÍCIO </a></li>
 
         <!-- Sobre -->
-        <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">SOBRE</a></li>
 
         <!-- Histórico -->
-        <li class="nav-item"><a class="nav-link" href="#">Histórico de projetos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">HISTÓRICO DE PROJETOS</a></li>
 
         <!-- Meliponário -->
-        <li class="nav-item"><a class="nav-link" href="#">Meliponário</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">MELIPONÁRIO</a></li>
 
         <!-- CPE CEEDO -->
         <li class="nav-item"><a class="nav-link" href="#">CPE CEEDO</a></li>

@@ -22,7 +22,7 @@ html, body {
 
 .nav-link {
   color: var(--color-dark) !important;
-  transition: 0.3s;
+  transition: 0.3s;                                                 
 }
 
 .nav-link:hover {

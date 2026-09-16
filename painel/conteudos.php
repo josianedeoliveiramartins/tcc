@@ -24,7 +24,7 @@
             <!-- Notícias e Comunicados -->
             <a href="noticias.php" class="card text-center shadow-sm text-decoration-none">
                 <div class="card-body">
-                    <img src="midias/icones/noticias.png" alt="Notícias e Comunicados" width="64" height="64">
+                    <img src="midias/icones/loudspeaker.png" alt="Notícias e Comunicados" width="64" height="64">
                     <h5 class="card-title mt-3">Notícias e Comunicados</h5>
                     <p class="card-text">Gerenciar avisos e notícias internas</p>
                 </div>
@@ -33,7 +33,7 @@
             <!-- Mídias -->
             <a href="midias.php" class="card text-center shadow-sm text-decoration-none">
                 <div class="card-body">
-                    <img src="midias/icones/loudspeaker.png" alt="Mídias" width="64" height="64">
+                    <img src="midias/icones/gallery.png" alt="Mídias" width="64" height="64">
                     <h5 class="card-title mt-3">Mídias</h5>
                     <p class="card-text">Gerenciar imagens, vídeos e documentos</p>
                 </div>
@@ -42,7 +42,7 @@
             <!-- Publicações -->
             <a href="publicacoes.php" class="card text-center shadow-sm text-decoration-none">
                 <div class="card-body">
-                    <img src="midias/icones/publicacoes.png" alt="Publicações" width="64" height="64">
+                    <img src="midias/icones/documentation.png" alt="Publicações" width="64" height="64">
                     <h5 class="card-title mt-3">Publicações</h5>
                     <p class="card-text">Gerenciar manuais, regulamentos e artigos</p>
                 </div>
@@ -51,7 +51,7 @@
             <!-- CPE -->
             <a href="cpe.php" class="card text-center shadow-sm text-decoration-none">
                 <div class="card-body">
-                    <img src="midias/icones/cpe.png" alt="CPE" width="64" height="64">
+                    <img src="midias/icones/graduation.png" alt="CPE" width="64" height="64">
                     <h5 class="card-title mt-3">CPE</h5>
                     <p class="card-text">Conteúdo específico da cooperativa</p>
                 </div>
