@@ -11,9 +11,14 @@
             </p>
 
             <p>
+                <img src="midias/chamada-telefonica.png" width="20">
                 Telefone: (55) 3756-1099<br>
-                Celular: (55) 99203-4549<br>
-                E-mail: meliponario.ceedo@gmail.com
+
+                <img src="midias/celular.png" width="30">
+                Celular: (55) 99203-4549<br><br>
+                
+                 <img src="midias/o-email.png" width="30">
+                E-mail: meliponario.ceedo@gmail.com<br> 
             </p>
         </div>
 
@@ -22,8 +27,11 @@
             <h2>Endereço</h2>
             
             <a href="https://www.google.com/maps/place/Col%C3%A9gio+Estadual+Dr.+Dorvalino+Luciano+De+Souza/@-27.608603,-53.1685033,753m/data=!3m2!1e3!4b1!4m6!3m5!1s0x94fc9c7a449afacd:0x8f0cc9a34a5e507d!8m2!3d-27.608603!4d-53.165923!16s%2Fg%2F11cks68j6p?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDgyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+
+                <img src="midias/pin-de-localizacao.png" width="20">
                 Av. 20 de Dezembro, 564<br>
                 Cerro Grande - RS, 98340-000
+
             </a>
         </div>
 
@@ -32,11 +40,17 @@
             <h2>Redes Sociais</h2>
 
             <a href="https://www.instagram.com/coop_ceedo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" target="_blank">
+
+                <img src="midias/instagram.png" width="20">
                 Instagram - COOPCEEDO
+
             </a>
 
             <a href="https://www.instagram.com/cpe.ceedo/" target="_blank">
+
+                <img src="midias/instagram.png" width="20">
                 Instagram - CPE CEEDO
+
             </a>
         </div>
 

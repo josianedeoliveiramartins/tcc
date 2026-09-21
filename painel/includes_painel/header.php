@@ -21,26 +21,24 @@
         <!-- Catálogo -->
         <li class="nav-item"><a class="nav-link" href="catalogo.php">CATÁLOGO</a></li>
 
-
         <!-- Conteúdos -->
         <li class="nav-item"><a class="nav-link" href="conteudos.php">CONTEÚDO</a></li>
 
         <!-- Eventos -->
         <li class="nav-item"><a class="nav-link" href="#">EVENTOS</a></li>
 
-
         <!-- Configurações -->
         <li class="nav-item"><a class="nav-link" href="#">Config</a></li>
 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </ul>
 
-      
-      <!-- Botão administrativo -->
-      <div class="d-flex">
+      <!-- Botão Sair -->
+      <div class="d-flex ms-auto">
         <a href="../login">
-        <button class="btn btn-outline-success" type="button">Sair</button>
+          <button class="btn btn-outline-success" type="button">Sair</button>
         </a>
       </div>
+
     </div>
   </div>
 </nav>
