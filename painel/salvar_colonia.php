@@ -37,9 +37,10 @@ $sql = "INSERT INTO colonias (nome, especie, procedencia, data_aquisicao, locali
         VALUES ('$nome', '$especie', '$procedencia', '$data', '$localizacao', '$descricao', '$foto', '$banner')";
 
 if (mysqli_query($conexao, $sql)) {
-    header("Location: colonias.php");
+    header("Location: listar_colonias.php"); // redireciona para a listagem
     exit;
 } else {
     echo "Erro ao salvar: " . mysqli_error($conexao);
 }
+
 ?>

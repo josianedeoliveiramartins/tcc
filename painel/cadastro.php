@@ -22,12 +22,12 @@
         <h1 class="mb-4">Gerenciar Cadastros</h1>
 
         <div class="cards-container">
-            <!-- Usuários -->
-            <a href="usuarios.php" class="card text-center shadow-sm text-decoration-none">
+            <!-- Padrões de caixa -->
+            <a href="cadastar_caixa.php" class="card text-center shadow-sm text-decoration-none">
                 <div class="card-body">
-                    <img src="midias/icones/usuarios.png" alt="Usuários" width="64" height="64">
-                    <h5 class="card-title mt-3">Usuários</h5>
-                    <p class="card-text">Gerenciar administradores e membros</p>
+                    <img src="midias/icones/caixadeabelha.png" alt="Usuários" width="64" height="64">
+                    <h5 class="card-title mt-3">Padrões de caixa</h5>
+                    <p class="card-text">Cadastrar novos de padrões de caixa do meloponário</p>
                 </div>
             </a>
 
@@ -36,28 +36,20 @@
                 <div class="card-body">
                     <img src="midias/icones/projetos.png" alt="Projetos" width="64" height="64">
                     <h5 class="card-title mt-3">Projetos</h5>
-                    <p class="card-text">Cadastrar e editar projetos</p>
+                    <p class="card-text">Cadastrar novos projetos</p>
                 </div>
             </a>
 
             <!-- Colônias -->
-            <a href="colonias.php" class="card text-center shadow-sm text-decoration-none">
+            <a href="cadastrar_colonia.php" class="card text-center shadow-sm text-decoration-none">
                 <div class="card-body">
                     <img src="midias/icones/colonias.png" alt="Colônias" width="64" height="64">
                     <h5 class="card-title mt-3">Colônias</h5>
-                    <p class="card-text">Controle do meliponário</p>
+                    <p class="card-text">Cadastrar novas de colônias</p>
                 </div>
             </a>
 
-            <!-- Produtos/Serviços -->
-            <a href="produtos.php" class="card text-center shadow-sm text-decoration-none">
-                <div class="card-body">
-                    <img src="midias/icones/produtos.png" alt="Produtos/Serviços" width="64" height="64">
-                    <h5 class="card-title mt-3">Produtos/Serviços</h5>
-                    <p class="card-text">Gerenciar itens e serviços</p>
-                </div>
-            </a>
-        </div>
+            
     </main>
 
     <!--------------- FOOTER ---------------->

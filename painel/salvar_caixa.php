@@ -33,9 +33,10 @@ $sql = "INSERT INTO caixas (imagem, dimensoes, altura_modulo, angulo_corte, espe
         ($descricao !== null ? "'$descricao'" : "NULL") . ")";
 
 if (mysqli_query($conexao, $sql)) {
-    header("Location: colonias.php");
+    header("Location: listar_caixas.php"); // redireciona para a listagem de caixas
     exit;
 } else {
     echo "Erro ao salvar: " . mysqli_error($conexao);
 }
+
 ?>

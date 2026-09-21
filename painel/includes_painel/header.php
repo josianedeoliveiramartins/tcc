@@ -18,8 +18,8 @@
         <!-- Cadastros -->
         <li class="nav-item"><a class="nav-link" href="cadastro.php">CADASTROS</a></li>
 
-        <!-- Gerenciamento -->
-        <li class="nav-item"><a class="nav-link" href="#">GERENCIAMENTO</a></li>
+        <!-- Catálogo -->
+        <li class="nav-item"><a class="nav-link" href="catalogo.php">CATÁLOGO</a></li>
 
 
         <!-- Conteúdos -->

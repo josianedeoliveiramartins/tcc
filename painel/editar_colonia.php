@@ -79,9 +79,10 @@ $colonia = mysqli_fetch_assoc($result);
                         <button type="submit" class="btn btn-success">
                             <i class="bi bi-check-circle"></i> Atualizar
                         </button>
-                        <a href="colonias.php" class="btn btn-secondary">
+                        <a href="listar_colonias.php" class="btn btn-secondary">
                             <i class="bi bi-arrow-left-circle"></i> Cancelar
                         </a>
+
                     </div>
                 </form>
             </div>
