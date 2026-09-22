@@ -18,7 +18,7 @@
                 Celular: (55) 99203-4549<br><br>
                 
                  <img src="midias/o-email.png" width="30">
-                E-mail: meliponario.ceedo@gmail.com<br> 
+                  meliponario.ceedo@gmail.com<br> 
             </p>
         </div>
 
@@ -42,14 +42,14 @@
             <a href="https://www.instagram.com/coop_ceedo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" target="_blank">
 
                 <img src="midias/instagram.png" width="20">
-                Instagram - COOPCEEDO
+                 COOPCEEDO
 
             </a>
 
             <a href="https://www.instagram.com/cpe.ceedo/" target="_blank">
 
                 <img src="midias/instagram.png" width="20">
-                Instagram - CPE CEEDO
+                 CPE CEEDO
 
             </a>
         </div>

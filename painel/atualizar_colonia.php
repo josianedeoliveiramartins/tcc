@@ -42,7 +42,7 @@ $sql = "UPDATE colonias
         WHERE id=$id";
 
 if (mysqli_query($conexao, $sql)) {
-    header("Location: colonias.php");
+    header("Location: listar_colonias.php"); // volta para a listagem de colônias
     exit;
 } else {
     echo "Erro ao atualizar: " . mysqli_error($conexao);

@@ -26,9 +26,10 @@ $sql = "UPDATE caixas
         WHERE id=$id";
 
 if (mysqli_query($conexao, $sql)) {
-    header("Location: colonias.php");
+    header("Location: listar_caixas.php"); // volta para a listagem de caixas
     exit;
 } else {
     echo "Erro ao atualizar: " . mysqli_error($conexao);
 }
+
 ?>
