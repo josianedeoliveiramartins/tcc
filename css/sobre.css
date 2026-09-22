@@ -1,0 +1,96 @@
+/* Estilos gerais da página Sobre */
+.section {
+  padding: 70px 0;
+}
+
+.section h2 {
+  margin-bottom: 40px;
+  font-weight: 700;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-dark); /* usa cor padrão escura */
+}
+
+.section p.lead {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--color-dark);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Cards */
+.card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card img {
+  max-height: 200px;
+  object-fit: cover;
+  border-bottom: 4px solid var(--color-secondary); /* detalhe amarelo padrão */
+}
+
+.card-body {
+  text-align: center;
+  padding: 20px;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--color-primary); /* verde padrão */
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: var(--color-dark);
+}
+
+/* Fundo claro */
+.bg-light {
+  background-color: var(--color-light) !important;
+}
+
+.section h2.text-center {
+  color: var(--color-secondary); /* usa amarelo padrão para destaque */
+}
+
+/* Apoiadores */
+.section img.img-fluid {
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.section img.img-fluid:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Header e Navbar (garante consistência visual) */
+header, .navbar {
+  background-color: var(--color-primary) !important;
+  border-bottom: 2px solid var(--color-secondary);
+}
+
+.navbar a {
+  color: var(--color-dark) !important;
+  font-weight: normal; /* remove o negrito das guias */
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: orange !important;
+}

@@ -17,7 +17,7 @@
         <li class="nav-item"><a class="nav-link active" href="index.php">INÍCIO </a></li>
 
         <!-- Sobre -->
-        <li class="nav-item"><a class="nav-link" href="#">SOBRE</a></li>
+        <li class="nav-item"><a class="nav-link" href="sobre.php">SOBRE</a></li>
 
         <!-- Histórico -->
         <li class="nav-item"><a class="nav-link" href="#">HISTÓRICO DE PROJETOS</a></li>
