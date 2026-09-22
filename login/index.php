@@ -33,7 +33,9 @@ if ($erro) {
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7">
-            <h3>Página Administrativa</h3>
+            <h3>Painel Administrativo</h3>
+
+            <br>
 
             <!-- Mensagem de erro -->
             <?php if ($erro): ?>
