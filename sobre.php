@@ -121,10 +121,10 @@
             <img src="midias/apoiadores/cresol.png" class="img-fluid" alt="Cresol">
           </div>
           <div class="col-md-2 col-4 mb-3">
-            <img src="img/apoiadores/emater.png" class="img-fluid" alt="Emater/RS">
+            <img src="midias/apoiadores/emater.png" class="img-fluid" alt="Emater/RS">
           </div>
           <div class="col-md-2 col-4 mb-3">
-            <img src="img/apoiadores/prefeitura.png" class="img-fluid" alt="Prefeitura de Cerro Grande/RS">
+            <img src="midias/apoiadores/cerrogrande.png" class="img-fluid" alt="Prefeitura de Cerro Grande/RS">
           </div>
           <div class="col-md-2 col-4 mb-3">
             <img src="img/apoiadores/cpm.png" class="img-fluid" alt="CPM Escolar">
