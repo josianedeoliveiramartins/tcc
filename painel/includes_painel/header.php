@@ -35,7 +35,12 @@
       <!-- Botão Sair -->
       <div class="d-flex ms-auto">
         <a href="../login">
-          <button class="btn btn-outline-success" type="button">Sair</button>
+          <button class="btn btn-outline-success" type="button">
+            <img src="midias/iconesair.png" alt="Cadeado" style="width: 20px; height: 20px; margin-right: 5px; vertical-align: middle;">
+
+            Sair
+
+          </button>
         </a>
       </div>
 

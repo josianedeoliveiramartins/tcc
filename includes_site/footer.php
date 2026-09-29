@@ -59,7 +59,7 @@
     <!-- Copyright e desenvolvimento -->
     <div class="footer-copy">
         <p>
-            © 2026 Suélen Dos Santos Alexandre e Josiane de Oliveira Martins.
+            © COOPCEEDO.
             Todos os direitos reservados.
         </p>
     </div>

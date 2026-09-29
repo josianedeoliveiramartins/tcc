@@ -36,11 +36,8 @@
         </p>
 
         <!-- Imagem institucional -->
-        <img
-          src="midias/coopceedo.png"
-          alt="Foto institucional COOPCEEDO"
-          class="img-fluid mt-3 rounded shadow imagem-coopceedo"
-        >
+       <img src="midias/coopceedo.png" alt="Foto institucional COOPCEEDO" class="img-fluid mt-3 rounded shadow imagem-coopceedo" style="width: 60%;">
+
 
       </div>
 

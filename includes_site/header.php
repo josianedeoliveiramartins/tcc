@@ -34,7 +34,8 @@
       <div class="d-flex ms-auto">
         <a href="login">
           <button class="btn btn-outline-success" type="button">
-            Painel administrativo
+             <img src="midias/cadeado.png" alt="Cadeado" style="width: 16px; height: 16px; margin-right: 5px; vertical-align: middle;">
+            Admin
           </button>
         </a>
       </div>
