@@ -405,7 +405,7 @@
             <div class="apoiador">
 
               <img
-                src="midias/apoiadores/sicredi.png"
+                src="midias/apoiadores/sicredi.1.png"
                 class="img-fluid"
                 alt="Sicredi"
               >
@@ -421,7 +421,7 @@
             <div class="apoiador">
 
               <img
-                src="midias/apoiadores/lr_tech.png"
+                src="midias/apoiadores/LR tech.jpeg"
                 class="img-fluid"
                 alt="LR Tech"
               >
@@ -437,7 +437,7 @@
             <div class="apoiador">
 
               <img
-                src="midias/apoiadores/meliponario_bulegon.png"
+                src="midias/apoiadores/meliponario.4.jpeg"  --> preciso arrumar melhor isso <--
                 class="img-fluid"
                 alt="Meliponário Bulegon"
               >
