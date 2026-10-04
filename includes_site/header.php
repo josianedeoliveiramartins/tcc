@@ -26,7 +26,7 @@
         <li class="nav-item"><a class="nav-link" href="#">MELIPONÁRIO</a></li>
 
         <!-- CPE CEEDO -->
-        <li class="nav-item"><a class="nav-link" href="#">CPE CEEDO</a></li>
+        <li class="nav-item"><a class="nav-link" href="cpe_ceedo.php">CPE CEEDO</a></li>
 
       </ul>
 

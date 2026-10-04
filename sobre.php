@@ -437,7 +437,7 @@
             <div class="apoiador">
 
               <img
-                src="midias/apoiadores/meliponario.4.jpeg"  --> preciso arrumar melhor isso <--
+                src="midias/apoiadores/meliponario.png"  -
                 class="img-fluid"
                 alt="Meliponário Bulegon"
               >
