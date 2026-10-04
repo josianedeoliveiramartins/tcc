@@ -23,7 +23,7 @@
         <li class="nav-item"><a class="nav-link" href="#">HISTÓRICO DE PROJETOS</a></li>
 
         <!-- Meliponário -->
-        <li class="nav-item"><a class="nav-link" href="#">MELIPONÁRIO</a></li>
+        <li class="nav-item"><a class="nav-link" href="meliponario.php">MELIPONÁRIO</a></li>
 
         <!-- CPE CEEDO -->
         <li class="nav-item"><a class="nav-link" href="cpe_ceedo.php">CPE CEEDO</a></li>

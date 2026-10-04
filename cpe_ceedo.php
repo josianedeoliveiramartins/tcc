@@ -420,17 +420,17 @@
               <h5>Micheli Brizolla Bernardi </h5>
 
               <p>
-                Descrição do integrante.
+                Líder Ensino Fundamental (suplente)
               </p>
 
               <p>
                 <strong>Formação:</strong><br>
-                Informações da formação.
+                Ensino Fundamental Incompleto
               </p>
 
               <p>
                 <strong>Atuação:</strong><br>
-                Informações da atuação.
+                Aluna do Colégio Estadual Dr. Dorvalino Luciano de Souza de Cerro Grande
               </p>
 
             </div>
@@ -453,17 +453,17 @@
               <h5>Bernardo de Vargas Troian Danieli</h5>
 
               <p>
-                Descrição do integrante.
+                Líder Ensino Fundamental
               </p>
 
               <p>
                 <strong>Formação:</strong><br>
-                Informações da formação.
+                Ensino Fundamental Incompleto 
               </p>
 
               <p>
                 <strong>Atuação:</strong><br>
-                Informações da atuação.
+                Aluno do Colégio Estadual Dr. Dorvalino Luciano de Souza de Cerro Grande
               </p>
 
             </div>
@@ -486,17 +486,17 @@
               <h5>Amanda Elisa Censi Rosa </h5>
 
               <p>
-                Descrição do integrante.
+                Líder Ensino Fundamental (suplente)
               </p>
 
               <p>
                 <strong>Formação:</strong><br>
-                Informações da formação.
+                Ensino Fundamental Incompleto
               </p>
 
               <p>
                 <strong>Atuação:</strong><br>
-                Informações da atuação.
+                Aluna do Colégio Estadual Dr. Dorvalino Luciano de Souza de Cerro Grande
               </p>
 
             </div>
