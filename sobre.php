@@ -341,7 +341,7 @@
             <div class="apoiador">
 
               <img
-                src="midias/apoiadores/cpm.png"
+                src="midias/apoiadores/escola.jpg"
                 class="img-fluid"
                 alt="CPM Escolar"
               >
@@ -373,7 +373,7 @@
             <div class="apoiador">
 
               <img
-                src="midias/apoiadores/metalurgica_alex.png"
+                src="midias/apoiadores/alex.2.jpg"
                 class="img-fluid"
                 alt="Metalúrgica e Marcenaria do Alex"
               >
@@ -389,7 +389,7 @@
             <div class="apoiador">
 
               <img
-                src="midias/apoiadores/bruno_cavalheiro.png"
+                src="midias/apoiadores/bruno.1.jpg"
                 class="img-fluid"
                 alt="Bruno Cavalheiro Engenharia Civil"
               >
@@ -437,7 +437,7 @@
             <div class="apoiador">
 
               <img
-                src="midias/apoiadores/meliponario.png"  -
+                src="midias/apoiadores/bulegon.3.jpg"  -
                 class="img-fluid"
                 alt="Meliponário Bulegon"
               >
