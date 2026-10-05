@@ -24,8 +24,6 @@
         <!-- Conteúdos -->
         <li class="nav-item"><a class="nav-link" href="conteudos.php">CONTEÚDO</a></li>
 
-        <!-- Eventos -->
-        <li class="nav-item"><a class="nav-link" href="#">EVENTOS</a></li>
 
         <!-- Configurações -->
         <li class="nav-item"><a class="nav-link" href="#">Config</a></li>
