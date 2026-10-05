@@ -1,0 +1,979 @@
+/* =========================================================
+   MELIPONÁRIO CEEDO
+   CSS específico da página
+========================================================= */
+
+/* =========================================================
+   CONFIGURAÇÕES GERAIS
+========================================================= */
+
+.meliponario-page {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+}
+
+.meliponario-section {
+    padding: 70px 0;
+    background-color: var(--color-light);
+}
+
+.meliponario-section h2 {
+    color: var(--color-dark);
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* =========================================================
+   APRESENTAÇÃO
+========================================================= */
+
+.meliponario-apresentacao {
+    padding: 90px 20px;
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8dc 0%,
+            #f8edc2 50%,
+            #fff8dc 100%
+        );
+
+    border-bottom: 3px solid var(--color-secondary);
+}
+
+.meliponario-apresentacao h1 {
+    color: var(--color-dark);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.meliponario-apresentacao h1::after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 4px;
+    margin: 25px auto 0;
+    background-color: var(--color-secondary);
+    border-radius: 10px;
+}
+
+.meliponario-apresentacao h3 {
+    color: #5f501f;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* =========================================================
+   NOSSA HISTÓRIA
+========================================================= */
+
+.meliponario-historia {
+    background-color: #ffffff;
+    padding: 0;
+}
+
+.meliponario-historia .row {
+    align-items: stretch;
+}
+
+/*
+   IMPORTANTE:
+   A imagem da história ocupa toda a coluna,
+   mas sem distorcer.
+*/
+
+.meliponario-historia .col-12.col-md-5 {
+    display: flex;
+}
+
+.meliponario-historia img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.meliponario-historia-conteudo {
+    padding: 60px 55px;
+}
+
+.meliponario-historia h2 {
+    color: var(--color-dark);
+    font-weight: 700;
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.meliponario-historia h2::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    margin: 15px auto 30px;
+    background-color: var(--color-secondary);
+    border-radius: 5px;
+}
+
+.meliponario-historia h5 {
+    color: #666;
+    text-align: center;
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 35px;
+}
+
+.meliponario-historia p {
+    color: var(--color-dark);
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+/* =========================================================
+   CARROSSÉIS
+========================================================= */
+
+.meliponario-carrossel {
+    position: relative;
+
+    width: 100%;
+    max-width: 1320px;
+
+    margin: 0 auto;
+
+    background-color: #ffffff;
+
+    border: 1px solid rgba(244, 196, 48, 0.35);
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+/*
+   Área do slide.
+
+   Usamos uma altura fixa apenas para o CONTAINER.
+   A imagem fica dentro dele sem ser deformada.
+*/
+
+.meliponario-carrossel .carousel-inner {
+    width: 100%;
+    background-color: #f5f5f0;
+}
+
+.meliponario-carrossel .carousel-item {
+    width: 100%;
+    height: 550px;
+
+    background-color: #f5f5f0;
+
+    align-items: center;
+    justify-content: center;
+}
+
+/*
+   CORREÇÃO PRINCIPAL DAS IMAGENS
+
+   object-fit: contain
+   = mostra a imagem inteira.
+
+   Não usamos width: 100% + height: 100%
+   porque isso pode deformar ou cortar imagens.
+
+   max-width/max-height garantem que a imagem
+   fique totalmente dentro do slide.
+*/
+
+.meliponario-carrossel .carousel-item img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+
+    margin: 0 auto;
+
+    background-color: #f5f5f0;
+}
+
+/*
+   Quando a imagem estiver ativa,
+   o Bootstrap mantém display:block.
+*/
+
+.meliponario-carrossel .carousel-item.active {
+    display: flex;
+}
+
+/* =========================================================
+   BOTÕES DOS CARROSSÉIS
+========================================================= */
+
+.meliponario-carrossel .carousel-control-prev,
+.meliponario-carrossel .carousel-control-next {
+    width: 55px;
+    height: 55px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    opacity: 1;
+
+    background-color: rgba(51, 51, 51, 0.70);
+
+    border-radius: 50%;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.meliponario-carrossel .carousel-control-prev {
+    left: 20px;
+}
+
+.meliponario-carrossel .carousel-control-next {
+    right: 20px;
+}
+
+.meliponario-carrossel .carousel-control-prev:hover,
+.meliponario-carrossel .carousel-control-next:hover {
+    background-color: var(--color-secondary);
+
+    transform: translateY(-50%) scale(1.05);
+}
+
+.meliponario-carrossel .carousel-control-prev-icon,
+.meliponario-carrossel .carousel-control-next-icon {
+    width: 24px;
+    height: 24px;
+
+    background-size: 100%;
+}
+
+/* =========================================================
+   MEIO AMBIENTE
+========================================================= */
+
+.meliponario-ambiente {
+    padding: 70px 0;
+
+    background-color: #f5f3e9;
+
+    border-top: 1px solid rgba(244, 196, 48, 0.2);
+    border-bottom: 1px solid rgba(244, 196, 48, 0.2);
+}
+
+.meliponario-ambiente h2 {
+    color: var(--color-dark);
+
+    text-align: center;
+
+    font-weight: 700;
+
+    margin-bottom: 45px;
+}
+
+.meliponario-ambiente h2::after {
+    content: "";
+
+    display: block;
+
+    width: 70px;
+    height: 3px;
+
+    margin: 15px auto 0;
+
+    background-color: var(--color-secondary);
+
+    border-radius: 5px;
+}
+
+.ambiente-conteudo {
+    height: 100%;
+
+    padding: 30px;
+
+    background-color: #ffffff;
+
+    border-left: 5px solid var(--color-secondary);
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.06);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.ambiente-conteudo:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.10);
+}
+
+.ambiente-conteudo h4 {
+    color: var(--color-dark);
+
+    font-weight: 700;
+
+    margin-bottom: 18px;
+}
+
+.ambiente-conteudo p {
+    color: #444;
+
+    line-height: 1.8;
+
+    text-align: justify;
+
+    margin-bottom: 0;
+}
+
+/* =========================================================
+   ACESSOS DO MELIPONÁRIO
+========================================================= */
+
+.meliponario-acessos {
+    padding: 80px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf2 0%,
+            #fff8dc 50%,
+            #f5edc9 100%
+        );
+
+    border-top: 2px solid rgba(244, 196, 48, 0.35);
+}
+
+.meliponario-acessos h2 {
+    color: var(--color-dark);
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 40px;
+    font-weight: 700;
+
+    margin-bottom: 15px;
+}
+
+.meliponario-acessos h2::after {
+    content: "";
+
+    display: block;
+
+    width: 75px;
+    height: 4px;
+
+    margin: 18px auto 25px;
+
+    background-color: var(--color-secondary);
+
+    border-radius: 10px;
+}
+
+.meliponario-acessos .text-center p {
+    max-width: 800px;
+
+    margin: 0 auto 45px;
+
+    color: #555;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+/* =========================================================
+   LINKS DOS CARDS
+========================================================= */
+
+.meliponario-catalogo-link,
+.meliponario-caixas-link {
+    display: block;
+
+    height: 100%;
+
+    color: inherit;
+
+    text-decoration: none;
+}
+
+.meliponario-catalogo-link:hover,
+.meliponario-caixas-link:hover {
+    color: inherit;
+
+    text-decoration: none;
+}
+
+/* =========================================================
+   CARD CATÁLOGO
+========================================================= */
+
+.meliponario-catalogo {
+    position: relative;
+
+    height: 100%;
+    min-height: 300px;
+
+    padding: 40px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #fff9df
+        );
+
+    border: 2px solid rgba(244, 196, 48, 0.45);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.meliponario-catalogo::before {
+    content: "🐝";
+
+    position: absolute;
+
+    right: 25px;
+    top: 20px;
+
+    font-size: 55px;
+
+    opacity: 0.15;
+}
+
+.meliponario-catalogo:hover {
+    transform: translateY(-7px);
+
+    border-color: var(--color-secondary);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.14);
+}
+
+.meliponario-catalogo-tag,
+.meliponario-caixas-tag {
+    display: inline-block;
+
+    padding: 6px 14px;
+
+    margin-bottom: 18px;
+
+    background-color: var(--color-secondary);
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    border-radius: 20px;
+}
+
+.meliponario-catalogo h3,
+.meliponario-caixas h3 {
+    color: var(--color-dark);
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    margin-bottom: 18px;
+}
+
+.meliponario-catalogo p,
+.meliponario-caixas p {
+    color: #555;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
+}
+
+.meliponario-catalogo-botao {
+    display: inline-block;
+
+    padding: 11px 22px;
+
+    background-color: var(--color-secondary);
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    border-radius: 8px;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.meliponario-catalogo:hover .meliponario-catalogo-botao {
+    background-color: #d9a900;
+
+    transform: translateX(5px);
+}
+
+/* =========================================================
+   CARD PADRÕES DE CAIXAS
+========================================================= */
+
+.meliponario-caixas {
+    position: relative;
+
+    height: 100%;
+    min-height: 300px;
+
+    padding: 40px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf5,
+            #f8edc2
+        );
+
+    border: 2px solid rgba(58, 110, 165, 0.25);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.meliponario-caixas::before {
+    content: "🏠";
+
+    position: absolute;
+
+    right: 25px;
+    top: 20px;
+
+    font-size: 50px;
+
+    opacity: 0.15;
+}
+
+.meliponario-caixas:hover {
+    transform: translateY(-7px);
+
+    border-color: var(--color-accent);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.14);
+}
+
+.meliponario-caixas-tag {
+    background-color: var(--color-accent);
+}
+
+.meliponario-caixas-botao {
+    display: inline-block;
+
+    padding: 11px 22px;
+
+    background-color: var(--color-accent);
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    border-radius: 8px;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.meliponario-caixas:hover .meliponario-caixas-botao {
+    background-color: #2d5885;
+
+    transform: translateX(5px);
+}
+
+/* =========================================================
+   ALMANAQUE
+========================================================= */
+
+.almanaque {
+    padding: 55px 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf2,
+            #fff8dc
+        );
+
+    border: 1px solid rgba(244, 196, 48, 0.35);
+
+    border-radius: 14px;
+
+    text-align: center;
+}
+
+.almanaque h2 {
+    color: var(--color-dark);
+
+    font-weight: 700;
+
+    margin-bottom: 15px;
+}
+
+.almanaque p {
+    color: #555;
+
+    margin-bottom: 0;
+}
+
+.almanaque .btn-success {
+    background-color: var(--color-secondary);
+
+    border-color: var(--color-secondary);
+
+    color: #ffffff;
+
+    font-weight: 600;
+
+    padding: 10px 25px;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.almanaque .btn-success:hover {
+    background-color: #d9a900;
+
+    border-color: #d9a900;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .meliponario-apresentacao {
+        padding: 75px 20px;
+    }
+
+    .meliponario-apresentacao h1 {
+        font-size: 40px;
+    }
+
+    .meliponario-apresentacao h3 {
+        font-size: 21px;
+    }
+
+    .meliponario-historia-conteudo {
+        padding: 50px 35px;
+    }
+
+    .meliponario-historia h2 {
+        font-size: 36px;
+    }
+
+    /* Carrossel tablet */
+
+    .meliponario-carrossel .carousel-item {
+        height: 450px;
+    }
+
+    .meliponario-carrossel .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .meliponario-catalogo,
+    .meliponario-caixas {
+        min-height: 280px;
+    }
+}
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .meliponario-section {
+        padding: 45px 0;
+    }
+
+    /* -----------------------------------------------------
+       APRESENTAÇÃO
+    ----------------------------------------------------- */
+
+    .meliponario-apresentacao {
+        padding: 60px 20px;
+    }
+
+    .meliponario-apresentacao h1 {
+        font-size: 32px;
+    }
+
+    .meliponario-apresentacao h3 {
+        font-size: 19px;
+    }
+
+    /* -----------------------------------------------------
+       HISTÓRIA
+    ----------------------------------------------------- */
+
+    .meliponario-historia img {
+        width: 100%;
+        height: 400px;
+        min-height: 0;
+
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .meliponario-historia-conteudo {
+        padding: 40px 20px;
+    }
+
+    .meliponario-historia h2 {
+        font-size: 32px;
+    }
+
+    .meliponario-historia h5 {
+        font-size: 17px;
+
+        margin-bottom: 30px;
+    }
+
+    .meliponario-historia p {
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+    /* -----------------------------------------------------
+       CARROSSEL
+    ----------------------------------------------------- */
+
+    .meliponario-carrossel {
+        border-radius: 10px;
+    }
+
+    .meliponario-carrossel .carousel-item {
+        height: 350px;
+    }
+
+    .meliponario-carrossel .carousel-item img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .meliponario-carrossel .carousel-control-prev,
+    .meliponario-carrossel .carousel-control-next {
+        width: 42px;
+        height: 42px;
+    }
+
+    .meliponario-carrossel .carousel-control-prev {
+        left: 10px;
+    }
+
+    .meliponario-carrossel .carousel-control-next {
+        right: 10px;
+    }
+
+    /* -----------------------------------------------------
+       MEIO AMBIENTE
+    ----------------------------------------------------- */
+
+    .meliponario-ambiente {
+        padding: 45px 0;
+    }
+
+    .ambiente-conteudo {
+        padding: 25px 20px;
+    }
+
+    .ambiente-conteudo p {
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+    /* -----------------------------------------------------
+       ACESSOS
+    ----------------------------------------------------- */
+
+    .meliponario-acessos {
+        padding: 55px 15px;
+    }
+
+    .meliponario-acessos h2 {
+        font-size: 30px;
+    }
+
+    .meliponario-acessos .text-center p {
+        font-size: 15px;
+
+        margin-bottom: 30px;
+    }
+
+    .meliponario-catalogo,
+    .meliponario-caixas {
+        min-height: auto;
+
+        padding: 30px 25px;
+    }
+
+    .meliponario-catalogo h3,
+    .meliponario-caixas h3 {
+        font-size: 24px;
+    }
+
+    .meliponario-catalogo p,
+    .meliponario-caixas p {
+        font-size: 15px;
+    }
+}
+
+/* =========================================================
+   CELULARES PEQUENOS
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .meliponario-apresentacao h1 {
+        font-size: 28px;
+    }
+
+    .meliponario-apresentacao h3 {
+        font-size: 17px;
+    }
+
+    .meliponario-historia h2 {
+        font-size: 28px;
+    }
+
+    /* -----------------------------------------------------
+       CARROSSEL PEQUENO
+    ----------------------------------------------------- */
+
+    .meliponario-carrossel .carousel-item {
+        height: 280px;
+    }
+
+    .meliponario-carrossel .carousel-item img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .meliponario-carrossel .carousel-control-prev,
+    .meliponario-carrossel .carousel-control-next {
+        width: 38px;
+        height: 38px;
+    }
+
+    .meliponario-acessos {
+        padding: 45px 12px;
+    }
+
+    .meliponario-acessos h2 {
+        font-size: 26px;
+    }
+
+    .meliponario-catalogo,
+    .meliponario-caixas {
+        padding: 25px 20px;
+    }
+}
+
+/* =========================================================
+   PROTEÇÃO EXTRA PARA IMAGENS
+========================================================= */
+
+/*
+   Evita que alguma regra global do site
+   altere as imagens dos carrosséis.
+*/
+
+.meliponario-carrossel img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+/*
+   Evita que links ou regras globais
+   interfiram no tamanho das imagens.
+*/
+
+.meliponario-carrossel .carousel-item img.d-block {
+    display: block !important;
+}
+
+/* =========================================================
+   CORREÇÃO DE OVERFLOW
+========================================================= */
+
+.meliponario-section,
+.meliponario-historia,
+.meliponario-ambiente,
+.meliponario-acessos {
+    overflow: hidden;
+}

@@ -357,7 +357,7 @@
             <div class="apoiador">
 
               <img
-                src="midias/apoiadores/jm_madeiras.png"
+                src="midias/apoiadores/jmmadeiras.png"
                 class="img-fluid"
                 alt="JM Madeiras"
               >
