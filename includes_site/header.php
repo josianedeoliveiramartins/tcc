@@ -20,7 +20,7 @@
         <li class="nav-item"><a class="nav-link" href="sobre.php">SOBRE</a></li>
 
         <!-- Histórico -->
-        <li class="nav-item"><a class="nav-link" href="#">HISTÓRICO DE PROJETOS</a></li>
+        <li class="nav-item"><a class="nav-link" href="historico_projetos.php">HISTÓRICO DE PROJETOS</a></li>
 
         <!-- Meliponário -->
         <li class="nav-item"><a class="nav-link" href="meliponario.php">MELIPONÁRIO</a></li>
