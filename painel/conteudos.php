@@ -22,7 +22,7 @@
 
         <div class="cards-container">
             <!-- Notícias e Publicações-->
-            <a href="noticias.php" class="card text-center shadow-sm text-decoration-none">
+            <a href="form_noticias.php" class="card text-center shadow-sm text-decoration-none">
                 <div class="card-body">
                     <img src="midias/icones/loudspeaker.png" alt="Notícias e Comunicações" width="64" height="64">
                     <h5 class="card-title mt-3">Notícias e Publicações</h5>

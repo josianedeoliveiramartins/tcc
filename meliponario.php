@@ -293,7 +293,7 @@
                         <div class="carousel-item">
 
                             <img
-                                src="<div style="https://lh7-us.googleusercontent.com/sitesv-images-rt/AMxu72vg2upzY-dNgwcyn-_KdWjTLQbfEbFfystNTJIrpN9BWltp59DOnBjYqN1CRgULgN4a4-z1wWVzcpoWYf8SrTMvTrIwiDKsReivX518GxVemIjFwGnEU5fTQON5W35Ak27YxhDayhpLx5B1yLBaYs4MzZk-NyqWnzPsvWNIJ2CBtku7Svyq4z7tggnf=w16383&quot;)"
+                                src="<div style="https://sitesv-images-rt/AMxu72vg2upzY-dNgwcyn-_KdWjTLQbfEbFfystNTJIrpN9BWltp59DOnBjYqN1CRgULgN4a4-z1wWVzcpoWYf8SrTMvTrIwiDKsReivX518GxVemIjFwGnEU5fTQON5W35Ak27YxhDayhpLx5B1yLBaYs4MzZk-NyqWnzPsvWNIJ2CBtku7Svyq4z7tggnf=w16383&quot;)"
                                 class="d-block w-100"
                                 alt="Meliponário CEEDO - Foto 8"
                                 loading="lazy"

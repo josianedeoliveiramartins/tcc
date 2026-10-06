@@ -28,6 +28,10 @@
         <!-- CPE CEEDO -->
         <li class="nav-item"><a class="nav-link" href="cpe_ceedo.php">CPE CEEDO</a></li>
 
+        <!-- NOTÍCIAS E PUBLICAÇÕES-->
+        <li class="nav-item"><a class="nav-link" href="noticias.php">NOTÍCIAS E PUBLICAÇÕES</a></li>
+
+
       </ul>
 
       <!-- Botão administrativo -->

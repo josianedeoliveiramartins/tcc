@@ -1,112 +1,242 @@
-/* Estilos gerais da página de cadastros */
+/* =========================================================
+   ESTILOS GERAIS DA PÁGINA DE CADASTROS
+   ========================================================= */
+
 main h1 {
     font-weight: 600;
     margin-bottom: 2rem;
     color: #333;
-    text-align: center; /* centraliza o título */
+    text-align: center;
 }
 
-/* Cartões */
+
+/* =========================================================
+   CARTÕES
+   ========================================================= */
+
 .card {
-    border: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #e5e5e5;
+    transition: transform 0.2s ease, box-shadow 0.2s ease,
+                border-color 0.2s ease;
+
     cursor: pointer;
-    background-color: rgba(255, 215, 0, 0.2); /* amarelo transparente */
-    padding: 1rem; /* espaço interno para respirar */
-    border-radius: 8px; /* cantos arredondados como no footer */
+
+    /* Fundo neutro */
+    background-color: #fff;
+
+    padding: 1rem;
+
+    border-radius: 10px;
+
+    /* Sombra bem discreta */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
-/* Efeito ao passar o mouse */
+
+/* =========================================================
+   EFEITO AO PASSAR O MOUSE
+   ========================================================= */
+
 .card:hover {
-    transform: translateY(-5px); /* levanta um pouco o cartão */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* sombra suave */
-    background-color: rgba(255, 215, 0, 0.35); /* aumenta a intensidade do amarelo no hover */
+    transform: translateY(-4px);
+
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
+
+    /* Amarelo somente na borda */
+    border-color: #f0c419;
+
+    /* Nada de amarelo forte no fundo */
+    background-color: #fff;
 }
 
-/* Ícones (imagens) dentro dos cartões */
+
+/* =========================================================
+   ÍCONES
+   ========================================================= */
+
 .card img {
     width: 64px;
     height: 64px;
+
     margin-bottom: 12px;
-    object-fit: contain; /* garante que a imagem não distorça */
+
+    object-fit: contain;
 }
 
-/* Títulos */
+
+/* =========================================================
+   TÍTULOS
+   ========================================================= */
+
 .card-title {
     font-weight: 600;
+
     margin-top: 1rem;
-    color: #222;
+
+    color: #333;
 }
 
-/* Texto */
+
+/* =========================================================
+   TEXTO
+   ========================================================= */
+
 .card-text {
-    color: #666;
+    color: #6b6b6b;
+
     font-size: 0.95rem;
+
+    line-height: 1.5;
 }
 
-/* Container dos cartões: dois em cima e dois embaixo */
+
+/* =========================================================
+   CONTAINER DOS CARTÕES
+   ========================================================= */
+
 .cards-container {
     display: flex;
-    flex-wrap: wrap;       /* permite quebrar linha */
-    gap: 20px;             /* espaço entre os cartões */
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+
     justify-content: center;
 }
 
+
 .cards-container .card {
-    flex: 1 1 calc(50% - 20px); /* dois cartões por linha */
-    max-width: 600px;           /* mais compridos pros lados */
+    flex: 1 1 calc(50% - 20px);
+
+    max-width: 600px;
 }
 
-/* Seções de formulários e listas */
+
+/* =========================================================
+   SEÇÕES DE FORMULÁRIOS E LISTAS
+   ========================================================= */
+
 .secao {
-    background-color: rgba(255, 215, 0, 0.15); /* fundo amarelo suave */
+    background-color: #fafafa;
+
+    border: 1px solid #e8e8e8;
+
     padding: 20px;
-    border-radius: 8px;
+
+    border-radius: 10px;
+
     margin-bottom: 2rem;
 }
 
-/* Botões de navegação personalizados */
+
+/* =========================================================
+   BOTÕES DE NAVEGAÇÃO
+   ========================================================= */
+
 .btn-nav {
-    background-color: transparent; /* fundo branco */
-    border: 2px solid #ffc107;     /* borda amarela */
-    color: #333;
+    background-color: #fff;
+
+    border: 1px solid #d6aa00;
+
+    color: #555;
+
     font-weight: 600;
+
     transition: all 0.2s ease;
+
+    border-radius: 6px;
 }
+
 
 /* Hover */
+
 .btn-nav:hover {
-    background-color: #ffc107;
-    color: #000;
+    background-color: #f7d45a;
+
+    border-color: #e2b900;
+
+    color: #333;
 }
+
 
 /* Botão ativo */
+
 .btn-nav.active {
-    background-color: #ffc107;
-    color: #000;
+    background-color: #f7d45a;
+
+    border-color: #e2b900;
+
+    color: #333;
 }
 
-/* Botões de ação */
+
+/* =========================================================
+   BOTÕES DE AÇÃO
+   ========================================================= */
+
 .btn-success {
     background-color: #28a745;
+
     border: none;
+
     font-weight: 600;
 }
 
-/* Tabelas */
+
+/* =========================================================
+   TABELAS
+   ========================================================= */
+
 .table {
     background-color: #fff;
+
     border-radius: 8px;
+
     overflow: hidden;
 }
 
+
+/* Cabeçalho */
+
 .table th {
-    background-color: rgba(255, 215, 0, 0.3);
+    background-color: #f8f8f8;
+
+    border-bottom: 2px solid #e3bd26;
+
     font-weight: 600;
+
     text-align: center;
+
+    color: #444;
 }
+
+
+/* Linhas */
 
 .table td {
     text-align: center;
+
     vertical-align: middle;
+}
+
+
+/* Hover das linhas */
+
+.table tbody tr:hover {
+    background-color: #fffdf2;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .cards-container .card {
+        flex: 1 1 100%;
+
+        max-width: 100%;
+    }
+
 }

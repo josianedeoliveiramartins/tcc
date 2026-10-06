@@ -31,14 +31,6 @@
                 </div>
             </a>
 
-            <!-- Projetos -->
-            <a href="projetos.php" class="card text-center shadow-sm text-decoration-none">
-                <div class="card-body">
-                    <img src="midias/icones/projetos.png" alt="Projetos" width="64" height="64">
-                    <h5 class="card-title mt-3">Projetos</h5>
-                    <p class="card-text">Cadastrar novos projetos</p>
-                </div>
-            </a>
 
             <!-- Colônias -->
             <a href="cadastrar_colonia.php" class="card text-center shadow-sm text-decoration-none">
