@@ -413,7 +413,6 @@
         </section>
 
 
-
         <!-- =====================================================
              PROJETOS
         ====================================================== -->
@@ -436,7 +435,6 @@
 
                         <div class="projeto-inner">
 
-
                             <h2>
                                 Paisagismo Sustentável,
                                 Atemporal e Dinâmico
@@ -452,7 +450,6 @@
 
                             <div class="projeto-botoes">
 
-
                                 <!-- VISUALIZAR PROJETO -->
 
                                 <a
@@ -466,23 +463,20 @@
                                 <!-- VISUALIZAR RESUMO -->
 
                                 <a
-                                    href="documentos/resumo_paisagismo.pdf" 
+                                    href="documentos/resumo_paisagismo.pdf"
                                     class="projeto-botao botao-resumo"
                                 >
                                     Visualizar resumo →
                                 </a>
-
 
                             </div>
 
 
                             <div class="projeto-detalhe"></div>
 
-
                         </div>
 
                     </article>
-
 
 
                     <!-- =================================================
@@ -495,7 +489,6 @@
 
 
                         <div class="projeto-inner">
-
 
                             <h2>
                                 Doce Sabedoria Meliponícola
@@ -511,11 +504,10 @@
 
                             <div class="projeto-botoes">
 
-
                                 <!-- VISUALIZAR PROJETO -->
 
                                 <a
-                                    href="documentos/relatorio.1.pdf" 
+                                    href="documentos/relatorio.1.pdf"
                                     class="projeto-botao botao-projeto"
                                 >
                                     Visualizar projeto →
@@ -527,16 +519,121 @@
                                 <a
                                     href="https://www.youtube.com/watch?v=BQZflcGdnHk&t=2s"
                                     class="projeto-botao botao-video"
+                                    target="_blank"
                                 >
                                     ▶&nbsp; Vídeo - Sicredi Conexão
                                 </a>
-
 
                             </div>
 
 
                             <div class="projeto-detalhe"></div>
 
+                        </div>
+
+                    </article>
+
+
+                    <!-- =================================================
+                         PROJETO 3 - CAMINHO DAS PALMEIRAS
+                    ================================================== -->
+
+                    <article class="projeto-card">
+
+                        <div class="projeto-faixa"></div>
+
+
+                        <div class="projeto-inner">
+
+                            <h2>
+                                Caminho das Palmeiras
+                            </h2>
+
+
+                            <p>
+                                Clique abaixo para acessar os anexos
+                                do projeto "Caminho das Palmeiras".
+                            </p>
+
+
+                            <div class="projeto-botoes">
+
+                                <!-- VISUALIZAR PROJETO -->
+
+                                <a
+                                    href="caminho_das_palmeiras.php"
+                                    class="projeto-botao botao-projeto"
+                                >
+                                    Visualizar projeto →
+                                </a>
+
+
+                                <!-- VISUALIZAR RESUMO -->
+
+                                <a
+                                    href="documentos/resumo_caminho_das_palmeiras.php"
+                                    class="projeto-botao botao-resumo"
+                                >
+                                    Visualizar resumo →
+                                </a>
+
+                            </div>
+
+
+                            <div class="projeto-detalhe"></div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- =================================================
+                         PROJETO 4 - XADREZ GIGANTE
+                    ================================================== -->
+
+                    <article class="projeto-card">
+
+                        <div class="projeto-faixa"></div>
+
+
+                        <div class="projeto-inner">
+
+                            <h2>
+                                Xadrez Gigante
+                            </h2>
+
+
+                            <p>
+                                Clique abaixo para acessar os anexos
+                                do projeto "Xadrez Gigante".
+                            </p>
+
+
+                            <div class="projeto-botoes">
+
+                                <!-- VISUALIZAR PROJETO -->
+
+                                <a
+                                    href="xadrez_gigante.php"
+                                    class="projeto-botao botao-projeto"
+                                >
+                                    Visualizar projeto →
+                                </a>
+
+
+                                <!-- BOTÃO DO XADREZ -->
+
+                                <a
+                                    href="xadrez_gigante_2025.php"
+                                    class="projeto-botao botao-resumo"
+                                >
+                                    Visualizar Xadrez →
+                                </a>
+
+                            </div>
+
+
+                            <div class="projeto-detalhe"></div>
 
                         </div>
 
@@ -551,6 +648,7 @@
 
 
     </main>
+
 
     <!-- =====================================================
          FOOTER
