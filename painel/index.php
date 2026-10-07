@@ -10,29 +10,37 @@ include('../conexao.php');
 // ===============================
 
 $sql_noticias = "SELECT COUNT(*) AS total FROM noticias";
+
 $resultado_noticias = mysqli_query($conexao, $sql_noticias);
 
 $total_noticias = 0;
 
-if ($resultado_noticias) {
-    $dados_noticias = mysqli_fetch_assoc($resultado_noticias);
-    $total_noticias = $dados_noticias['total'];
+if (!$resultado_noticias) {
+    die("Erro ao contar notícias: " . mysqli_error($conexao));
 }
+
+$dados_noticias = mysqli_fetch_assoc($resultado_noticias);
+
+$total_noticias = (int) $dados_noticias['total'];
 
 
 // ===============================
 // QUANTIDADE DE PADRÕES DE CAIXA
 // ===============================
 
-$sql_caixas = "SELECT COUNT(*) AS total FROM padroes_caixa";
+$sql_caixas = "SELECT COUNT(*) AS total FROM caixas";
+
 $resultado_caixas = mysqli_query($conexao, $sql_caixas);
 
 $total_caixas = 0;
 
-if ($resultado_caixas) {
-    $dados_caixas = mysqli_fetch_assoc($resultado_caixas);
-    $total_caixas = $dados_caixas['total'];
+if (!$resultado_caixas) {
+    die("Erro ao contar padrões de caixa: " . mysqli_error($conexao));
 }
+
+$dados_caixas = mysqli_fetch_assoc($resultado_caixas);
+
+$total_caixas = (int) $dados_caixas['total'];
 
 
 // ===============================
@@ -40,14 +48,19 @@ if ($resultado_caixas) {
 // ===============================
 
 $sql_colonias = "SELECT COUNT(*) AS total FROM colonias";
+
 $resultado_colonias = mysqli_query($conexao, $sql_colonias);
 
 $total_colonias = 0;
 
-if ($resultado_colonias) {
-    $dados_colonias = mysqli_fetch_assoc($resultado_colonias);
-    $total_colonias = $dados_colonias['total'];
+if (!$resultado_colonias) {
+    die("Erro ao contar colônias: " . mysqli_error($conexao));
 }
+
+$dados_colonias = mysqli_fetch_assoc($resultado_colonias);
+
+$total_colonias = (int) $dados_colonias['total'];
+
 ?>
 
 
@@ -101,21 +114,17 @@ if ($resultado_colonias) {
             margin-bottom: 35px;
         }
 
+
         .card-dashboard {
             background: #fff3cd;
             border: 1px solid #e6c95c;
             border-radius: 10px;
             padding: 30px;
-            text-decoration: none;
             color: #222;
-            transition: 0.3s;
         }
 
-        .card-dashboard:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.10);
-            background: #ffefad;
-        }
+
+        /* NÚMERO */
 
         .numero-card {
             font-size: 40px;
@@ -124,10 +133,16 @@ if ($resultado_colonias) {
             margin-bottom: 10px;
         }
 
+
+        /* TÍTULO DO CARD */
+
         .card-dashboard h2 {
             font-size: 21px;
             margin-bottom: 8px;
         }
+
+
+        /* DESCRIÇÃO */
 
         .card-dashboard p {
             color: #777;
@@ -215,7 +230,7 @@ if ($resultado_colonias) {
 
             <!-- NOTÍCIAS -->
 
-            <a href="noticias.php" class="card-dashboard">
+            <div class="card-dashboard">
 
                 <div class="numero-card">
                     <?php echo $total_noticias; ?>
@@ -227,12 +242,12 @@ if ($resultado_colonias) {
                     Notícias cadastradas
                 </p>
 
-            </a>
+            </div>
 
 
             <!-- PADRÕES DE CAIXA -->
 
-            <a href="padroes_caixa.php" class="card-dashboard">
+            <div class="card-dashboard">
 
                 <div class="numero-card">
                     <?php echo $total_caixas; ?>
@@ -244,12 +259,12 @@ if ($resultado_colonias) {
                     Padrões de caixa cadastrados
                 </p>
 
-            </a>
+            </div>
 
 
             <!-- COLÔNIAS -->
 
-            <a href="colonias.php" class="card-dashboard">
+            <div class="card-dashboard">
 
                 <div class="numero-card">
                     <?php echo $total_colonias; ?>
@@ -261,36 +276,33 @@ if ($resultado_colonias) {
                     Colônias cadastradas
                 </p>
 
-            </a>
-
-
-        </div>
-
-
-        <!-- ACESSO RÁPIDO -->
-
-        <div class="box-acesso">
-
-            <h2>Acesso rápido</h2>
-
-            <div class="acessos-rapidos">
-
-                <a href="noticias.php" class="botao-acesso">
-                    Notícias
-                </a>
-
-                <a href="padroes_caixa.php" class="botao-acesso">
-                    Padrões de Caixa
-                </a>
-
-                <a href="colonias.php" class="botao-acesso">
-                    Colônias
-                </a>
-
             </div>
 
+
         </div>
 
+
+ <div class="box-acesso">
+
+    <h2>Acesso rápido</h2>
+
+    <div class="acessos-rapidos">
+
+        <a href="/tcc/painel/form_noticias.php" class="botao-acesso">
+            Notícias
+        </a>
+
+        <a href="/tcc/painel/listar_caixas.php" class="botao-acesso">
+            Padrões de Caixa
+        </a>
+
+        <a href="/tcc/painel/listar_colonias.php" class="botao-acesso">
+            Colônias
+        </a>
+
+    </div>
+
+</div>
 
     </main>
 

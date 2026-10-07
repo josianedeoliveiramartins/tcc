@@ -130,7 +130,8 @@
 
       <div class="container">
 
-        <h2>O QUE É O CPE CEEDO?</h2>
+        <h1>O QUE É O CPE CEEDO?</h1>
+        <br>
 
         <p>
           CPE (Conselho de Participação Estudantil) é um espaço
@@ -173,31 +174,13 @@
     </section>
 
 
-    <!-- IMAGEM DO CPE -->
-
-    <section class="cpe-section">
-
-      <div class="container text-center">
-
-        <img
-          src="/tcc/midias/cpe_ceedo.png"
-          alt="Centro de Pesquisa e Extensão CEEDO"
-          class="img-fluid rounded shadow"
-          style="max-width: 650px; width: 100%;"
-        >
-
-      </div>
-
-    </section>
-
-
     <!-- INTEGRANTES -->
 
     <section class="cpe-section bg-light">
 
       <div class="container">
 
-        <h2 class="text-center">INTEGRANTES</h2>
+        <h1 class="text-center">INTEGRANTES</h1>
 
         <p class="text-center mb-5">
           Conheça os integrantes do Conselho de Participação
