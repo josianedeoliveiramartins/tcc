@@ -9,6 +9,14 @@
 
     <title>Xeque-Mate no Conhecimento | COOPCEEDO</title>
 
+    <!--------------- HEAD ---------------->
+    <?php include 'includes_site/head.php'; ?>
+    <!------------------------------------->
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/colors.css">
+
 
     <style>
 
@@ -328,6 +336,11 @@
 
 
 <body>
+ <!--------------- HEADER ---------------->
+
+    <?php include 'includes_site/header.php'; ?>
+
+    <!--------------------------------------->
 
 
 <!-- =====================================================
@@ -469,8 +482,15 @@
 
     </div>
 
-
 </section>
+
+
+    </main>
+
+
+    <!--------------- FOOTER ---------------->
+    <?php include 'includes_site/footer.php'; ?>
+    <!-------------------------------------->
 
 
 </body>
