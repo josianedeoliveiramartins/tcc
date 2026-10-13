@@ -22,7 +22,7 @@
     }
 
     .cpe-section p {
-      color: #000000;
+      color: #00000093;
     }
 
     .cpe-apresentacao {
@@ -57,7 +57,7 @@
 
     .cpe-icon {
       font-size: 35px;
-      color: #198754;
+      color: #595a68;
       margin-bottom: 15px;
     }
 
@@ -87,6 +87,14 @@
       margin: 0 auto 20px;
     }
 
+.cpe-integrante {
+  background: linear-gradient(135deg, #edc48e, #e5efe7);
+  padding: 55px 35px;
+  border: 1px solid #dce8dd;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(30, 75, 45, 0.08);
+  font-family: 'Poppins', sans-serif;
+}
     .cpe-integrante h5 {
       color: #000000;
       font-weight: 700;
@@ -103,16 +111,104 @@
       color: #000000;
     }
 
-    .cpe-regimento {
-      background-color: #f8f9fa;
-      padding: 45px 20px;
-      border-radius: 12px;
-    }
+/* REGIMENTO E FORMULÁRIOS */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.cpe-regimento {
+  background: linear-gradient(135deg, #edc48e, #e5efe7);
+  padding: 55px 35px;
+  border: 1px solid #dce8dd;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(30, 75, 45, 0.08);
+  font-family: 'Poppins', sans-serif;
+}
+
+.cpe-regimento h2 {
+  color: #20583a;
+  font-size: 27px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.cpe-regimento p {
+  color: #155727;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.cpe-regimento .cpe-icon {
+  color: #398458;
+  font-size: 43px;
+  margin-bottom: 12px;
+}
+
+.cpe-regimento hr {
+  border: 0;
+  border-top: 2px solid #eebe10;
+  opacity: 1;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cpe-regimento .btn {
+  background: #f7dc0e;
+  border: 1px solid #060501;
+  border-radius: 10px;
+  padding: 12px 25px;
+  color: #060101;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.cpe-regimento .btn:hover {
+  background: #1e5d38;
+  border-color: #1e5d38;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 576px) {
+  .cpe-regimento {
+    padding: 40px 20px;
+  }
+
+  .cpe-regimento h2 {
+    font-size: 23px;
+  }
+
+  .cpe-regimento .btn {
+    width: 100%;
+    max-width: 320px;
+    white-space: normal;
+  }
+}
 
     .cpe-regimento h2,
     .cpe-regimento p {
       color: #000000;
     }
+
+
+/* FUNDO AMARELO-CLARO EM TODA A PÁGINA CPE */
+
+html,
+body,
+main {
+  background-color: #FFF9E8 !important;
+}
+
+/* Remove os fundos do Bootstrap das seções */
+main section,
+main section.bg-light,
+.cpe-apresentacao,
+.cpe-section {
+  background: #FFF9E8 !important;
+}
+
 
   </style>
 
@@ -493,38 +589,70 @@
     </section>
 
 
-    <!-- REGIMENTO -->
 
-    <section class="cpe-section">
+<!-- REGIMENTO E FORMULÁRIOS -->
 
-      <div class="container">
+<section class="cpe-section">
+  <div class="container">
 
-        <div class="cpe-regimento text-center">
+    <div class="cpe-regimento text-center">
 
-          <i class="bi bi-file-earmark-text cpe-icon"></i>
+      <!-- REGIMENTO -->
+      <i class="bi bi-file-earmark-text cpe-icon"></i>
 
-          <h2>Regimento do CPE</h2>
+      <h2>Regimento do CPE</h2>
 
-          <p>
-            Consulte o documento com as normas e orientações
-            relacionadas ao funcionamento do Centro de Pesquisa
-            e Extensão.
-          </p>
+      <p>
+        Conheça as normas e diretrizes do Conselho de Participação Estudantil.
+      </p>
 
-          <a
-            href="/tcc/midias/documentos/regimento-cpe.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-success mt-3"
-          >
-            Acessar Regimento
-          </a>
+      <a
+         href="https://drive.google.com/file/d/1q1WQnI3mPSAy280Whjcxfi9dQYGDLGQv/view?usp=drive_link"
+         href="https://docs.google.com/document/d/1VR5siLAptosAzHfSNpS-RIfJE9FMgyF9/edit?usp=drive_link&ouid=104825988284760334084&rtpof=true&sd=true"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-success mt-2"
+      >
+        Acesse agora nosso Regimento
+      </a>
 
-        </div>
+      <hr class="my-5">
 
-      </div>
+      <!-- FORMULÁRIOS -->
+      <h2>Formulários</h2>
 
-    </section>
+      <p class="mt-3 mb-4">
+        Mande sua sugestão ao CPE.
+      </p>
+
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSf36l4Y0eC7HhwD1GBwGCK6-btORp-hHD9PfttmCv7nrlD7bQ/viewform"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-success"
+      >
+        Formulário de sugestão
+      </a>
+
+      <hr class="my-5">
+
+      <p class="mb-4">
+        Participe do CPE.
+      </p>
+
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSeyESo99ZOuSAMZ8vbjRnCAzyqqb7UMzOBdX4QqjSN9a0U3SA/viewform"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-success"
+      >
+        Formulário de inscrição
+      </a>
+
+    </div>
+
+  </div>
+</section>
 
   </main>
 
