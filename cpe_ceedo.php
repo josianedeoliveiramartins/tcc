@@ -606,15 +606,13 @@ main section.bg-light,
         Conheça as normas e diretrizes do Conselho de Participação Estudantil.
       </p>
 
-      <a
-         href="https://drive.google.com/file/d/1q1WQnI3mPSAy280Whjcxfi9dQYGDLGQv/view?usp=drive_link"
-         href="https://docs.google.com/document/d/1VR5siLAptosAzHfSNpS-RIfJE9FMgyF9/edit?usp=drive_link&ouid=104825988284760334084&rtpof=true&sd=true"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn btn-success mt-2"
-      >
+    <a href="https://drive.google.com/drive/folders/14-ZmPF3sM7sRqSGgNPg67769uaMilQYh"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-warning">
         Acesse agora nosso Regimento
-      </a>
+    </a>
+
 
       <hr class="my-5">
 
