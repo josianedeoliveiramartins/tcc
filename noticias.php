@@ -403,7 +403,7 @@ function limitarTexto($texto, $limite = 150)
                 <?php if (!empty($destaque['imagem_noticia'])): ?>
 
                     <img
-                        src="midias/noticias/<?php
+                        src="painel/uploads/<?php
                             echo htmlspecialchars(
                                 $destaque['imagem_noticia'],
                                 ENT_QUOTES,

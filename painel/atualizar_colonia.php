@@ -1,50 +1,146 @@
+
 <?php
-include('conexao.php');
 
-$id          = intval($_POST['id']);
-$nome        = trim($_POST['nomeColonia']);
-$especie     = trim($_POST['especie']);
-$procedencia = trim($_POST['procedencia']);
-$data        = trim($_POST['data_aquisicao']);
-$localizacao = trim($_POST['localizacao']);
-$descricao   = trim($_POST['descricao']);
+require_once __DIR__ . '/conexao.php';
+require_once __DIR__ . '/funcoes_upload.php';
 
-// Busca os dados atuais para manter imagens antigas se não forem substituídas
-$result = mysqli_query($conexao, "SELECT foto, banner FROM colonias WHERE id=$id");
-$coloniaAtual = mysqli_fetch_assoc($result);
-
-// Upload da foto
-if (!empty($_FILES['foto']['name'])) {
-    $fotoPath = 'uploads/' . basename($_FILES['foto']['name']);
-    move_uploaded_file($_FILES['foto']['tmp_name'], $fotoPath);
-} else {
-    $fotoPath = $coloniaAtual['foto']; // mantém a antiga
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    exit('Método não permitido.');
 }
 
-// Upload do banner
-if (!empty($_FILES['banner']['name'])) {
-    $bannerPath = 'uploads/' . basename($_FILES['banner']['name']);
-    move_uploaded_file($_FILES['banner']['tmp_name'], $bannerPath);
-} else {
-    $bannerPath = $coloniaAtual['banner']; // mantém o antigo
+$id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+
+if (!$id || $id < 1) {
+    exit('ID inválido.');
 }
 
-// Validação simples
-if (empty($nome) || empty($especie) || empty($procedencia) || empty($data) || empty($localizacao)) {
-    echo "⚠️ Preencha todos os campos obrigatórios antes de atualizar.";
+$nome        = trim($_POST['nomeColonia'] ?? '');
+$especie     = trim($_POST['especie'] ?? '');
+$procedencia = trim($_POST['procedencia'] ?? '');
+$data        = trim($_POST['data_aquisicao'] ?? '');
+$localizacao = trim($_POST['localizacao'] ?? '');
+$descricao   = trim($_POST['descricao'] ?? '');
+
+if (
+    $nome === '' ||
+    $especie === '' ||
+    $procedencia === '' ||
+    $data === '' ||
+    $localizacao === ''
+) {
+    exit('Preencha todos os campos obrigatórios.');
+}
+
+$dataObjeto = DateTime::createFromFormat('!Y-m-d', $data);
+
+if (!$dataObjeto || $dataObjeto->format('Y-m-d') !== $data) {
+    exit('A data de aquisição é inválida.');
+}
+
+// Busca as imagens atuais.
+$stmt = mysqli_prepare(
+    $conexao,
+    'SELECT foto, banner FROM colonias WHERE id = ?'
+);
+
+mysqli_stmt_bind_param($stmt, 'i', $id);
+mysqli_stmt_execute($stmt);
+
+$resultado = mysqli_stmt_get_result($stmt);
+$atual = mysqli_fetch_assoc($resultado);
+
+mysqli_stmt_close($stmt);
+
+if (!$atual) {
+    exit('Colônia não encontrada.');
+}
+
+// Mantém os nomes antigos se não houver novos uploads.
+$foto = !empty($atual['foto'])
+    ? basename($atual['foto'])
+    : null;
+
+$banner = !empty($atual['banner'])
+    ? basename($atual['banner'])
+    : null;
+
+$novosArquivos = array();
+
+// Foto nova, se enviada.
+$resultadoFoto = uploadImagem('foto', false);
+
+if ($resultadoFoto['erro'] !== null) {
+    exit(htmlspecialchars($resultadoFoto['erro'], ENT_QUOTES, 'UTF-8'));
+}
+
+if ($resultadoFoto['nome'] !== null) {
+    $foto = $resultadoFoto['nome'];
+    $novosArquivos[] = $foto;
+}
+
+// Banner novo, se enviado.
+$resultadoBanner = uploadImagem('banner', false);
+
+if ($resultadoBanner['erro'] !== null) {
+    foreach ($novosArquivos as $arquivo) {
+        @unlink(__DIR__ . '/uploads/' . $arquivo);
+    }
+
+    exit(htmlspecialchars(
+        $resultadoBanner['erro'],
+        ENT_QUOTES,
+        'UTF-8'
+    ));
+}
+
+if ($resultadoBanner['nome'] !== null) {
+    $banner = $resultadoBanner['nome'];
+    $novosArquivos[] = $banner;
+}
+
+$sql = "UPDATE colonias
+        SET nome = ?, especie = ?, procedencia = ?,
+            data_aquisicao = ?, localizacao = ?, descricao = ?,
+            foto = ?, banner = ?
+        WHERE id = ?";
+
+$stmt = mysqli_prepare($conexao, $sql);
+
+if (!$stmt) {
+    foreach ($novosArquivos as $arquivo) {
+        @unlink(__DIR__ . '/uploads/' . $arquivo);
+    }
+
+    exit('Não foi possível preparar a atualização.');
+}
+
+mysqli_stmt_bind_param(
+    $stmt,
+    'ssssssssi',
+    $nome,
+    $especie,
+    $procedencia,
+    $data,
+    $localizacao,
+    $descricao,
+    $foto,
+    $banner,
+    $id
+);
+
+if (mysqli_stmt_execute($stmt)) {
+    mysqli_stmt_close($stmt);
+
+    header('Location: listar_colonias.php');
     exit;
 }
 
-$sql = "UPDATE colonias 
-        SET nome='$nome', especie='$especie', procedencia='$procedencia',
-            data_aquisicao='$data', localizacao='$localizacao', descricao='$descricao',
-            foto='$fotoPath', banner='$bannerPath'
-        WHERE id=$id";
+mysqli_stmt_close($stmt);
 
-if (mysqli_query($conexao, $sql)) {
-    header("Location: listar_colonias.php"); // volta para a listagem de colônias
-    exit;
-} else {
-    echo "Erro ao atualizar: " . mysqli_error($conexao);
+foreach ($novosArquivos as $arquivo) {
+    @unlink(__DIR__ . '/uploads/' . $arquivo);
 }
+
+exit('Não foi possível atualizar a colônia.');
 ?>

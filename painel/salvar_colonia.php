@@ -1,46 +1,106 @@
+
 <?php
-include('conexao.php');
 
-// Recebe os dados do formulário
-$nome        = trim($_POST['nomeColonia']);
-$especie     = trim($_POST['especie']);
-$procedencia = trim($_POST['procedencia']); // novo campo
-$data        = trim($_POST['data_aquisicao']);
-$localizacao = trim($_POST['localizacao']);
-$descricao   = trim($_POST['descricao']);
+require_once __DIR__ . '/conexao.php';
+require_once __DIR__ . '/funcoes_upload.php';
 
-// Validação: não permitir campos obrigatórios vazios
-if (empty($nome) || empty($especie) || empty($procedencia) || empty($data) || empty($localizacao)) {
-    echo "⚠️ Preencha todos os campos obrigatórios antes de salvar.";
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    exit('Método não permitido.');
+}
+
+$nome        = trim($_POST['nomeColonia'] ?? '');
+$especie     = trim($_POST['especie'] ?? '');
+$procedencia = trim($_POST['procedencia'] ?? '');
+$data        = trim($_POST['data_aquisicao'] ?? '');
+$localizacao = trim($_POST['localizacao'] ?? '');
+$descricao   = trim($_POST['descricao'] ?? '');
+
+if (
+    $nome === '' ||
+    $especie === '' ||
+    $procedencia === '' ||
+    $data === '' ||
+    $localizacao === ''
+) {
+    exit('Preencha todos os campos obrigatórios.');
+}
+
+// Valida a data recebida.
+$dataObjeto = DateTime::createFromFormat('!Y-m-d', $data);
+
+if (!$dataObjeto || $dataObjeto->format('Y-m-d') !== $data) {
+    exit('A data de aquisição é inválida.');
+}
+
+// Foto obrigatória.
+$resultadoFoto = uploadImagem('foto', true);
+
+if ($resultadoFoto['erro'] !== null) {
+    exit(htmlspecialchars($resultadoFoto['erro'], ENT_QUOTES, 'UTF-8'));
+}
+
+$foto = $resultadoFoto['nome'];
+
+// Banner opcional.
+$resultadoBanner = uploadImagem('banner', false);
+
+if ($resultadoBanner['erro'] !== null) {
+    @unlink(__DIR__ . '/uploads/' . $foto);
+
+    exit(htmlspecialchars(
+        $resultadoBanner['erro'],
+        ENT_QUOTES,
+        'UTF-8'
+    ));
+}
+
+$banner = $resultadoBanner['nome'];
+
+$sql = "INSERT INTO colonias
+        (nome, especie, procedencia, data_aquisicao,
+         localizacao, descricao, foto, banner)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+$stmt = mysqli_prepare($conexao, $sql);
+
+if (!$stmt) {
+    @unlink(__DIR__ . '/uploads/' . $foto);
+
+    if ($banner !== null) {
+        @unlink(__DIR__ . '/uploads/' . $banner);
+    }
+
+    exit('Não foi possível preparar o cadastro.');
+}
+
+mysqli_stmt_bind_param(
+    $stmt,
+    'ssssssss',
+    $nome,
+    $especie,
+    $procedencia,
+    $data,
+    $localizacao,
+    $descricao,
+    $foto,
+    $banner
+);
+
+if (mysqli_stmt_execute($stmt)) {
+    mysqli_stmt_close($stmt);
+
+    header('Location: listar_colonias.php');
     exit;
 }
 
-// Upload da foto (obrigatória)
-$foto = null;
-if (!empty($_FILES['foto']['name'])) {
-    $foto = 'uploads/' . basename($_FILES['foto']['name']);
-    move_uploaded_file($_FILES['foto']['tmp_name'], $foto);
-} else {
-    echo "⚠️ A foto da abelha é obrigatória.";
-    exit;
+mysqli_stmt_close($stmt);
+
+@unlink(__DIR__ . '/uploads/' . $foto);
+
+if ($banner !== null) {
+    @unlink(__DIR__ . '/uploads/' . $banner);
 }
 
-// Upload do banner (opcional)
-$banner = null;
-if (!empty($_FILES['banner']['name'])) {
-    $banner = 'uploads/' . basename($_FILES['banner']['name']);
-    move_uploaded_file($_FILES['banner']['tmp_name'], $banner);
-}
-
-// Query de inserção
-$sql = "INSERT INTO colonias (nome, especie, procedencia, data_aquisicao, localizacao, descricao, foto, banner)
-        VALUES ('$nome', '$especie', '$procedencia', '$data', '$localizacao', '$descricao', '$foto', '$banner')";
-
-if (mysqli_query($conexao, $sql)) {
-    header("Location: listar_colonias.php"); // redireciona para a listagem
-    exit;
-} else {
-    echo "Erro ao salvar: " . mysqli_error($conexao);
-}
-
+exit('Não foi possível salvar a colônia.');
 ?>

@@ -190,7 +190,7 @@ if (!$resultado) {
                                 <?php if (!empty($colonia['foto'])) { ?>
 
                                     <img
-                                        src="/tcc/<?php echo htmlspecialchars($colonia['foto']); ?>"
+                                        src="painel/uploads/<?php echo rawurlencode(basename($colonia['foto'])); ?>"
                                         alt="<?php echo htmlspecialchars($colonia['nome']); ?>"
                                         class="imagem-colonia"
                                     >
