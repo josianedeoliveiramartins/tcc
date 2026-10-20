@@ -33,7 +33,7 @@
 
 
             <!-- CPE -->
-            <a href="cpe.php" class="card text-center shadow-sm text-decoration-none">
+            <a href="#" class="card text-center shadow-sm text-decoration-none">
                 <div class="card-body">
                     <img src="midias/icones/graduation.png" alt="CPE" width="64" height="64">
                     <h5 class="card-title mt-3">CPE</h5>

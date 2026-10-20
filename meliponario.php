@@ -181,7 +181,7 @@
                         <div class="carousel-item active">
 
                             <img
-                                src="\tcc\uploads\img1.mel.png"
+                                src="\tcc\midias\img1.mel.png"
                                 class="d-block w-100"
                                 alt="Caixa de abelhas sem ferrão do Meliponário CEEDO - Foto 1"
                                 loading="eager"
@@ -198,7 +198,7 @@
                         <div class="carousel-item"> 
 
                             <img
-                                src="\tcc\uploads\img2.mel.png"
+                                src="\tcc\midias\img2.mel.png"
                                 alt="Meliponário CEEDO - Foto 2"
                                 loading="lazy"
                                 decoding="async"
@@ -213,7 +213,7 @@
                         <div class="carousel-item">
 
                             <img
-                                 src="\tcc\uploads\img3.mel.png"
+                                 src="\tcc\midias\img3.mel.png"
                                 alt="Meliponário CEEDO - Foto 3"
                                 loading="lazy"
                                 decoding="async"
@@ -228,7 +228,7 @@
                         <div class="carousel-item">
  
                             <img
-                                src="\tcc\uploads\img4.mel.png"
+                                src="\tcc\midias\img4.mel.png"
                                 class="d-block w-100"
                                 alt="Meliponário CEEDO - Foto 4"
                                 loading="lazy"
@@ -244,7 +244,7 @@
                         <div class="carousel-item">
 
                             <img
-                                src="\tcc\uploads\img5.mel.png"
+                                src="\tcc\midias\img5.mel.png"
                                 class="d-block w-100"
                                 alt="Meliponário CEEDO - Foto 5"
                                 loading="lazy" 
@@ -259,7 +259,7 @@
                         <div class="carousel-item">
 
                             <img
-                                src="\tcc\uploads\img6.mel.png"
+                                src="\tcc\midias\img6.mel.png"
                                 class="d-block w-100"
                                 alt="Meliponário CEEDO - Foto 6"
                                 loading="lazy"
