@@ -1,6 +1,56 @@
+```php
 <?php
 
 include 'conexao.php';
+
+// ============================================================
+// FUNÇÃO PARA LOCALIZAR AS IMAGENS DAS NOTÍCIAS
+// ============================================================
+
+function caminhoImagemNoticiaPublica($nomeArquivo)
+{
+    $nomeArquivo = basename(
+        str_replace('\\', '/', (string) $nomeArquivo)
+    );
+
+    if (
+        $nomeArquivo === '' ||
+        $nomeArquivo === '.' ||
+        $nomeArquivo === '..'
+    ) {
+        return '';
+    }
+
+    $pastas = [
+        __DIR__ . '/painel/uploads/',
+        __DIR__ . '/painel/midias/noticias/'
+    ];
+
+    foreach ($pastas as $pasta) {
+
+        $arquivo = $pasta . $nomeArquivo;
+
+        if (is_file($arquivo)) {
+
+            $caminhoRelativo = str_replace(
+                '\\',
+                '/',
+                substr($arquivo, strlen(__DIR__) + 1)
+            );
+
+            return implode(
+                '/',
+                array_map(
+                    'rawurlencode',
+                    explode('/', $caminhoRelativo)
+                )
+            );
+        }
+    }
+
+    return '';
+}
+
 
 // ============================================================
 // BUSCAR NOTÍCIAS PUBLICADAS
@@ -19,9 +69,8 @@ $sql = "SELECT
 
 $resultado = mysqli_query($conexao, $sql);
 
-// Se der erro no SQL, mostra o erro real
 if (!$resultado) {
-    die("Erro na consulta das notícias: " . mysqli_error($conexao));
+    die("Erro na consulta das notícias.");
 }
 
 
@@ -53,27 +102,14 @@ function limitarTexto($texto, $limite = 150)
 
     <title>Notícias | COOPCEEDO</title>
 
-
-    <!--------------- HEAD ---------------->
     <?php include 'includes_site/head.php'; ?>
-    <!------------------------------------->
-
 
     <style>
-
-        /* =====================================================
-           PÁGINA
-        ===================================================== */
 
         .pagina-noticias {
             background: #f7f8fa;
             padding: 60px 0 80px;
         }
-
-
-        /* =====================================================
-           TÍTULO
-        ===================================================== */
 
         .noticias-header {
             text-align: center;
@@ -94,11 +130,6 @@ function limitarTexto($texto, $limite = 150)
             margin: 0 auto;
         }
 
-
-        /* =====================================================
-           DESTAQUE
-        ===================================================== */
-
         .noticia-destaque {
             background: #fff;
             border-radius: 14px;
@@ -117,11 +148,9 @@ function limitarTexto($texto, $limite = 150)
         .noticia-destaque-sem-imagem {
             width: 100%;
             height: 300px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             background: #eeeeee;
             color: #999;
         }
@@ -149,11 +178,6 @@ function limitarTexto($texto, $limite = 150)
             margin-bottom: 22px;
         }
 
-
-        /* =====================================================
-           OUTRAS NOTÍCIAS
-        ===================================================== */
-
         .titulo-outras {
             color: #333;
             font-size: 1.6rem;
@@ -167,22 +191,12 @@ function limitarTexto($texto, $limite = 150)
             gap: 25px;
         }
 
-
-        /* =====================================================
-           CARD
-        ===================================================== */
-
         .noticia-card {
             background: #fff;
             border-radius: 12px;
             overflow: hidden;
-
             box-shadow: 0 3px 15px rgba(0,0,0,.06);
-
-            transition:
-                transform .2s ease,
-                box-shadow .2s ease;
-
+            transition: transform .2s ease, box-shadow .2s ease;
             display: flex;
             flex-direction: column;
         }
@@ -191,11 +205,6 @@ function limitarTexto($texto, $limite = 150)
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0,0,0,.10);
         }
-
-
-        /* =====================================================
-           IMAGEM
-        ===================================================== */
 
         .noticia-card-imagem {
             width: 100%;
@@ -207,26 +216,17 @@ function limitarTexto($texto, $limite = 150)
         .noticia-card-sem-imagem {
             width: 100%;
             height: 210px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             background: #eeeeee;
             color: #999;
         }
 
-
-        /* =====================================================
-           CONTEÚDO
-        ===================================================== */
-
         .noticia-card-conteudo {
             padding: 22px;
-
             display: flex;
             flex-direction: column;
-
             flex: 1;
         }
 
@@ -251,29 +251,18 @@ function limitarTexto($texto, $limite = 150)
             margin-bottom: 20px;
         }
 
-
-        /* =====================================================
-           BOTÃO
-        ===================================================== */
-
         .noticia-card-botao {
             margin-top: auto;
         }
 
         .btn-noticia {
             display: inline-block;
-
             padding: 9px 18px;
-
             border-radius: 6px;
-
             background: #ffc107;
             color: #222;
-
             text-decoration: none;
-
             font-weight: 600;
-
             transition: .2s;
         }
 
@@ -282,37 +271,20 @@ function limitarTexto($texto, $limite = 150)
             color: #222;
         }
 
-
-        /* =====================================================
-           SEM NOTÍCIAS
-        ===================================================== */
-
         .sem-noticias {
             background: #fff;
             border-radius: 12px;
-
             padding: 50px 30px;
-
             text-align: center;
-
             color: #777;
-
             box-shadow: 0 3px 15px rgba(0,0,0,.05);
         }
 
-
-        /* =====================================================
-           RESPONSIVO
-        ===================================================== */
-
         @media (max-width: 992px) {
-
             .noticias-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
         }
-
 
         @media (max-width: 768px) {
 
@@ -339,36 +311,23 @@ function limitarTexto($texto, $limite = 150)
             .noticias-grid {
                 grid-template-columns: 1fr;
             }
-
         }
 
     </style>
 
 </head>
 
-
 <body>
 
-
-<!--------------- HEADER ---------------->
 <?php include 'includes_site/header.php'; ?>
-<!--------------------------------------->
-
 
 <main class="pagina-noticias">
 
     <div class="container">
 
-
-        <!-- ==================================================
-             CABEÇALHO
-        =================================================== -->
-
         <div class="noticias-header">
 
-            <h1>
-                Notícias e Publicações
-            </h1>
+            <h1>Notícias e Publicações</h1>
 
             <p>
                 Acompanhe as novidades, comunicados e
@@ -377,46 +336,33 @@ function limitarTexto($texto, $limite = 150)
 
         </div>
 
+        <?php if (mysqli_num_rows($resultado) > 0): ?>
 
-        <?php
+            <?php $destaque = mysqli_fetch_assoc($resultado); ?>
 
-        // =====================================================
-        // VERIFICA SE EXISTEM NOTÍCIAS
-        // =====================================================
-
-        if (mysqli_num_rows($resultado) > 0):
-
-
-            // Primeira notícia = destaque
-            $destaque = mysqli_fetch_assoc($resultado);
-
-        ?>
-
-
-            <!-- ==================================================
-                 NOTÍCIA DESTAQUE
-            =================================================== -->
+            <!-- NOTÍCIA DESTAQUE -->
 
             <article class="noticia-destaque">
 
+                <?php
+                $imagemDestaque = caminhoImagemNoticiaPublica(
+                    $destaque['imagem_noticia']
+                );
+                ?>
 
-                <?php if (!empty($destaque['imagem_noticia'])): ?>
+                <?php if ($imagemDestaque !== ''): ?>
 
                     <img
-                        src="painel/uploads/<?php
-                            echo htmlspecialchars(
-                                $destaque['imagem_noticia'],
-                                ENT_QUOTES,
-                                'UTF-8'
-                            );
-                        ?>"
-                        alt="<?php
-                            echo htmlspecialchars(
-                                $destaque['titulo_noticia'],
-                                ENT_QUOTES,
-                                'UTF-8'
-                            );
-                        ?>"
+                        src="<?php echo htmlspecialchars(
+                            $imagemDestaque,
+                            ENT_QUOTES,
+                            'UTF-8'
+                        ); ?>"
+                        alt="<?php echo htmlspecialchars(
+                            $destaque['titulo_noticia'],
+                            ENT_QUOTES,
+                            'UTF-8'
+                        ); ?>"
                         class="noticia-destaque-imagem"
                     >
 
@@ -428,37 +374,26 @@ function limitarTexto($texto, $limite = 150)
 
                 <?php endif; ?>
 
-
                 <div class="noticia-destaque-conteudo">
 
-
                     <div class="noticia-data">
-
                         <?php
                         echo date(
                             'd/m/Y',
                             strtotime($destaque['data_noticia'])
                         );
                         ?>
-
                     </div>
 
-
                     <h2>
-
-                        <?php
-                        echo htmlspecialchars(
+                        <?php echo htmlspecialchars(
                             $destaque['titulo_noticia'],
                             ENT_QUOTES,
                             'UTF-8'
-                        );
-                        ?>
-
+                        ); ?>
                     </h2>
 
-
                     <p>
-
                         <?php
 
                         if (!empty($destaque['resumo_noticia'])) {
@@ -479,69 +414,53 @@ function limitarTexto($texto, $limite = 150)
                                 ENT_QUOTES,
                                 'UTF-8'
                             );
-
                         }
 
                         ?>
-
                     </p>
 
-
                     <a
-                        href="noticia.php?id=<?php
-                            echo (int)$destaque['id_noticia'];
-                        ?>"
+                        href="noticia.php?id=<?php echo (int) $destaque['id_noticia']; ?>"
                         class="btn-noticia"
                     >
-
                         Ler notícia
-
                     </a>
-
 
                 </div>
 
             </article>
 
-
-            <!-- ==================================================
-                 OUTRAS NOTÍCIAS
-            =================================================== -->
+            <!-- OUTRAS NOTÍCIAS -->
 
             <?php if (mysqli_num_rows($resultado) > 0): ?>
 
-
-                <h2 class="titulo-outras">
-                    Outras notícias
-                </h2>
-
+                <h2 class="titulo-outras">Outras notícias</h2>
 
                 <div class="noticias-grid">
 
-
                     <?php while ($item = mysqli_fetch_assoc($resultado)): ?>
-
 
                         <article class="noticia-card">
 
+                            <?php
+                            $imagemCard = caminhoImagemNoticiaPublica(
+                                $item['imagem_noticia']
+                            );
+                            ?>
 
-                            <?php if (!empty($item['imagem_noticia'])): ?>
+                            <?php if ($imagemCard !== ''): ?>
 
                                 <img
-                                    src="midias/noticias/<?php
-                                        echo htmlspecialchars(
-                                            $item['imagem_noticia'],
-                                            ENT_QUOTES,
-                                            'UTF-8'
-                                        );
-                                    ?>"
-                                    alt="<?php
-                                        echo htmlspecialchars(
-                                            $item['titulo_noticia'],
-                                            ENT_QUOTES,
-                                            'UTF-8'
-                                        );
-                                    ?>"
+                                    src="<?php echo htmlspecialchars(
+                                        $imagemCard,
+                                        ENT_QUOTES,
+                                        'UTF-8'
+                                    ); ?>"
+                                    alt="<?php echo htmlspecialchars(
+                                        $item['titulo_noticia'],
+                                        ENT_QUOTES,
+                                        'UTF-8'
+                                    ); ?>"
                                     class="noticia-card-imagem"
                                 >
 
@@ -553,46 +472,29 @@ function limitarTexto($texto, $limite = 150)
 
                             <?php endif; ?>
 
-
                             <div class="noticia-card-conteudo">
 
-
                                 <div class="noticia-card-data">
-
                                     <?php
                                     echo date(
                                         'd/m/Y',
-                                        strtotime(
-                                            $item['data_noticia']
-                                        )
+                                        strtotime($item['data_noticia'])
                                     );
                                     ?>
-
                                 </div>
 
-
                                 <h3>
-
-                                    <?php
-                                    echo htmlspecialchars(
+                                    <?php echo htmlspecialchars(
                                         $item['titulo_noticia'],
                                         ENT_QUOTES,
                                         'UTF-8'
-                                    );
-                                    ?>
-
+                                    ); ?>
                                 </h3>
 
-
                                 <p>
-
                                     <?php
 
-                                    if (
-                                        !empty(
-                                            $item['resumo_noticia']
-                                        )
-                                    ) {
+                                    if (!empty($item['resumo_noticia'])) {
 
                                         echo htmlspecialchars(
                                             limitarTexto(
@@ -613,56 +515,37 @@ function limitarTexto($texto, $limite = 150)
                                             ENT_QUOTES,
                                             'UTF-8'
                                         );
-
                                     }
 
                                     ?>
-
                                 </p>
-
 
                                 <div class="noticia-card-botao">
 
                                     <a
-                                        href="noticia.php?id=<?php
-                                            echo (int)$item['id_noticia'];
-                                        ?>"
+                                        href="noticia.php?id=<?php echo (int) $item['id_noticia']; ?>"
                                         class="btn-noticia"
                                     >
-
                                         Ler notícia
-
                                     </a>
 
                                 </div>
-
 
                             </div>
 
                         </article>
 
-
                     <?php endwhile; ?>
-
 
                 </div>
 
-
             <?php endif; ?>
-
 
         <?php else: ?>
 
-
-            <!-- ==================================================
-                 NENHUMA NOTÍCIA
-            =================================================== -->
-
             <div class="sem-noticias">
 
-                <h3>
-                    Nenhuma notícia publicada
-                </h3>
+                <h3>Nenhuma notícia publicada</h3>
 
                 <p>
                     No momento não existem notícias disponíveis.
@@ -670,19 +553,14 @@ function limitarTexto($texto, $limite = 150)
 
             </div>
 
-
         <?php endif; ?>
-
 
     </div>
 
 </main>
 
-
-<!--------------- FOOTER ---------------->
 <?php include 'includes_site/footer.php'; ?>
-<!--------------------------------------->
-
 
 </body>
 </html>
+```

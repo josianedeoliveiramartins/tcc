@@ -3,6 +3,34 @@
 include 'verifica_login.php';
 include 'conexao.php';
 
+/*
+|--------------------------------------------------------------------------
+| CAMINHO DAS IMAGENS
+|--------------------------------------------------------------------------
+| Prioriza a pasta uploads. Mantém compatibilidade com imagens antigas
+| que ainda estejam em midias/noticias.
+*/
+function caminhoImagemNoticia($nomeArquivo)
+{
+    $nomeArquivo = basename((string) $nomeArquivo);
+
+    if ($nomeArquivo === '') {
+        return '';
+    }
+
+    if (is_file(__DIR__ . '/uploads/' . $nomeArquivo)) {
+        return 'uploads/' . rawurlencode($nomeArquivo);
+    }
+
+    if (is_file(__DIR__ . '/midias/noticias/' . $nomeArquivo)) {
+        return 'midias/noticias/' . rawurlencode($nomeArquivo);
+    }
+
+    // Caminho padrão para imagens novas, salvas em uploads.
+    return 'uploads/' . rawurlencode($nomeArquivo);
+}
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -566,15 +594,16 @@ if (isset($_GET['erro'])) {
                         class="form-control"
                         id="imagem_noticia"
                         name="imagem_noticia"
-                        accept="image/jpeg,image/png,image/webp"
+                        accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+                        data-max-size="5242880"
                     >
 
 
                     <div class="form-text">
 
-                        Formatos permitidos:
-                        JPG, PNG e WEBP.
-                        Tamanho máximo: 5 MB.
+                        Formatos permitidos: JPG, JPEG, PNG e WEBP.
+                        Tamanho máximo: 5 MB por imagem.
+                        Ao editar, deixe este campo vazio para manter a imagem atual.
 
                     </div>
 
@@ -600,9 +629,9 @@ if (isset($_GET['erro'])) {
                         <div>
 
                             <img
-                                src="midias/noticias/<?php
+                                src="<?php
                                 echo htmlspecialchars(
-                                    $noticia['imagem_noticia'],
+                                    caminhoImagemNoticia($noticia['imagem_noticia']),
                                     ENT_QUOTES,
                                     'UTF-8'
                                 );
@@ -777,9 +806,9 @@ if (isset($_GET['erro'])) {
                                 ): ?>
 
                                     <img
-                                        src="midias/noticias/<?php
+                                        src="<?php
                                         echo htmlspecialchars(
-                                            $item['imagem_noticia'],
+                                            caminhoImagemNoticia($item['imagem_noticia']),
                                             ENT_QUOTES,
                                             'UTF-8'
                                         );
@@ -971,6 +1000,53 @@ if (isset($_GET['erro'])) {
 
 <?php include 'includes_painel/footer.php'; ?>
 
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const campoImagem = document.getElementById('imagem_noticia');
+    const formulario = campoImagem ? campoImagem.closest('form') : null;
+    const tamanhoMaximo = 5 * 1024 * 1024;
+    const tiposPermitidos = ['image/jpeg', 'image/png', 'image/webp'];
+
+    if (!campoImagem || !formulario) {
+        return;
+    }
+
+    campoImagem.addEventListener('change', function () {
+        const arquivo = campoImagem.files[0];
+
+        if (!arquivo) {
+            return;
+        }
+
+        if (!tiposPermitidos.includes(arquivo.type)) {
+            alert('Formato não permitido. Selecione uma imagem JPG, JPEG, PNG ou WEBP.');
+            campoImagem.value = '';
+            return;
+        }
+
+        if (arquivo.size > tamanhoMaximo) {
+            alert('A imagem não pode ultrapassar 5 MB.');
+            campoImagem.value = '';
+        }
+    });
+
+    formulario.addEventListener('submit', function (evento) {
+        const arquivo = campoImagem.files[0];
+
+        if (!arquivo) {
+            return;
+        }
+
+        if (!tiposPermitidos.includes(arquivo.type) || arquivo.size > tamanhoMaximo) {
+            evento.preventDefault();
+            alert('Selecione uma imagem JPG, JPEG, PNG ou WEBP de até 5 MB.');
+            campoImagem.focus();
+        }
+    });
+});
+</script>
 
 </body>
 

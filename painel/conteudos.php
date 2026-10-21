@@ -31,15 +31,6 @@
             </a>
 
 
-
-            <!-- CPE -->
-            <a href="#" class="card text-center shadow-sm text-decoration-none">
-                <div class="card-body">
-                    <img src="midias/icones/graduation.png" alt="CPE" width="64" height="64">
-                    <h5 class="card-title mt-3">CPE</h5>
-                    <p class="card-text">Conteúdo específico da cooperativa</p>
-                </div>
-            </a>
         </div>
     </main>
 

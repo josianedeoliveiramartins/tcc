@@ -1,12 +1,60 @@
+```php
 <?php
 
 include 'conexao.php';
 
-/*
-|--------------------------------------------------------------------------
-| BUSCAR AS 3 ÚLTIMAS NOTÍCIAS PUBLICADAS
-|--------------------------------------------------------------------------
-*/
+// ============================================================
+// LOCALIZAR IMAGENS DAS NOTÍCIAS
+// ============================================================
+
+function caminhoImagemNoticiaHome($nomeArquivo)
+{
+    $nomeArquivo = basename(
+        str_replace('\\', '/', (string) $nomeArquivo)
+    );
+
+    if (
+        $nomeArquivo === '' ||
+        $nomeArquivo === '.' ||
+        $nomeArquivo === '..'
+    ) {
+        return '';
+    }
+
+    $pastas = [
+        __DIR__ . '/painel/uploads/',
+        __DIR__ . '/painel/midias/noticias/'
+    ];
+
+    foreach ($pastas as $pasta) {
+
+        $arquivo = $pasta . $nomeArquivo;
+
+        if (is_file($arquivo)) {
+
+            $caminhoRelativo = str_replace(
+                '\\',
+                '/',
+                substr($arquivo, strlen(__DIR__) + 1)
+            );
+
+            return implode(
+                '/',
+                array_map(
+                    'rawurlencode',
+                    explode('/', $caminhoRelativo)
+                )
+            );
+        }
+    }
+
+    return '';
+}
+
+
+// ============================================================
+// BUSCAR AS 3 ÚLTIMAS NOTÍCIAS PUBLICADAS
+// ============================================================
 
 $sql_noticias = "SELECT
                     id_noticia,
@@ -23,11 +71,9 @@ $sql_noticias = "SELECT
 $resultado_noticias = mysqli_query($conexao, $sql_noticias);
 
 
-/*
-|--------------------------------------------------------------------------
-| FUNÇÃO PARA LIMITAR TEXTO
-|--------------------------------------------------------------------------
-*/
+// ============================================================
+// FUNÇÃO PARA LIMITAR TEXTO
+// ============================================================
 
 function limitarTextoHome($texto, $limite = 120)
 {
@@ -53,10 +99,7 @@ function limitarTextoHome($texto, $limite = 120)
 
     <title>Início | COOPCEEDO</title>
 
-    <!--------------- HEAD ---------------->
     <?php include 'includes_site/head.php'; ?>
-    <!------------------------------------->
-
 
     <style>
 
@@ -83,11 +126,9 @@ function limitarTextoHome($texto, $limite = 120)
             padding: 90px 0;
         }
 
-
         .hero-conteudo {
             max-width: 750px;
         }
-
 
         .hero-pequeno {
             color: #9a7600;
@@ -98,7 +139,6 @@ function limitarTextoHome($texto, $limite = 120)
             margin-bottom: 15px;
         }
 
-
         .hero-home h1 {
             color: #2f2f2f;
             font-size: 3rem;
@@ -107,11 +147,9 @@ function limitarTextoHome($texto, $limite = 120)
             margin-bottom: 20px;
         }
 
-
         .hero-home h1 span {
             color: #b88a00;
         }
-
 
         .hero-home p {
             color: #666;
@@ -130,16 +168,12 @@ function limitarTextoHome($texto, $limite = 120)
             display: inline-block;
             padding: 11px 22px;
             border-radius: 6px;
-
             background-color: #e8b600;
             color: #222;
-
             text-decoration: none;
             font-weight: 600;
-
             transition: 0.2s ease;
         }
-
 
         .btn-home:hover {
             background-color: #c99d00;
@@ -156,17 +190,14 @@ function limitarTextoHome($texto, $limite = 120)
             padding: 70px 0;
         }
 
-
         .home-secao-cinza {
             background-color: #f7f8fa;
         }
-
 
         .titulo-secao {
             text-align: center;
             margin-bottom: 40px;
         }
-
 
         .titulo-secao h2 {
             color: #333;
@@ -174,7 +205,6 @@ function limitarTextoHome($texto, $limite = 120)
             font-weight: 700;
             margin-bottom: 10px;
         }
-
 
         .titulo-secao p {
             color: #777;
@@ -194,31 +224,20 @@ function limitarTextoHome($texto, $limite = 120)
             gap: 25px;
         }
 
-
         .noticia-home-card {
             background-color: #fff;
             border-radius: 10px;
             overflow: hidden;
-
-            box-shadow:
-                0 3px 15px rgba(0, 0, 0, 0.06);
-
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
             display: flex;
             flex-direction: column;
-
-            transition:
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-
 
         .noticia-home-card:hover {
             transform: translateY(-4px);
-
-            box-shadow:
-                0 7px 20px rgba(0, 0, 0, 0.10);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.10);
         }
-
 
         .noticia-home-imagem {
             width: 100%;
@@ -227,29 +246,22 @@ function limitarTextoHome($texto, $limite = 120)
             display: block;
         }
 
-
         .noticia-home-sem-imagem {
             width: 100%;
             height: 200px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             background: #eeeeee;
             color: #999;
         }
 
-
         .noticia-home-conteudo {
             padding: 22px;
-
             display: flex;
             flex-direction: column;
-
             flex: 1;
         }
-
 
         .noticia-home-data {
             color: #999;
@@ -257,39 +269,31 @@ function limitarTextoHome($texto, $limite = 120)
             margin-bottom: 8px;
         }
 
-
         .noticia-home-card h3 {
             color: #333;
             font-size: 1.2rem;
             font-weight: 700;
             line-height: 1.4;
-
             margin-bottom: 12px;
         }
-
 
         .noticia-home-card p {
             color: #666;
             font-size: 0.95rem;
             line-height: 1.6;
-
             margin-bottom: 20px;
         }
 
-
         .noticia-home-link {
             margin-top: auto;
-
             color: #a67c00;
             text-decoration: none;
             font-weight: 600;
         }
 
-
         .noticia-home-link:hover {
             color: #795c00;
         }
-
 
         .botao-noticias {
             text-align: center;
@@ -305,10 +309,8 @@ function limitarTextoHome($texto, $limite = 120)
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
-
             align-items: center;
         }
-
 
         .sobre-home h2 {
             color: #333;
@@ -317,38 +319,26 @@ function limitarTextoHome($texto, $limite = 120)
             margin-bottom: 18px;
         }
 
-
         .sobre-home p {
             color: #666;
             line-height: 1.8;
             margin-bottom: 15px;
         }
 
-
         .sobre-home-destaque {
             background-color: #fff;
-
             border-left: 4px solid #e8b600;
-
             padding: 25px;
-
             border-radius: 8px;
-
-            box-shadow:
-                0 3px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
         }
-
 
         .sobre-home-destaque strong {
             display: block;
-
             color: #333;
-
             font-size: 1.1rem;
-
             margin-bottom: 8px;
         }
-
 
         .sobre-home-destaque span {
             color: #777;
@@ -362,33 +352,22 @@ function limitarTextoHome($texto, $limite = 120)
 
         .contato-home {
             background: #fff9df;
-
             border-radius: 12px;
-
             padding: 50px 30px;
-
             text-align: center;
         }
 
-
         .contato-home h2 {
             color: #333;
-
             font-size: 2rem;
-
             font-weight: 700;
-
             margin-bottom: 15px;
         }
 
-
         .contato-home p {
             color: #666;
-
             max-width: 650px;
-
             margin: 0 auto 25px;
-
             line-height: 1.7;
         }
 
@@ -399,15 +378,10 @@ function limitarTextoHome($texto, $limite = 120)
 
         .sem-noticias-home {
             grid-column: 1 / -1;
-
             background-color: #fff;
-
             padding: 40px;
-
             text-align: center;
-
             border-radius: 10px;
-
             color: #777;
         }
 
@@ -428,28 +402,23 @@ function limitarTextoHome($texto, $limite = 120)
 
         }
 
-
         @media (max-width: 768px) {
 
             .hero-home {
                 padding: 65px 0;
             }
 
-
             .hero-home h1 {
                 font-size: 2.2rem;
             }
-
 
             .hero-home p {
                 font-size: 1rem;
             }
 
-
             .noticias-home {
                 grid-template-columns: 1fr;
             }
-
 
             .home-secao {
                 padding: 55px 0;
@@ -461,23 +430,13 @@ function limitarTextoHome($texto, $limite = 120)
 
 </head>
 
-
 <body>
-
-
-    <!--------------- HEADER ---------------->
 
     <?php include 'includes_site/header.php'; ?>
 
-    <!--------------------------------------->
-
-
     <main class="home">
 
-
-        <!-- =================================================
-             BEM-VINDO
-        ================================================== -->
+        <!-- BEM-VINDO -->
 
         <section class="hero-home">
 
@@ -486,36 +445,22 @@ function limitarTextoHome($texto, $limite = 120)
                 <div class="hero-conteudo">
 
                     <div class="hero-pequeno">
-
                         Bem-vindo à COOPCEEDO
-
                     </div>
 
-
                     <h1>
-
                         Cooperação que
                         <span>transforma</span>.
-
                     </h1>
 
-
                     <p>
-
                         Um espaço para conhecer a COOPCEEDO,
                         acompanhar nossas novidades e ficar
                         sempre informado sobre nossas ações.
-
                     </p>
 
-
-                    <a
-                        href="#sobre"
-                        class="btn-home"
-                    >
-
+                    <a href="#sobre" class="btn-home">
                         Conheça a COOPCEEDO
-
                     </a>
 
                 </div>
@@ -525,190 +470,123 @@ function limitarTextoHome($texto, $limite = 120)
         </section>
 
 
-        <!-- =================================================
-             ÚLTIMAS NOTÍCIAS
-        ================================================== -->
+        <!-- ÚLTIMAS NOTÍCIAS -->
 
         <section class="home-secao home-secao-cinza">
 
             <div class="container">
 
-
                 <div class="titulo-secao">
 
-                    <h2>
-                        Últimas notícias
-                    </h2>
+                    <h2>Últimas notícias</h2>
 
                     <p>
-
                         Confira as novidades, comunicados
                         e informações da COOPCEEDO.
-
                     </p>
 
                 </div>
 
-
                 <div class="noticias-home">
 
-
-                    <?php
-
-                    if (
+                    <?php if (
                         $resultado_noticias &&
                         mysqli_num_rows($resultado_noticias) > 0
-                    ):
+                    ): ?>
 
-                        while (
-                            $noticia = mysqli_fetch_assoc(
-                                $resultado_noticias
-                            )
-                        ):
+                        <?php while (
+                            $noticia = mysqli_fetch_assoc($resultado_noticias)
+                        ): ?>
 
-                    ?>
+                            <article class="noticia-home-card">
 
+                                <?php
+                                $imagemNoticiaHome = caminhoImagemNoticiaHome(
+                                    $noticia['imagem_noticia'] ?? ''
+                                );
+                                ?>
 
-                        <article class="noticia-home-card">
+                                <?php if ($imagemNoticiaHome !== ''): ?>
 
-
-                            <?php if (
-                                !empty(
-                                    $noticia['imagem_noticia']
-                                )
-                            ): ?>
-
-                                <img
-                                    src="midias/noticias/<?php
-                                        echo htmlspecialchars(
-                                            $noticia['imagem_noticia'],
+                                    <img
+                                        src="<?php echo htmlspecialchars(
+                                            $imagemNoticiaHome,
                                             ENT_QUOTES,
                                             'UTF-8'
-                                        );
-                                    ?>"
-                                    alt="<?php
-                                        echo htmlspecialchars(
+                                        ); ?>"
+                                        alt="<?php echo htmlspecialchars(
                                             $noticia['titulo_noticia'],
                                             ENT_QUOTES,
                                             'UTF-8'
+                                        ); ?>"
+                                        class="noticia-home-imagem"
+                                    >
+
+                                <?php else: ?>
+
+                                    <div class="noticia-home-sem-imagem">
+                                        Sem imagem
+                                    </div>
+
+                                <?php endif; ?>
+
+                                <div class="noticia-home-conteudo">
+
+                                    <div class="noticia-home-data">
+                                        <?php
+                                        echo date(
+                                            'd/m/Y',
+                                            strtotime($noticia['data_noticia'])
                                         );
-                                    ?>"
-                                    class="noticia-home-imagem"
-                                >
+                                        ?>
+                                    </div>
 
-                            <?php else: ?>
+                                    <h3>
+                                        <?php echo htmlspecialchars(
+                                            $noticia['titulo_noticia'],
+                                            ENT_QUOTES,
+                                            'UTF-8'
+                                        ); ?>
+                                    </h3>
 
-                                <div class="noticia-home-sem-imagem">
+                                    <p>
+                                        <?php
 
-                                    Sem imagem
+                                        $texto_noticia = '';
+
+                                        if (!empty($noticia['resumo_noticia'])) {
+                                            $texto_noticia = $noticia['resumo_noticia'];
+                                        } else {
+                                            $texto_noticia = $noticia['conteudo_noticia'];
+                                        }
+
+                                        echo htmlspecialchars(
+                                            limitarTextoHome($texto_noticia, 120),
+                                            ENT_QUOTES,
+                                            'UTF-8'
+                                        );
+
+                                        ?>
+                                    </p>
+
+                                    <a
+                                        href="noticia.php?id=<?php echo (int) $noticia['id_noticia']; ?>"
+                                        class="noticia-home-link"
+                                    >
+                                        Ler notícia →
+                                    </a>
 
                                 </div>
 
-                            <?php endif; ?>
+                            </article>
 
+                        <?php endwhile; ?>
 
-                            <div class="noticia-home-conteudo">
-
-
-                                <div class="noticia-home-data">
-
-                                    <?php
-
-                                    echo date(
-                                        'd/m/Y',
-                                        strtotime(
-                                            $noticia['data_noticia']
-                                        )
-                                    );
-
-                                    ?>
-
-                                </div>
-
-
-                                <h3>
-
-                                    <?php
-
-                                    echo htmlspecialchars(
-                                        $noticia['titulo_noticia'],
-                                        ENT_QUOTES,
-                                        'UTF-8'
-                                    );
-
-                                    ?>
-
-                                </h3>
-
-
-                                <p>
-
-                                    <?php
-
-                                    $texto_noticia = '';
-
-                                    if (
-                                        !empty(
-                                            $noticia['resumo_noticia']
-                                        )
-                                    ) {
-
-                                        $texto_noticia =
-                                            $noticia['resumo_noticia'];
-
-                                    } else {
-
-                                        $texto_noticia =
-                                            $noticia['conteudo_noticia'];
-
-                                    }
-
-                                    echo htmlspecialchars(
-                                        limitarTextoHome(
-                                            $texto_noticia,
-                                            120
-                                        ),
-                                        ENT_QUOTES,
-                                        'UTF-8'
-                                    );
-
-                                    ?>
-
-                                </p>
-
-
-                                <a
-                                    href="noticia.php?id=<?php
-                                        echo (int)
-                                            $noticia['id_noticia'];
-                                    ?>"
-                                    class="noticia-home-link"
-                                >
-
-                                    Ler notícia →
-
-                                </a>
-
-
-                            </div>
-
-                        </article>
-
-
-                    <?php
-
-                        endwhile;
-
-                    else:
-
-                    ?>
-
+                    <?php else: ?>
 
                         <div class="sem-noticias-home">
 
-                            <h3>
-                                Nenhuma notícia publicada
-                            </h3>
+                            <h3>Nenhuma notícia publicada</h3>
 
                             <p>
                                 No momento não existem
@@ -717,86 +595,60 @@ function limitarTextoHome($texto, $limite = 120)
 
                         </div>
 
-
                     <?php endif; ?>
-
 
                 </div>
 
-
                 <?php
-
                 /*
-                | Mostra o botão somente se houver notícias.
+                | Exibe o botão se a consulta encontrou notícias.
+                | Usa o número de linhas original, pois o resultado já foi percorrido.
                 */
 
                 if (
                     $resultado_noticias &&
                     mysqli_num_rows($resultado_noticias) > 0
                 ):
-
                 ?>
 
                     <div class="botao-noticias">
 
-                        <a
-                            href="noticias.php"
-                            class="btn-home"
-                        >
-
+                        <a href="noticias.php" class="btn-home">
                             Ver todas as notícias
-
                         </a>
 
                     </div>
 
                 <?php endif; ?>
 
-
             </div>
 
         </section>
 
 
-        <!-- =================================================
-             SOBRE A COOPCEEDO
-        ================================================== -->
+        <!-- SOBRE A COOPCEEDO -->
 
-        <section
-            class="home-secao"
-            id="sobre"
-        >
+        <section class="home-secao" id="sobre">
 
             <div class="container">
 
                 <div class="sobre-home">
 
-
                     <div>
 
-                        <h2>
-                            Sobre a COOPCEEDO
-                        </h2>
-
+                        <h2>Sobre a COOPCEEDO</h2>
 
                         <p>
-
                             O projeto COOPCEEDO, iniciado em 2022, é uma iniciativa do CEEDO que integra educação, cooperativismo e sustentabilidade, envolvendo alunos e professores. Com apoio de instituições parceiras, busca promover a produção e comercialização de produtos da meliponicultura, o reaproveitamento de materiais e a educação ambiental. Além disso, desenvolve conhecimentos técnicos, financeiros e profissionais dos estudantes, incentivando a pesquisa, a consciência socioambiental e uma gestão sustentável e transparente da cooperativa.
-
-
                         </p>
 
-
                         <p>
-
                             Este espaço foi criado para aproximar
                             a cooperativa de seus cooperados e
                             da comunidade.
-
                         </p>
 
                     </div>
-
 
                     <div class="sobre-home-destaque">
 
@@ -804,18 +656,14 @@ function limitarTextoHome($texto, $limite = 120)
                             Cooperar é construir juntos.
                         </strong>
 
-
                         <span>
-
                             A união de pessoas em torno de
                             objetivos comuns torna possível
                             criar oportunidades e transformar
                             realidades.
-
                         </span>
 
                     </div>
-
 
                 </div>
 
@@ -824,9 +672,7 @@ function limitarTextoHome($texto, $limite = 120)
         </section>
 
 
-        <!-- =================================================
-             FALE CONOSCO
-        ================================================== -->
+        <!-- FALE CONOSCO -->
 
         <section class="home-secao home-secao-cinza">
 
@@ -834,27 +680,16 @@ function limitarTextoHome($texto, $limite = 120)
 
                 <div class="contato-home">
 
-                    <h2>
-                        Fale conosco
-                    </h2>
-
+                    <h2>Fale conosco</h2>
 
                     <p>
-
                         Tem alguma dúvida ou gostaria de saber
                         mais sobre a COOPCEEDO? Entre em contato
                         conosco.
-
                     </p>
 
-
-                    <a
-                        href="contato.php"
-                        class="btn-home"
-                    >
-
+                    <a href="contato.php" class="btn-home">
                         Entre em contato
-
                     </a>
 
                 </div>
@@ -863,17 +698,10 @@ function limitarTextoHome($texto, $limite = 120)
 
         </section>
 
-
     </main>
-
-
-    <!--------------- FOOTER ---------------->
 
     <?php include 'includes_site/footer.php'; ?>
 
-    <!--------------------------------------->
-
-
 </body>
-
 </html>
+```

@@ -1,12 +1,136 @@
+
 <?php
 
-include 'verifica_login.php';
-include 'conexao.php';
-
+require_once __DIR__ . '/verifica_login.php';
+require_once __DIR__ . '/conexao.php';
+require_once __DIR__ . '/funcoes_upload.php';
 
 /*
 |--------------------------------------------------------------------------
-| VERIFICA SE O FORMULÁRIO FOI ENVIADO
+| FUNÇÕES AUXILIARES
+|--------------------------------------------------------------------------
+*/
+
+function redirecionarNoticia($erro)
+{
+    header('Location: form_noticias.php?erro=' . urlencode($erro));
+    exit;
+}
+
+/*
+|--------------------------------------------------------------------------
+| VERIFICA SE A IMAGEM ESTÁ SENDO UTILIZADA
+|--------------------------------------------------------------------------
+*/
+
+function imagemEstaEmUso($conexao, $nome)
+{
+    $sql = "SELECT
+                (SELECT COUNT(*)
+                 FROM noticias
+                 WHERE imagem_noticia = ?) +
+                (SELECT COUNT(*)
+                 FROM colonias
+                 WHERE foto = ? OR banner = ?) AS total";
+
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    // Se não for possível verificar, preserva o arquivo.
+    if (!$stmt) {
+        return true;
+    }
+
+    mysqli_stmt_bind_param(
+        $stmt,
+        'sss',
+        $nome,
+        $nome,
+        $nome
+    );
+
+    if (!mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_close($stmt);
+        return true;
+    }
+
+    $resultado = mysqli_stmt_get_result($stmt);
+
+    $dados = $resultado
+        ? mysqli_fetch_assoc($resultado)
+        : null;
+
+    mysqli_stmt_close($stmt);
+
+    if (!$dados) {
+        return true;
+    }
+
+    return (int) $dados['total'] > 0;
+}
+
+/*
+|--------------------------------------------------------------------------
+| REMOVE ARQUIVO SEM APAGAR IMAGENS EM USO
+|--------------------------------------------------------------------------
+*/
+
+function removerArquivoNoticia($conexao, $nome)
+{
+    if (!is_string($nome) || $nome === '') {
+        return;
+    }
+
+    // Impede acesso a outros diretórios.
+    $nome = basename(str_replace('\\', '/', $nome));
+
+    if (
+        $nome === '' ||
+        in_array($nome, array('.', '..'), true)
+    ) {
+        return;
+    }
+
+    // Não remove imagens utilizadas por outros cadastros.
+    if (imagemEstaEmUso($conexao, $nome)) {
+        return;
+    }
+
+    // Prioriza uploads e mantém compatibilidade com imagens antigas.
+    $pastas = array(
+        __DIR__ . '/uploads',
+        __DIR__ . '/midias/noticias'
+    );
+
+    foreach ($pastas as $pasta) {
+        $diretorioReal = realpath($pasta);
+
+        if ($diretorioReal === false) {
+            continue;
+        }
+
+        $arquivo = $diretorioReal
+            . DIRECTORY_SEPARATOR
+            . $nome;
+
+        if (!is_file($arquivo) || is_link($arquivo)) {
+            continue;
+        }
+
+        $arquivoReal = realpath($arquivo);
+
+        if (
+            $arquivoReal !== false &&
+            dirname($arquivoReal) === $diretorioReal
+        ) {
+            @unlink($arquivoReal);
+            break;
+        }
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| VERIFICA O MÉTODO DA REQUISIÇÃO
 |--------------------------------------------------------------------------
 */
 
@@ -14,7 +138,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: form_noticias.php');
     exit;
 }
-
 
 /*
 |--------------------------------------------------------------------------
@@ -27,578 +150,247 @@ $id_noticia = isset($_POST['id_noticia'])
     : 0;
 
 $titulo_noticia = trim($_POST['titulo_noticia'] ?? '');
-
 $resumo_noticia = trim($_POST['resumo_noticia'] ?? '');
-
 $conteudo_noticia = trim($_POST['conteudo_noticia'] ?? '');
-
-$data_noticia = $_POST['data_noticia'] ?? '';
-
+$data_noticia = trim($_POST['data_noticia'] ?? '');
 $status_noticia = $_POST['status_noticia'] ?? 'Publicado';
-
 
 /*
 |--------------------------------------------------------------------------
-| VALIDAÇÕES
+| VALIDA OS CAMPOS
 |--------------------------------------------------------------------------
 */
 
 if ($titulo_noticia === '') {
-    header('Location: form_noticias.php?erro=titulo');
-    exit;
+    redirecionarNoticia('titulo');
+}
+
+if (strlen($titulo_noticia) > 255) {
+    redirecionarNoticia('titulo');
 }
 
 if ($conteudo_noticia === '') {
-    header('Location: form_noticias.php?erro=conteudo');
-    exit;
+    redirecionarNoticia('conteudo');
 }
 
-if ($data_noticia === '') {
-    header('Location: form_noticias.php?erro=data');
-    exit;
+$data_objeto = DateTime::createFromFormat('!Y-m-d', $data_noticia);
+
+if (
+    !$data_objeto ||
+    $data_objeto->format('Y-m-d') !== $data_noticia
+) {
+    redirecionarNoticia('data');
 }
 
-
-/*
-|--------------------------------------------------------------------------
-| GARANTE STATUS VÁLIDO
-|--------------------------------------------------------------------------
-*/
-
-if (!in_array($status_noticia, ['Publicado', 'Rascunho'], true)) {
+if (!in_array($status_noticia, array('Publicado', 'Rascunho'), true)) {
     $status_noticia = 'Publicado';
 }
 
-
 /*
 |--------------------------------------------------------------------------
-| CONFIGURAÇÃO DA IMAGEM
+| SE FOR EDIÇÃO, BUSCA A NOTÍCIA ATUAL
 |--------------------------------------------------------------------------
 */
 
-$pasta_imagens = __DIR__ . '/midias/noticias/';
+$imagem_antiga = null;
 
-$nome_imagem = '';
+if ($id_noticia > 0) {
+    $sql_busca = "SELECT imagem_noticia
+                  FROM noticias
+                  WHERE id_noticia = ?";
 
-$imagem_enviada = false;
+    $stmt_busca = mysqli_prepare($conexao, $sql_busca);
 
-
-/*
-|--------------------------------------------------------------------------
-| VERIFICA SE FOI ENVIADA UMA IMAGEM
-|--------------------------------------------------------------------------
-*/
-
-if (
-    isset($_FILES['imagem_noticia']) &&
-    $_FILES['imagem_noticia']['error'] !== UPLOAD_ERR_NO_FILE
-) {
-
-    /*
-    | Verifica erro no upload
-    */
-
-    if ($_FILES['imagem_noticia']['error'] !== UPLOAD_ERR_OK) {
-
-        header('Location: form_noticias.php?erro=upload');
-        exit;
+    if (!$stmt_busca) {
+        redirecionarNoticia('banco');
     }
 
+    mysqli_stmt_bind_param($stmt_busca, 'i', $id_noticia);
 
-    /*
-    | Limite de 5 MB
-    */
-
-    $tamanho_maximo = 5 * 1024 * 1024;
-
-    if ($_FILES['imagem_noticia']['size'] > $tamanho_maximo) {
-
-        header('Location: form_noticias.php?erro=tamanho_imagem');
-        exit;
+    if (!mysqli_stmt_execute($stmt_busca)) {
+        mysqli_stmt_close($stmt_busca);
+        redirecionarNoticia('banco');
     }
 
-
-    /*
-    | Verifica se realmente é uma imagem
-    */
-
-    $informacoes_imagem = getimagesize(
-        $_FILES['imagem_noticia']['tmp_name']
-    );
-
-    if ($informacoes_imagem === false) {
-
-        header('Location: form_noticias.php?erro=imagem_invalida');
-        exit;
-    }
-
-
-    /*
-    | Extensões permitidas
-    */
-
-    $extensoes_permitidas = [
-        'jpg',
-        'jpeg',
-        'png',
-        'webp'
-    ];
-
-
-    $extensao = strtolower(
-        pathinfo(
-            $_FILES['imagem_noticia']['name'],
-            PATHINFO_EXTENSION
-        )
-    );
-
-
-    if (!in_array($extensao, $extensoes_permitidas, true)) {
-
-        header('Location: form_noticias.php?erro=extensao_imagem');
-        exit;
-    }
-
-
-    /*
-    | Cria a pasta caso não exista
-    */
-
-    if (!is_dir($pasta_imagens)) {
-
-        if (!mkdir($pasta_imagens, 0755, true)) {
-
-            header('Location: form_noticias.php?erro=pasta_imagem');
-            exit;
-        }
-    }
-
-
-    /*
-    | Nome único para a imagem
-    */
-
-    $nome_imagem =
-        'noticia_' .
-        uniqid() .
-        '.' .
-        $extensao;
-
-
-    /*
-    | Caminho completo
-    */
-
-    $caminho_imagem =
-        $pasta_imagens .
-        $nome_imagem;
-
-
-    /*
-    | Move a imagem
-    */
+    $resultado_busca = mysqli_stmt_get_result($stmt_busca);
 
     if (
-        !move_uploaded_file(
-            $_FILES['imagem_noticia']['tmp_name'],
-            $caminho_imagem
-        )
+        !$resultado_busca ||
+        mysqli_num_rows($resultado_busca) === 0
     ) {
-
-        header('Location: form_noticias.php?erro=salvar_imagem');
-        exit;
+        mysqli_stmt_close($stmt_busca);
+        redirecionarNoticia('noticia_nao_encontrada');
     }
 
+    $dados_antigos = mysqli_fetch_assoc($resultado_busca);
+    $imagem_antiga = $dados_antigos['imagem_noticia'];
 
-    $imagem_enviada = true;
+    mysqli_stmt_close($stmt_busca);
 }
-
 
 /*
 |--------------------------------------------------------------------------
-| CADASTRAR NOVA NOTÍCIA
+| ENVIA A IMAGEM PARA A PASTA UPLOADS
+|--------------------------------------------------------------------------
+|
+| A imagem é opcional.
+| Se não for enviada durante a edição, mantém a imagem atual.
+| A função compartilhada valida o arquivo e gera um nome exclusivo.
+|--------------------------------------------------------------------------
+*/
+
+$upload = uploadImagem('imagem_noticia', false);
+
+if ($upload['erro'] !== null) {
+    $erro = $upload['erro'];
+
+    if (strpos($erro, '5 MB') !== false) {
+        redirecionarNoticia('tamanho_imagem');
+    }
+
+    if (strpos($erro, 'Formato inválido') !== false) {
+        redirecionarNoticia('extensao_imagem');
+    }
+
+    if (strpos($erro, 'imagem válida') !== false) {
+        redirecionarNoticia('imagem_invalida');
+    }
+
+    redirecionarNoticia('upload');
+}
+
+$imagem_nova = $upload['nome'];
+
+if ($imagem_nova !== null) {
+    $imagem_salva = $imagem_nova;
+} else {
+    $imagem_salva = $imagem_antiga;
+}
+
+/*
+|--------------------------------------------------------------------------
+| CADASTRA UMA NOVA NOTÍCIA
 |--------------------------------------------------------------------------
 */
 
 if ($id_noticia === 0) {
 
+    $sql = "INSERT INTO noticias (
+                titulo_noticia,
+                resumo_noticia,
+                conteudo_noticia,
+                imagem_noticia,
+                data_noticia,
+                status_noticia
+            ) VALUES (?, ?, ?, ?, ?, ?)";
 
-    /*
-    | COM IMAGEM
-    */
+    $stmt = mysqli_prepare($conexao, $sql);
 
-    if ($imagem_enviada) {
-
-        $sql = "INSERT INTO noticias (
-                    titulo_noticia,
-                    resumo_noticia,
-                    conteudo_noticia,
-                    imagem_noticia,
-                    data_noticia,
-                    status_noticia
-                )
-                VALUES (?, ?, ?, ?, ?, ?)";
-
-
-        $stmt = mysqli_prepare(
-            $conexao,
-            $sql
-        );
-
-
-        if (!$stmt) {
-
-            if (
-                $imagem_enviada &&
-                file_exists($caminho_imagem)
-            ) {
-                unlink($caminho_imagem);
-            }
-
-            header('Location: form_noticias.php?erro=banco');
-            exit;
+    if (!$stmt) {
+        if ($imagem_nova !== null) {
+            removerArquivoNoticia($conexao, $imagem_nova);
         }
 
-
-        mysqli_stmt_bind_param(
-            $stmt,
-            "ssssss",
-            $titulo_noticia,
-            $resumo_noticia,
-            $conteudo_noticia,
-            $nome_imagem,
-            $data_noticia,
-            $status_noticia
-        );
-
+        redirecionarNoticia('banco');
     }
 
+    mysqli_stmt_bind_param(
+        $stmt,
+        'ssssss',
+        $titulo_noticia,
+        $resumo_noticia,
+        $conteudo_noticia,
+        $imagem_salva,
+        $data_noticia,
+        $status_noticia
+    );
 
-    /*
-    | SEM IMAGEM
-    */
+    $executou = mysqli_stmt_execute($stmt);
 
-    else {
+    mysqli_stmt_close($stmt);
 
-        $sql = "INSERT INTO noticias (
-                    titulo_noticia,
-                    resumo_noticia,
-                    conteudo_noticia,
-                    imagem_noticia,
-                    data_noticia,
-                    status_noticia
-                )
-                VALUES (?, ?, ?, NULL, ?, ?)";
-
-
-        $stmt = mysqli_prepare(
-            $conexao,
-            $sql
-        );
-
-
-        if (!$stmt) {
-
-            header('Location: form_noticias.php?erro=banco');
-            exit;
+    if (!$executou) {
+        if ($imagem_nova !== null) {
+            removerArquivoNoticia($conexao, $imagem_nova);
         }
 
-
-        mysqli_stmt_bind_param(
-            $stmt,
-            "sssss",
-            $titulo_noticia,
-            $resumo_noticia,
-            $conteudo_noticia,
-            $data_noticia,
-            $status_noticia
-        );
+        redirecionarNoticia('salvar');
     }
 
-
-    /*
-    | EXECUTA INSERT
-    */
-
-    if (mysqli_stmt_execute($stmt)) {
-
-        mysqli_stmt_close($stmt);
-
-        header(
-            'Location: form_noticias.php?sucesso=cadastrada'
-        );
-
-        exit;
-    }
-
-
-    /*
-    | ERRO NO INSERT
-    */
-
-    else {
-
-        if (
-            $imagem_enviada &&
-            file_exists($caminho_imagem)
-        ) {
-            unlink($caminho_imagem);
-        }
-
-
-        mysqli_stmt_close($stmt);
-
-        header(
-            'Location: form_noticias.php?erro=salvar'
-        );
-
-        exit;
-    }
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| ATUALIZAR NOTÍCIA
-|--------------------------------------------------------------------------
-*/
-
-
-/*
-| Busca a imagem atual
-*/
-
-$sql_busca = "SELECT imagem_noticia
-              FROM noticias
-              WHERE id_noticia = ?";
-
-
-$stmt_busca = mysqli_prepare(
-    $conexao,
-    $sql_busca
-);
-
-
-if (!$stmt_busca) {
-
-    if (
-        $imagem_enviada &&
-        file_exists($caminho_imagem)
-    ) {
-        unlink($caminho_imagem);
-    }
-
-    header('Location: form_noticias.php?erro=banco');
+    header('Location: form_noticias.php?sucesso=cadastrada');
     exit;
 }
 
+/*
+|--------------------------------------------------------------------------
+| ATUALIZA A NOTÍCIA EXISTENTE
+|--------------------------------------------------------------------------
+*/
+
+$sql = "UPDATE noticias
+        SET titulo_noticia = ?,
+            resumo_noticia = ?,
+            conteudo_noticia = ?,
+            imagem_noticia = ?,
+            data_noticia = ?,
+            status_noticia = ?
+        WHERE id_noticia = ?";
+
+$stmt = mysqli_prepare($conexao, $sql);
+
+if (!$stmt) {
+    if ($imagem_nova !== null) {
+        removerArquivoNoticia($conexao, $imagem_nova);
+    }
+
+    redirecionarNoticia('banco');
+}
 
 mysqli_stmt_bind_param(
-    $stmt_busca,
-    "i",
+    $stmt,
+    'ssssssi',
+    $titulo_noticia,
+    $resumo_noticia,
+    $conteudo_noticia,
+    $imagem_salva,
+    $data_noticia,
+    $status_noticia,
     $id_noticia
 );
 
+$executou = mysqli_stmt_execute($stmt);
 
-mysqli_stmt_execute($stmt_busca);
+mysqli_stmt_close($stmt);
 
-
-$resultado = mysqli_stmt_get_result($stmt_busca);
-
-
-/*
-| Verifica se existe
-*/
-
-if (mysqli_num_rows($resultado) === 0) {
-
-    mysqli_stmt_close($stmt_busca);
-
-
-    if (
-        $imagem_enviada &&
-        file_exists($caminho_imagem)
-    ) {
-        unlink($caminho_imagem);
+if (!$executou) {
+    if ($imagem_nova !== null) {
+        removerArquivoNoticia($conexao, $imagem_nova);
     }
 
-
-    header(
-        'Location: form_noticias.php?erro=noticia_nao_encontrada'
-    );
-
-    exit;
+    redirecionarNoticia('atualizar');
 }
-
-
-$dados_noticia = mysqli_fetch_assoc($resultado);
-
-$imagem_antiga = $dados_noticia['imagem_noticia'];
-
-
-mysqli_stmt_close($stmt_busca);
-
 
 /*
 |--------------------------------------------------------------------------
-| UPDATE COM IMAGEM NOVA
+| REMOVE A IMAGEM ANTIGA APÓS A ATUALIZAÇÃO
 |--------------------------------------------------------------------------
 */
 
-if ($imagem_enviada) {
-
-    $sql = "UPDATE noticias
-            SET
-                titulo_noticia = ?,
-                resumo_noticia = ?,
-                conteudo_noticia = ?,
-                imagem_noticia = ?,
-                data_noticia = ?,
-                status_noticia = ?
-            WHERE id_noticia = ?";
-
-
-    $stmt = mysqli_prepare(
-        $conexao,
-        $sql
-    );
-
-
-    if (!$stmt) {
-
-        if (file_exists($caminho_imagem)) {
-            unlink($caminho_imagem);
-        }
-
-        header('Location: form_noticias.php?erro=banco');
-        exit;
-    }
-
-
-    mysqli_stmt_bind_param(
-        $stmt,
-        "ssssssi",
-        $titulo_noticia,
-        $resumo_noticia,
-        $conteudo_noticia,
-        $nome_imagem,
-        $data_noticia,
-        $status_noticia,
-        $id_noticia
-    );
+if (
+    $imagem_nova !== null &&
+    !empty($imagem_antiga) &&
+    $imagem_antiga !== $imagem_nova
+) {
+    removerArquivoNoticia($conexao, $imagem_antiga);
 }
-
 
 /*
 |--------------------------------------------------------------------------
-| UPDATE SEM ALTERAR IMAGEM
+| REDIRECIONA APÓS ATUALIZAÇÃO
 |--------------------------------------------------------------------------
 */
 
-else {
+header('Location: form_noticias.php?sucesso=atualizada');
+exit;
 
-    $sql = "UPDATE noticias
-            SET
-                titulo_noticia = ?,
-                resumo_noticia = ?,
-                conteudo_noticia = ?,
-                data_noticia = ?,
-                status_noticia = ?
-            WHERE id_noticia = ?";
-
-
-    $stmt = mysqli_prepare(
-        $conexao,
-        $sql
-    );
-
-
-    if (!$stmt) {
-
-        header('Location: form_noticias.php?erro=banco');
-        exit;
-    }
-
-
-    mysqli_stmt_bind_param(
-        $stmt,
-        "sssssi",
-        $titulo_noticia,
-        $resumo_noticia,
-        $conteudo_noticia,
-        $data_noticia,
-        $status_noticia,
-        $id_noticia
-    );
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| EXECUTA UPDATE
-|--------------------------------------------------------------------------
-*/
-
-if (mysqli_stmt_execute($stmt)) {
-
-    mysqli_stmt_close($stmt);
-
-
-    /*
-    | Se existe uma imagem nova,
-    | exclui a imagem antiga.
-    */
-
-    if (
-        $imagem_enviada &&
-        !empty($imagem_antiga)
-    ) {
-
-        $arquivo_antigo =
-            $pasta_imagens .
-            $imagem_antiga;
-
-
-        if (file_exists($arquivo_antigo)) {
-            unlink($arquivo_antigo);
-        }
-    }
-
-
-    header(
-        'Location: form_noticias.php?sucesso=atualizada'
-    );
-
-    exit;
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| ERRO NO UPDATE
-|--------------------------------------------------------------------------
-*/
-
-else {
-
-    /*
-    | Remove imagem nova caso tenha dado erro.
-    */
-
-    if (
-        $imagem_enviada &&
-        file_exists($caminho_imagem)
-    ) {
-        unlink($caminho_imagem);
-    }
-
-
-    mysqli_stmt_close($stmt);
-
-
-    header(
-        'Location: form_noticias.php?erro=atualizar'
-    );
-
-    exit;
-}
+?>
