@@ -703,4 +703,3 @@ function limitarTextoHome($texto, $limite = 120)
 
 </body>
 </html>
-```

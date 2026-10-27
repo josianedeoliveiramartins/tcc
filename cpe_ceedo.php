@@ -292,7 +292,7 @@ main section.bg-light,
             <div class="card cpe-integrante shadow-sm">
 
               <img
-                src="/tcc/midias/integrantesCPE/beto.1.jpg"
+                src="./midias/integrantesCPE/beto.1.jpg"
                 alt="Foto de Alberto Moi"
                 class="foto-integrante"
               >
@@ -326,7 +326,7 @@ main section.bg-light,
             <div class="card cpe-integrante shadow-sm">
 
               <img
-                src="/tcc/midias/integrantesCPE/rebeka.2.jpg"
+                src="./midias/integrantesCPE/rebeka.2.jpg"
                 alt="Foto do integrante 2"
                 class="foto-integrante"
               >
@@ -359,7 +359,7 @@ main section.bg-light,
             <div class="card cpe-integrante shadow-sm">
 
               <img
-                src="/tcc/midias/integrantesCPE/isaias.3.jpg"
+                src="./midias/integrantesCPE/isaias.3.jpg"
                 alt="Foto do integrante 3"
                 class="foto-integrante"
               >
@@ -392,7 +392,7 @@ main section.bg-light,
             <div class="card cpe-integrante shadow-sm">
 
               <img
-                src="/tcc/midias/integrantesCPE/jamili.4.jpg"
+                src="./midias/integrantesCPE/jamili.4.jpg"
                 alt="Foto do integrante 4"
                 class="foto-integrante"
               >
@@ -425,7 +425,7 @@ main section.bg-light,
             <div class="card cpe-integrante shadow-sm">
 
               <img
-                src="/tcc/midias/integrantesCPE/valentine.5.jpg"
+                src="./midias/integrantesCPE/valentine.5.jpg"
                 alt="Foto do integrante 5"
                 class="foto-integrante"
               >
@@ -458,7 +458,7 @@ main section.bg-light,
             <div class="card cpe-integrante shadow-sm">
 
               <img
-                src="/tcc/midias/integrantesCPE/joao.6.jpg"
+                src="./midias/integrantesCPE/joao.6.jpg"
                 alt="Foto do integrante 6"
                 class="foto-integrante"
               >
@@ -491,7 +491,7 @@ main section.bg-light,
             <div class="card cpe-integrante shadow-sm">
 
               <img
-                src="/tcc/midias/integrantesCPE/micheli.7.jpg"
+                src="./midias/integrantesCPE/micheli.7.jpg"
                 alt="Foto do integrante 7"
                 class="foto-integrante"
               >
@@ -524,7 +524,7 @@ main section.bg-light,
             <div class="card cpe-integrante shadow-sm">
 
               <img
-                src="/tcc/midias/integrantesCPE/bernardo.8.jpg"
+                src="./midias/integrantesCPE/bernardo.8.jpg"
                 alt="Foto do integrante 8"
                 class="foto-integrante"
               >
@@ -557,7 +557,7 @@ main section.bg-light,
             <div class="card cpe-integrante shadow-sm">
 
               <img
-                src="/tcc/midias/integrantesCPE/amanda.9.jpg"
+                src="./midias/integrantesCPE/amanda.9.jpg"
                 alt="Foto do integrante 9"
                 class="foto-integrante"
               >

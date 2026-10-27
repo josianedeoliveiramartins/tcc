@@ -26,7 +26,7 @@
 
 
         <!-- Configurações -->
-        <li class="nav-item"><a class="nav-link" href="#">Config</a></li>
+        <li class="nav-item"><a class="nav-link" href="operadores.php">Config</a></li>
 
       </ul>
 
