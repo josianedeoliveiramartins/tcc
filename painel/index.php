@@ -288,15 +288,15 @@ $total_colonias = (int) $dados_colonias['total'];
 
     <div class="acessos-rapidos">
 
-        <a href="/tcc/painel/form_noticias.php" class="botao-acesso">
+        <a href="../painel/form_noticias.php" class="botao-acesso">
             Notícias
         </a>
 
-        <a href="/tcc/painel/listar_caixas.php" class="botao-acesso">
+        <a href="../painel/listar_caixas.php" class="botao-acesso">
             Padrões de Caixa
         </a>
 
-        <a href="/tcc/painel/listar_colonias.php" class="botao-acesso">
+        <a href="../painel/listar_colonias.php" class="botao-acesso">
             Colônias
         </a>
 

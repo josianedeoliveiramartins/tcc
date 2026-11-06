@@ -35,10 +35,6 @@ $totalCaixas   = mysqli_fetch_assoc(mysqli_query($conexao, "SELECT COUNT(*) AS t
                 <input type="file" name="foto" id="foto" class="form-control" accept="image/*" required>
             </div>
             <div class="mb-3">
-                <label for="banner" class="form-label">Banner (Opcional)</label>
-                <input type="file" name="banner" id="banner" class="form-control" accept="image/*">
-            </div>
-            <div class="mb-3">
                 <label for="nomeColonia" class="form-label">Nome da Colônia</label>
                 <input type="text" name="nomeColonia" id="nomeColonia" class="form-control" required>
             </div>

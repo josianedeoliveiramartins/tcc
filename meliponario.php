@@ -614,7 +614,7 @@
                     <div class="col-12 col-lg-7">
 
                         <a
-                            href="catalogo_colonias.php"
+                            href="./catalogo_colonias.php"
                             class="meliponario-catalogo-link"
                         >
 
@@ -650,7 +650,7 @@
                     <div class="col-12 col-lg-5">
 
                         <a
-                            href="padroes_caixas.php"
+                            href="./padroes_caixas.php"
                             class="meliponario-caixas-link"
                         >
 

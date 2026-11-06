@@ -25,11 +25,8 @@
         body {
             margin: 0;
             padding: 0;
-
             background-color: #ffffff;
-
             color: #000000;
-
             font-family: Georgia, "Times New Roman", serif;
         }
 
@@ -40,9 +37,7 @@
 
         .caminho-capa {
             position: relative;
-
             width: 100%;
-
             height: 480px;
 
             background-image:
@@ -53,37 +48,27 @@
                 url("midias/caminho_das_palmeiras/capa.jpg");
 
             background-size: cover;
-
             background-position: center;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             text-align: center;
         }
 
 
         .caminho-capa-conteudo {
             width: 90%;
-
             max-width: 1100px;
-
             color: #ffffff;
         }
 
 
         .caminho-capa h1 {
             margin: 0 0 18px;
-
             font-family: Georgia, "Times New Roman", serif;
-
             font-size: 48px;
-
             line-height: 1.2;
-
             font-weight: 700;
 
             text-shadow:
@@ -93,11 +78,8 @@
 
         .caminho-capa h2 {
             margin: 0;
-
             font-family: Georgia, "Times New Roman", serif;
-
             font-size: 28px;
-
             font-weight: 400;
 
             text-shadow:
@@ -111,13 +93,9 @@
 
         .caminho-linha {
             width: 90%;
-
             max-width: 1430px;
-
             height: 2px;
-
             margin: 0 auto;
-
             background-color: #e7bb24;
         }
 
@@ -128,22 +106,16 @@
 
         .caminho-container {
             width: 90%;
-
             max-width: 1430px;
-
             margin: 0 auto;
-
             padding: 45px 0 65px;
         }
 
 
         .caminho-texto {
             text-align: justify;
-
             font-size: 18px;
-
             line-height: 1.45;
-
             color: #222222;
         }
 
@@ -159,76 +131,170 @@
 
 
         /* =====================================================
-           BOTÃO VISUALIZAR MÍDIAS
+           CARROSSEL DE FOTOS
         ====================================================== */
 
         .caminho-midias {
             margin-top: 45px;
-
             padding-top: 30px;
-
             border-top: 2px solid #e7bb24;
-
             text-align: center;
         }
 
 
         .caminho-midias p {
-            margin: 0 0 20px;
-
+            margin: 0 0 25px;
             font-family: Arial, Helvetica, sans-serif;
-
             font-size: 20px;
-
             color: #000000;
         }
 
 
-        .botao-midias {
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
+        .caminho-carrossel {
+            position: relative;
             width: 100%;
+            max-width: 1320px;
+            margin: 0 auto;
 
-            min-height: 50px;
+            background-color: #ffffff;
+            border: 1px solid rgba(231, 187, 36, 0.45);
+            border-radius: 15px;
+            overflow: hidden;
 
-            padding: 13px 20px;
-
-            background-color: #234d20;
-
-            color: #ffffff;
-
-            border-radius: 5px;
-
-            text-decoration: none;
-
-            font-family: Arial, Helvetica, sans-serif;
-
-            font-size: 16px;
-
-            font-weight: 700;
-
-            transition:
-                background-color 0.25s ease,
-                transform 0.2s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
         }
 
 
-        .botao-midias:hover {
-            background-color: #193a17;
+        .caminho-carrossel .carousel-inner {
+            width: 100%;
+            background-color: #f5f5f0;
+        }
 
-            color: #ffffff;
 
-            transform: translateY(-2px);
+        .caminho-carrossel .carousel-item {
+            width: 100%;
+            height: 550px;
+            background-color: #f5f5f0;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .caminho-carrossel .carousel-item.active {
+            display: flex;
+        }
+
+
+        .caminho-carrossel .carousel-item img {
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            max-width: 100%;
+            max-height: 100%;
+
+            object-fit: contain;
+            object-position: center;
+
+            margin: 0 auto;
+            background-color: #f5f5f0;
+        }
+
+
+        /* BOTÕES DE NAVEGAÇÃO */
+
+        .caminho-carrossel .carousel-control-prev,
+        .caminho-carrossel .carousel-control-next {
+            width: 55px;
+            height: 55px;
+
+            top: 50%;
+            transform: translateY(-50%);
+
+            opacity: 1;
+            background-color: rgba(51, 51, 51, 0.70);
+            border-radius: 50%;
+
+            transition:
+                background-color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+
+        .caminho-carrossel .carousel-control-prev {
+            left: 20px;
+        }
+
+
+        .caminho-carrossel .carousel-control-next {
+            right: 20px;
+        }
+
+
+        .caminho-carrossel .carousel-control-prev:hover,
+        .caminho-carrossel .carousel-control-next:hover {
+            background-color: #e7bb24;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+
+        .caminho-carrossel .carousel-control-prev-icon,
+        .caminho-carrossel .carousel-control-next-icon {
+            width: 24px;
+            height: 24px;
+            background-size: 100%;
+        }
+
+
+        /* ESPAÇOS DAS FOTOS */
+
+        .caminho-foto-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+            height: 100%;
+            min-height: 280px;
+
+            padding: 25px;
+
+            color: #555555;
+            background-color: #f5f5f0;
+
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+
+        .caminho-foto-placeholder strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #333333;
+            font-size: 25px;
+        }
+
+
+        .caminho-foto-placeholder span {
+            font-size: 15px;
         }
 
 
         /* =====================================================
            RESPONSIVO
         ====================================================== */
+
+        @media (max-width: 992px) {
+
+            .caminho-carrossel .carousel-item {
+                height: 450px;
+            }
+
+        }
+
 
         @media (max-width: 700px) {
 
@@ -249,20 +315,61 @@
 
             .caminho-container {
                 width: 90%;
-
                 padding: 35px 0 50px;
             }
 
 
             .caminho-texto {
                 font-size: 16px;
-
                 text-align: left;
             }
 
 
             .caminho-midias p {
                 font-size: 18px;
+            }
+
+
+            .caminho-carrossel {
+                border-radius: 10px;
+            }
+
+
+            .caminho-carrossel .carousel-item {
+                height: 350px;
+            }
+
+
+            .caminho-carrossel .carousel-control-prev,
+            .caminho-carrossel .carousel-control-next {
+                width: 42px;
+                height: 42px;
+            }
+
+
+            .caminho-carrossel .carousel-control-prev {
+                left: 10px;
+            }
+
+
+            .caminho-carrossel .carousel-control-next {
+                right: 10px;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .caminho-carrossel .carousel-item {
+                height: 280px;
+            }
+
+
+            .caminho-carrossel .carousel-control-prev,
+            .caminho-carrossel .carousel-control-next {
+                width: 38px;
+                height: 38px;
             }
 
         }
@@ -345,8 +452,8 @@
                 <p>
                     Os objetivos do projeto são variados, incluindo a
                     conscientização da comunidade sobre a importância da
-                    ecologia e do turismo sustentável, além de incentivar o
-                    cultivo de palmeiras como forma de embelezar o ambiente.
+                    ecologia e do turismo sustentável, além de incentivar
+                    o cultivo de palmeiras como forma de embelezar o ambiente.
                     O projeto também busca refletir sobre as relações entre
                     a população e a natureza, promovendo a responsabilidade
                     coletiva e a integração das atividades pedagógicas com a
@@ -373,22 +480,127 @@
 
 
                 <!-- =================================================
-                     BOTÃO VISUALIZAR MÍDIAS
+                     CARROSSEL COM 6 FOTOS
                 ================================================== -->
 
                 <div class="caminho-midias">
 
                     <p>
-                        Clique aqui para visualizar fotos e vídeos do projeto.
+                        Confira as fotos do projeto.
                     </p>
 
 
-                    <a
-                        href="midias_caminho_das_palmeiras.php"
-                        class="botao-midias"
+                    <?php
+
+                    $diretorioMidias = 'midias/caminho_das_palmeiras/';
+
+                    // Coloque as imagens nesta pasta com estes nomes:
+                    // palmeira1.jpg, palmeira2.jpg, ... palmeira6.jpg.
+
+                    $fotosProjeto = array();
+
+                    for ($numeroFoto = 1; $numeroFoto <= 6; $numeroFoto++) {
+
+                        $fotosProjeto[] = array(
+                            'titulo' => 'Palmeira ' . $numeroFoto,
+                            'arquivo' => $diretorioMidias . 'palmeira' . $numeroFoto . '.jpg'
+                        );
+
+                    }
+
+                    ?>
+
+
+                    <div
+                        id="carrosselCaminhoPalmeiras"
+                        class="carousel slide caminho-carrossel"
+                        data-bs-ride="false"
+                        data-bs-interval="false"
                     >
-                        Visualizar mídias →
-                    </a>
+
+                        <div class="carousel-inner">
+
+                            <?php foreach ($fotosProjeto as $indice => $foto): ?>
+
+                                <div class="carousel-item <?php echo ($indice === 0) ? 'active' : ''; ?>">
+
+                                    <?php if (file_exists($foto['arquivo'])): ?>
+
+                                        <img
+                                            src="<?php echo htmlspecialchars($foto['arquivo'], ENT_QUOTES, 'UTF-8'); ?>"
+                                            alt="<?php echo htmlspecialchars($foto['titulo'], ENT_QUOTES, 'UTF-8'); ?> - Projeto Caminho das Palmeiras"
+                                            loading="<?php echo ($indice === 0) ? 'eager' : 'lazy'; ?>"
+                                            decoding="async"
+                                        >
+
+                                    <?php else: ?>
+
+                                        <div class="caminho-foto-placeholder">
+
+                                            <strong>
+                                                <?php echo htmlspecialchars($foto['titulo'], ENT_QUOTES, 'UTF-8'); ?>
+                                            </strong>
+
+                                            <span>
+                                                Adicione a foto <?php echo $indice + 1; ?>
+                                                com o nome palmeira<?php echo $indice + 1; ?>.jpg
+                                            </span>
+
+                                        </div>
+
+                                    <?php endif; ?>
+
+                                </div>
+
+                            <?php endforeach; ?>
+
+                        </div>
+
+
+                        <!-- BOTÃO FOTO ANTERIOR -->
+
+                        <button
+                            class="carousel-control-prev"
+                            type="button"
+                            data-bs-target="#carrosselCaminhoPalmeiras"
+                            data-bs-slide="prev"
+                            aria-label="Foto anterior"
+                        >
+
+                            <span
+                                class="carousel-control-prev-icon"
+                                aria-hidden="true"
+                            ></span>
+
+                            <span class="visually-hidden">
+                                Anterior
+                            </span>
+
+                        </button>
+
+
+                        <!-- BOTÃO PRÓXIMA FOTO -->
+
+                        <button
+                            class="carousel-control-next"
+                            type="button"
+                            data-bs-target="#carrosselCaminhoPalmeiras"
+                            data-bs-slide="next"
+                            aria-label="Próxima foto"
+                        >
+
+                            <span
+                                class="carousel-control-next-icon"
+                                aria-hidden="true"
+                            ></span>
+
+                            <span class="visually-hidden">
+                                Próxima
+                            </span>
+
+                        </button>
+
+                    </div>
 
                 </div>
 
@@ -403,7 +615,7 @@
 
     <!-- =====================================================
          FOOTER
-    ===================================================== -->
+    ====================================================== -->
 
     <?php include 'includes_site/footer.php'; ?>
 

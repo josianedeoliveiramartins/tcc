@@ -232,7 +232,7 @@ foreach ($possiveis_imagens as $possivel) {
 
 
                                         <img
-                                            src="/tcc/<?php echo htmlspecialchars($caixa[$campo_imagem]); ?>"
+                                            src="./painel/uploads/<?php echo rawurlencode(basename($caixa[$campo_imagem])); ?>"
                                             alt="Padrão de caixa"
                                             class="imagem-caixa"
                                         >
