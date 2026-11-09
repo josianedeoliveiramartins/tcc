@@ -518,44 +518,200 @@
                         data-bs-interval="false"
                     >
 
-                        <div class="carousel-inner">
+                       <section class="caminhodaspalmeiras-section">
 
-                            <?php foreach ($fotosProjeto as $indice => $foto): ?>
+            <div class="container">
 
-                                <div class="carousel-item <?php echo ($indice === 0) ? 'active' : ''; ?>">
+                <h2 class="text-center mb-5">
+                    Caminho da Palmeiras
+                </h2>
 
-                                    <?php if (file_exists($foto['arquivo'])): ?>
 
-                                        <img
-                                            src="<?php echo htmlspecialchars($foto['arquivo'], ENT_QUOTES, 'UTF-8'); ?>"
-                                            alt="<?php echo htmlspecialchars($foto['titulo'], ENT_QUOTES, 'UTF-8'); ?> - Projeto Caminho das Palmeiras"
-                                            loading="<?php echo ($indice === 0) ? 'eager' : 'lazy'; ?>"
-                                            decoding="async"
-                                        >
+                <div
+                    id="carrosselMeliponario"
+                    class="carousel slide meliponario-carrossel"
+                    data-bs-ride="false"
+                    data-bs-interval="false"
+                >
 
-                                    <?php else: ?>
+                    <div class="carousel-inner">
 
-                                        <div class="caminho-foto-placeholder">
 
-                                            <strong>
-                                                <?php echo htmlspecialchars($foto['titulo'], ENT_QUOTES, 'UTF-8'); ?>
-                                            </strong>
+                        <!-- FOTO 1 -->
 
-                                            <span>
-                                                Adicione a foto <?php echo $indice + 1; ?>
-                                                com o nome palmeira<?php echo $indice + 1; ?>.jpg
-                                            </span>
+                        <div class="carousel-item active">
 
-                                        </div>
-
-                                    <?php endif; ?>
-
-                                </div>
-
-                            <?php endforeach; ?>
+                            <img
+                                src=".\midias\palmeira1.jpg"
+                                class="d-block w-100"
+                                alt="Caixa de abelhas sem ferrão do Meliponário CEEDO - Foto 1"
+                                loading="eager"
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
 
                         </div>
 
+
+
+                        <!-- FOTO 2 -->
+
+                        <div class="carousel-item"> 
+
+                            <img
+                                src=".\midias\palmeira2.jpg"
+                                alt="Meliponário CEEDO - Foto 2"
+                                loading="lazy"
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
+
+                        </div>
+
+
+                        <!-- FOTO 3 -->
+
+                        <div class="carousel-item">
+
+                            <img
+                                 src=".\midias\palmeira3.jpg"
+                                alt="Meliponário CEEDO - Foto 3"
+                                loading="lazy"
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
+
+                        </div>
+
+
+                        <!-- FOTO 4 -->
+
+                        <div class="carousel-item">
+ 
+                            <img
+                                src=".\midias\palmeira4.jpg"
+                                class="d-block w-100"
+                                alt="Meliponário CEEDO - Foto 4"
+                                loading="lazy"
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
+
+                        </div>
+
+
+                        <!-- FOTO 5 -->
+
+                        <div class="carousel-item">
+
+                            <img
+                                src=".\midias\palmeira5.jpg"
+                                class="d-block w-100"
+                                alt="Meliponário CEEDO - Foto 5"
+                                loading="lazy" 
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
+
+                        </div>
+
+                        <!-- FOTO 6-->
+
+                        <div class="carousel-item">
+
+                            <img
+                                src=".\midias\palmeira6.jpg"
+                                class="d-block w-100"
+                                alt="Meliponário CEEDO - Foto 6"
+                                loading="lazy"
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
+
+                        </div>
+
+                        <!-- FOTO 7-->
+                        
+                        <div class="carousel-item">
+ 
+                            <img
+                                src=".\midias\palmeira7.jpg"
+                                class="d-block w-100"
+                                alt="Meliponário CEEDO - Foto 4"
+                                loading="lazy"
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
+
+                        </div>
+
+                        <!-- FOTO 8-->
+                        
+                        <div class="carousel-item">
+ 
+                            <img
+                                src=".\midias\palmeira8.jpg"
+                                class="d-block w-100"
+                                alt="Meliponário CEEDO - Foto 4"
+                                loading="lazy"
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
+
+                        </div>
+
+                        <!-- FOTO 9-->
+                        
+                        <div class="carousel-item">
+ 
+                            <img
+                                src=".\midias\palmeira9.jpg"
+                                class="d-block w-100"
+                                alt="Meliponário CEEDO - Foto 4"
+                                loading="lazy"
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
+
+                        </div>
+
+                        <!-- FOTO 10-->
+
+                        <div class="carousel-item">
+ 
+                            <img
+                                src=".\midias\palmeira10.jpg"
+                                class="d-block w-100"
+                                alt="Meliponário CEEDO - Foto 4"
+                                loading="lazy"
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
+
+                        </div>
+                    </div>
+
+
+                    <!-- CONTROLE ANTERIOR -->
+
+                    <button
+                        class="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#carrosselMeliponario"
+                        data-bs-slide="prev"
+                        aria-label="Foto anterior"
+                    >
+
+                        <span
+                            class="carousel-control-prev-icon"
+                            aria-hidden="true"
+                        ></span>
+
+                        <span class="visually-hidden">
+                            Anterior
+                        </span>
+
+                    </button>
 
                         <!-- BOTÃO FOTO ANTERIOR -->
 

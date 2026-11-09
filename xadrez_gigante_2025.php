@@ -214,27 +214,29 @@ include('includes_site/header.php');
 
         </div>
 
+        
+            <!-- FOTOS -->
+            <div class="galeria-xadrez">
 
-        <!-- FOTOS -->
-        <div class="galeria-xadrez">
+                <!-- PRIMEIRA FOTO -->
+                <img
+                    src="midias/xadrez2025.jpg"
+                    alt="Projeto Xadrez Gigante 2025"
+                >
 
-            <div class="espaco-foto">
-                Espaço para foto 1
+                <!-- ESPAÇOS PARA AS PRÓXIMAS FOTOS -->
+                <img
+                    src="midias/xadrez20251.jpg"
+                    alt="Projeto Xadrez Gigante 2025"
+                >
+                
+                <img
+                    src="midias/xadrez20252.jpg"
+                    alt="Projeto Xadrez Gigante 2025"
+                >
+
             </div>
 
-            <div class="espaco-foto">
-                Espaço para foto 2
-            </div>
-
-            <div class="espaco-foto">
-                Espaço para foto 3
-            </div>
-
-            <div class="espaco-foto">
-                Espaço para foto 4
-            </div>
-
-        </div>
 
     </div>
 
