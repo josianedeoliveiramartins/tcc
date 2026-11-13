@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20-Out-2026 às 18:26
+-- Tempo de geração: 13-Nov-2026 às 13:50
 -- Versão do servidor: 10.4.6-MariaDB
 -- versão do PHP: 7.2.22
 
@@ -43,7 +43,8 @@ CREATE TABLE `caixas` (
 --
 
 INSERT INTO `caixas` (`id`, `imagem`, `dimensoes`, `altura_modulo`, `angulo_corte`, `especies_recomendadas`, `descricao`) VALUES
-(1, 'uploads/caixa1.png', '30X20', 15, 45, 'Jataí, Mandaçaia', 'Ideal para espécies....');
+(1, 'uploads/caixa1.png', '30X20', 15, 45, 'Jataí, Mandaçaia', 'Ideal para espécies....'),
+(2, 'uploads/caixa1.png', '40X20', 49, 29, 'Mirim', NULL);
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,8 @@ CREATE TABLE `colonias` (
 INSERT INTO `colonias` (`id`, `nome`, `especie`, `procedencia`, `data_aquisicao`, `localizacao`, `descricao`, `foto`, `banner`) VALUES
 (1, 'Jataí', 'Tetragonisca angustula', 'Doação de Clair Suptiz', '0000-00-00', 'Meliponário CEEDO', 'Essa espécie de abelha sem ferrão é encontrada em diversas regiões do Brasil, sendo bem adaptada a diferentes ambientes naturais. Seu corpo apresenta coloração que varia do amarelo-claro ao marrom, com tamanho entre 8 e 10 milímetros. Constrói seus ninhos principalmente em ocos de árvores, onde desenvolve uma colmeia de estrutura compacta e bem organizada. Essas características tornam a espécie interessante tanto para estudos ambientais quanto para práticas de meliponicultura sustentável.', 'uploads/jatai1.jpg', 'uploads/bannerjatai1.jpg'),
 (2, 'Jataí', 'Tetragonisca angustula', 'Captura', '2026-09-17', 'Meliponário CEEDO', '', 'uploads/jatai1.jpg', ''),
-(3, 'Jataí2', 'Tetragonisca angustula', 'Captura', '2026-10-30', 'Meliponário CEEDO', '', '57ce157a67046b02ce292fa529d0e175.jpg', NULL);
+(3, 'Jataí2', 'Tetragonisca angustula', 'Captura', '2026-10-30', 'Meliponário CEEDO', '', '57ce157a67046b02ce292fa529d0e175.jpg', NULL),
+(4, 'Mirim', 'Tetragonisca angustula', 'Doado por jao', '2026-12-04', 'Meliponário CEEDO', '', '3b107e9e9f669d7bffa43e3e9874fda7.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -118,8 +120,8 @@ CREATE TABLE `noticias` (
 --
 
 INSERT INTO `noticias` (`id_noticia`, `titulo_noticia`, `resumo_noticia`, `conteudo_noticia`, `imagem_noticia`, `data_noticia`, `status_noticia`, `dt_cad_noticia`) VALUES
-(1, 'Notícia teste 01', 'Lorem  Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum', 'Lorem  Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem  Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum Lorem  Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem  Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem  Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem  Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum', 'noticia_6ac546304ec1f.jpg', '2026-10-06', 'Publicado', '2026-10-06 19:04:16'),
-(2, 'Notícia teste 06', 'Lorem  Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem  Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum', 'Lorem  Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem  Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem  Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem  Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum', NULL, '2026-10-06', 'Publicado', '2026-10-06 19:05:36');
+(5, 'Notícia teste 06', 'lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum', 'lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum', '1fc2a5372a07401246c07ac30a973bd7.png', '2026-10-21', 'Publicado', '2026-10-21 14:12:51'),
+(6, 'Notícia teste 01', 'lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum', 'lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum', '4d3a5c65d84980e043bb3f6127d693a7.jpg', '2026-10-21', 'Publicado', '2026-10-21 14:13:47');
 
 -- --------------------------------------------------------
 
@@ -139,7 +141,6 @@ CREATE TABLE `operadores` (
 --
 
 INSERT INTO `operadores` (`id`, `nome_operador`, `email_operador`, `senha_operador`) VALUES
-(1, 'Suélen', 'suelendalexandre79@gmail.com\r\n', 'suelen123'),
 (2, 'josiane', 'josianedeoliveiramartins33@gmail.com', '$2y$10$xrSTgEsBc02iP5xjNZIlguS7NWMNhTWOojxKVg/cb0xWHQrZ9UDx6');
 
 -- --------------------------------------------------------
@@ -205,13 +206,13 @@ ALTER TABLE `projetos`
 -- AUTO_INCREMENT de tabela `caixas`
 --
 ALTER TABLE `caixas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `colonias`
 --
 ALTER TABLE `colonias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `cpe_links`
@@ -223,13 +224,13 @@ ALTER TABLE `cpe_links`
 -- AUTO_INCREMENT de tabela `noticias`
 --
 ALTER TABLE `noticias`
-  MODIFY `id_noticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_noticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `operadores`
 --
 ALTER TABLE `operadores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `projetos`
