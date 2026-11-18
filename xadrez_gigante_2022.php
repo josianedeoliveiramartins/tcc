@@ -453,5 +453,11 @@ include('includes_site/header.php');
 
     </section>
 
-
 </main>
+
+<!--------------- FOOTER ---------------->
+<?php include 'includes_site/footer.php'; ?>
+<!-------------------------------------->
+
+</body>
+</html>

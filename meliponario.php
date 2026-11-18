@@ -444,7 +444,7 @@
                         <div class="carousel-item active">
 
                             <img
-                                src=".\midias\img1.mel.png"
+                                src=".\midias\img2.png"
                                 class="d-block w-100"
                                 alt="Caixa de abelhas sem ferrão do Meliponário CEEDO - Foto 1"
                                 loading="eager"
@@ -458,11 +458,11 @@
 
                         <!-- FOTO 2 -->
 
-                        <div class="carousel-item"> 
+                        <div class="carousel-item active"> 
 
                             <img
-                                src=".\midias\img2.mel.png"
-                                alt="Meliponário CEEDO - Foto 2"
+                                src=".\midias\img3.png"
+                                alt="Caixa de abelhas sem ferrão do Meliponário CEEDO  - Foto 2"
                                 loading="lazy"
                                 decoding="async"
                                 referrerpolicy="no-referrer"
