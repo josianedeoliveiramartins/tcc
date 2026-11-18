@@ -1,6 +1,6 @@
 <?php
 
-$conexao = mysqli_connect("localhost", "root", "", "coopceedo");
+include 'conexao.php';
 
 if (!$conexao) {
     die("Erro ao conectar com o banco de dados.");
