@@ -139,7 +139,15 @@ include('includes_site/header.php');
     .galeria-lateral {
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 25px;
+        width: 100%;
+    }
+
+    .galeria-lateral img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 5px;
     }
 
 
@@ -409,26 +417,30 @@ include('includes_site/header.php');
 
 
         <!-- =================================================
-             ESPAÇOS PARA AS FOTOS
+             FOTOS
         ================================================== -->
 
         <div class="galeria-lateral">
 
-            <div class="espaco-imagem">
-                Espaço para imagem 1
-            </div>
+            <img
+                src="midias/xadrez2022.jpg"
+                alt="Projeto Xadrez Gigante 2022"
+            >
 
-            <div class="espaco-imagem">
-                Espaço para imagem 2
-            </div>
+            <img
+                src="midias/xadrez2022k.jpg"
+                alt="Projeto Xadrez Gigante 2022"
+            >
 
-            <div class="espaco-imagem">
-                Espaço para imagem 3
-            </div>
+            <img
+                src="midias/xadrezG.jpg"
+                alt="Projeto Xadrez Gigante 2022"
+            >
 
-            <div class="espaco-imagem">
-                Espaço para imagem 4
-            </div>
+              <img
+                src="midias/xadrezT.jpg"
+                alt="Projeto Xadrez Gigante 2022"
+            >
 
         </div>
 

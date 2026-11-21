@@ -45,7 +45,7 @@
                     rgba(0, 0, 0, 0.35),
                     rgba(0, 0, 0, 0.35)
                 ),
-                url("midias/caminho_das_palmeiras/capa.jpg");
+                url("midias/palmeira6.jpg");
 
             background-size: cover;
             background-position: center;
@@ -403,10 +403,6 @@
                 <h1>
                     Bem-Vindo ao Caminho das Palmeiras CEEDO
                 </h1>
-
-                <h2>
-                    Paisagismo Sustentável Atemporal e Dinâmico
-                </h2>
 
             </div>
 

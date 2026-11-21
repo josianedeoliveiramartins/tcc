@@ -561,5 +561,5 @@ function limitarTexto($texto, $limite = 150)
 <?php include 'includes_site/footer.php'; ?>
 
 </body>
+
 </html>
-```

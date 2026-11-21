@@ -614,7 +614,7 @@
                                 <!-- VISUALIZAR PROJETO -->
 
                                 <a
-                                    href="xadrez_gigante.php"
+                                    href="xadrez_gigante_2022.php"
                                     class="projeto-botao botao-projeto"
                                 >
                                     Visualizar projeto →

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -53,7 +54,7 @@
                     rgba(0, 0, 0, 0.35),
                     rgba(0, 0, 0, 0.08)
                 ),
-                url("https://lh7-us.googleusercontent.com/sitesv-images-rt/AMxu72tOVpMC8HwqqHj5M71hOMFcHjwAKXrW2znAEkjlbbLileIXY-T3RdYeVLqZSfD95FW8-El8SaCdL4SoBG7Qt1h3NhFe5J_CMZVd39RRmhH1sWb-XiwzL5LWe64B-B4JWajMr89ActrXekvD7nxrxefqMb-k0kBYYK9cT6nuLna1cupNARQUGPEEI6bK=w16383");
+                url("midias/paisagismo8.jpeg");
 
             background-position: center center;
             background-size: cover;
@@ -495,12 +496,7 @@
                     Paisagismo Sustentável,
                     Atemporal e Dinâmico
                 </h1>
-
-                <p class="projeto-capa-descricao">
-                    Projeto desenvolvido pelo Colégio Estadual
-                    Dr. Dorvalino Luciano de Souza.
-                </p>
-
+                
             </div>
 
         </section>

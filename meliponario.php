@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -154,7 +155,6 @@
 
         <!-- =====================================================
              PRIMEIRO CARROSSEL
-          
         ====================================================== -->
 
         <section class="meliponario-section">
@@ -195,10 +195,11 @@
 
                         <!-- FOTO 2 -->
 
-                        <div class="carousel-item"> 
+                        <div class="carousel-item">
 
                             <img
                                 src=".\midias\img2.mel.png"
+                                class="d-block w-100"
                                 alt="Meliponário CEEDO - Foto 2"
                                 loading="lazy"
                                 decoding="async"
@@ -213,7 +214,8 @@
                         <div class="carousel-item">
 
                             <img
-                                 src=".\midias\img3.mel.png"
+                                src=".\midias\img3.mel.png"
+                                class="d-block w-100"
                                 alt="Meliponário CEEDO - Foto 3"
                                 loading="lazy"
                                 decoding="async"
@@ -226,7 +228,7 @@
                         <!-- FOTO 4 -->
 
                         <div class="carousel-item">
- 
+
                             <img
                                 src=".\midias\img4.mel.png"
                                 class="d-block w-100"
@@ -247,14 +249,15 @@
                                 src=".\midias\img5.mel.png"
                                 class="d-block w-100"
                                 alt="Meliponário CEEDO - Foto 5"
-                                loading="lazy" 
+                                loading="lazy"
                                 decoding="async"
                                 referrerpolicy="no-referrer"
                             >
 
                         </div>
 
-                        <!-- FOTO 6-->
+
+                        <!-- FOTO 6 -->
 
                         <div class="carousel-item">
 
@@ -430,7 +433,7 @@
 
 
                 <div
-                    id="carrosselMeliponario"
+                    id="carrosselMeliponario2"
                     class="carousel slide meliponario-carrossel"
                     data-bs-ride="false"
                     data-bs-interval="false"
@@ -458,11 +461,12 @@
 
                         <!-- FOTO 2 -->
 
-                        <div class="carousel-item active"> 
+                        <div class="carousel-item">
 
                             <img
                                 src=".\midias\img3.png"
-                                alt="Caixa de abelhas sem ferrão do Meliponário CEEDO  - Foto 2"
+                                class="d-block w-100"
+                                alt="Caixa de abelhas sem ferrão do Meliponário CEEDO - Foto 2"
                                 loading="lazy"
                                 decoding="async"
                                 referrerpolicy="no-referrer"
@@ -476,7 +480,8 @@
                         <div class="carousel-item">
 
                             <img
-                                 src=".\midias\img3.mel.png"
+                                src=".\midias\img4.png"
+                                class="d-block w-100"
                                 alt="Meliponário CEEDO - Foto 3"
                                 loading="lazy"
                                 decoding="async"
@@ -489,9 +494,9 @@
                         <!-- FOTO 4 -->
 
                         <div class="carousel-item">
- 
+
                             <img
-                                src=".\midias\img4.mel.png"
+                                src=".\midias\img5.png"
                                 class="d-block w-100"
                                 alt="Meliponário CEEDO - Foto 4"
                                 loading="lazy"
@@ -507,22 +512,23 @@
                         <div class="carousel-item">
 
                             <img
-                                src=".\midias\img5.mel.png"
+                                src=".\midias\img6.png"
                                 class="d-block w-100"
                                 alt="Meliponário CEEDO - Foto 5"
-                                loading="lazy" 
+                                loading="lazy"
                                 decoding="async"
                                 referrerpolicy="no-referrer"
                             >
 
                         </div>
 
-                        <!-- FOTO 6-->
+
+                        <!-- FOTO 6 -->
 
                         <div class="carousel-item">
 
                             <img
-                                src=".\midias\img6.mel.png"
+                                src=".\midias\img7.png"
                                 class="d-block w-100"
                                 alt="Meliponário CEEDO - Foto 6"
                                 loading="lazy"
@@ -532,14 +538,112 @@
 
                         </div>
 
+
+                        <!-- FOTO 7 -->
+
+                        <div class="carousel-item">
+
+                            <img
+                                src=".\midias\img8.png"
+                                class="d-block w-100"
+                                alt="Meliponário CEEDO - Foto 7"
+                                loading="lazy"
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
+
+                        </div>
+
+
+                        <!-- FOTO 8 -->
+
+                        <div class="carousel-item">
+
+                            <img
+                                src=".\midias\img9.png"
+                                class="d-block w-100"
+                                alt="Meliponário CEEDO - Foto 8"
+                                loading="lazy"
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
+
+                        </div>
+
+
+                        <!-- FOTO 9 -->
+
+                        <div class="carousel-item">
+
+                            <img
+                                src=".\midias\img10.png"
+                                class="d-block w-100"
+                                alt="Meliponário CEEDO - Foto 9"
+                                loading="lazy"
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
+
+                        </div>
+
+
+                        <!-- FOTO 10 -->
+
+                        <div class="carousel-item">
+
+                            <img
+                                src=".\midias\img11.png"
+                                class="d-block w-100"
+                                alt="Meliponário CEEDO - Foto 10"
+                                loading="lazy"
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
+
+                        </div>
+
+
+                        <!-- FOTO 11 -->
+
+                        <div class="carousel-item">
+
+                            <img
+                                src=".\midias\img12.png"
+                                class="d-block w-100"
+                                alt="Meliponário CEEDO - Foto 11"
+                                loading="lazy"
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
+
+                        </div>
+
+
+                        <!-- FOTO 12 -->
+
+                        <div class="carousel-item">
+
+                            <img
+                                src=".\midias\img13.png"
+                                class="d-block w-100"
+                                alt="Meliponário CEEDO - Foto 12"
+                                loading="lazy"
+                                decoding="async"
+                                referrerpolicy="no-referrer"
+                            >
+
+                        </div>
+
+
                     </div>
+
 
                     <!-- CONTROLE ANTERIOR -->
 
                     <button
                         class="carousel-control-prev"
                         type="button"
-                        data-bs-target="#carrosselProjeto"
+                        data-bs-target="#carrosselMeliponario2"
                         data-bs-slide="prev"
                         aria-label="Registro anterior"
                     >
@@ -561,7 +665,7 @@
                     <button
                         class="carousel-control-next"
                         type="button"
-                        data-bs-target="#carrosselProjeto"
+                        data-bs-target="#carrosselMeliponario2"
                         data-bs-slide="next"
                         aria-label="Próximo registro"
                     >
