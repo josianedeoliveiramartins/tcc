@@ -30,6 +30,11 @@
             font-family: Georgia, "Times New Roman", serif;
         }
 
+          .navbar,
+        .navbar * {
+            font-family: 'Segoe UI', sans-serif !important;
+        }
+
 
         /* =====================================================
            IMAGEM + TÍTULO

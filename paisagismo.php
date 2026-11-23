@@ -35,6 +35,11 @@
             font-family: "Times New Roman", Times, serif;
         }
 
+        .navbar,
+        .navbar * {
+            font-family: 'Segoe UI', sans-serif !important;
+        }
+
 
         /* =====================================================
            CAPA COM IMAGEM

@@ -16,6 +16,10 @@ include('includes_site/header.php');
         background-color: #fff;
     }
 
+      .navbar,
+        .navbar * {
+            font-family: 'Segoe UI', sans-serif !important;
+        }
 
     /* =====================================================
        IMAGEM PRINCIPAL
@@ -414,22 +418,22 @@ include('includes_site/header.php');
         <div class="galeria-lateral">
 
             <img
-                src="midias/xadrez2022.jpg"
+                src="./midias/xadrez2022.jpg"
                 alt="Projeto Xadrez Gigante 2022"
             >
 
             <img
-                src="midias/xadrez2022k.jpg"
+                src="./midias/xadrez2022k.jpg"
                 alt="Projeto Xadrez Gigante 2022"
             >
 
             <img
-                src="midias/xadrezG.jpg"
+                src="./midias/xadrezG.jpg"
                 alt="Projeto Xadrez Gigante 2022"
             >
 
             <img
-                src="midias/xadrezT.jpg"
+                src="./midias/xadrezT.jpg"
                 alt="Projeto Xadrez Gigante 2022"
             >
 
@@ -451,7 +455,7 @@ include('includes_site/header.php');
         <div class="imagem-premiacao">
 
             <img
-                src="midias/premiacao_mostra_iffar.png"
+                src="./midias/iffar.png"
                 alt="Premiação de primeiro lugar na Mostra IFFAR"
             >
 
