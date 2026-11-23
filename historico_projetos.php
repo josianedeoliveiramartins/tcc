@@ -617,7 +617,7 @@
                                     href="xadrez_gigante_2022.php"
                                     class="projeto-botao botao-projeto"
                                 >
-                                    Visualizar projeto →
+                                     Xadrez 2022 →
                                 </a>
 
 
@@ -627,7 +627,7 @@
                                     href="xadrez_gigante_2025.php"
                                     class="projeto-botao botao-resumo"
                                 >
-                                    Visualizar Xadrez →
+                                     Xadrez 2025 →
                                 </a>
 
                             </div>

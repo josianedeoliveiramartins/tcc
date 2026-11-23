@@ -1,4 +1,3 @@
-```php
 <?php
 
 include 'conexao.php';
@@ -373,4 +372,3 @@ $imagemNoticia = caminhoImagemNoticiaPublica(
 
 </body>
 </html>
-```

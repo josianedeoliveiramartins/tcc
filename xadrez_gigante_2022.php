@@ -197,31 +197,23 @@ include('includes_site/header.php');
 
 
     /* =====================================================
-       ESPAÇO PARA FOTO DA PREMIAÇÃO
+       IMAGEM DA PREMIAÇÃO
     ====================================================== */
 
-    .espaco-premiacao {
+    .imagem-premiacao {
         width: 80%;
         max-width: 900px;
 
-        height: 350px;
-
         margin: 0 auto;
+    }
 
-        border: 2px solid #d8d8d8;
+    .imagem-premiacao img {
+        width: 100%;
+        height: auto;
 
-        background-color: #f7f7f7;
+        display: block;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        color: #999;
-
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 16px;
-
-        text-align: center;
+        border-radius: 5px;
     }
 
 
@@ -292,9 +284,8 @@ include('includes_site/header.php');
             height: 250px;
         }
 
-        .espaco-premiacao {
+        .imagem-premiacao {
             width: 100%;
-            height: 280px;
         }
 
     }
@@ -437,7 +428,7 @@ include('includes_site/header.php');
                 alt="Projeto Xadrez Gigante 2022"
             >
 
-              <img
+            <img
                 src="midias/xadrezT.jpg"
                 alt="Projeto Xadrez Gigante 2022"
             >
@@ -457,9 +448,12 @@ include('includes_site/header.php');
             Premiação na Mostra IFFAR
         </h2>
 
-        <div class="espaco-premiacao">
+        <div class="imagem-premiacao">
 
-            Espaço para foto da premiação
+            <img
+                src="midias/premiacao_mostra_iffar.png"
+                alt="Premiação de primeiro lugar na Mostra IFFAR"
+            >
 
         </div>
 

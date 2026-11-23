@@ -2,24 +2,14 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Resumo | Caminho das Palmeiras</title>
 
-
     <style>
-
-        /* =====================================================
-           CONFIGURAÇÃO GERAL - ABNT
-        ====================================================== */
-
         * {
             box-sizing: border-box;
         }
-
 
         html,
         body {
@@ -27,371 +17,205 @@
             padding: 0;
         }
 
-
         body {
             background-color: #e5e5e5;
-
             color: #000000;
-
             font-family: "Times New Roman", Times, serif;
-
             font-size: 12pt;
         }
 
-
-        /* =====================================================
-           FOLHA A4
-        ====================================================== */
-
+        /* FOLHA A4 */
         .folha {
-
             width: 21cm;
-
             min-height: 29.7cm;
-
             margin: 30px auto;
-
-            /*
-                Margens:
-
-                Superior: 3 cm
-                Esquerda: 3 cm
-                Direita: 2 cm
-                Inferior: 2 cm
-            */
-
             padding: 3cm 2cm 2cm 3cm;
-
             background-color: #ffffff;
-
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.18);
         }
 
-
-        /* =====================================================
-           CABEÇALHO
-        ====================================================== */
-
+        /* CABEÇALHO */
         .cabecalho {
-
             text-align: center;
-
-            line-height: 1.0;
-
-            margin-bottom: 3cm;
+            line-height: 1.5;
+            margin-bottom: 13cm;
         }
-
 
         .cabecalho p {
-
             margin: 0;
-
             padding: 0;
-
             text-align: center;
-
             text-indent: 0;
-
-            line-height: 1.0;
+            line-height: 1.5;
         }
 
-
-        /* =====================================================
-           TÍTULO PRINCIPAL
-        ====================================================== */
-
+        /* TÍTULO */
         .titulo {
-
             text-align: center;
-
             font-weight: bold;
-
-            margin: 0 0 2cm 0;
-
-            line-height: 1.5;
-
-            text-indent: 0;
-        }
-
-
-        /* =====================================================
-           DATA
-        ====================================================== */
-
-        .subtitulo {
-
-            text-align: center;
-
-            font-weight: bold;
-
-            margin: 0 0 1.5cm 0;
-
-            line-height: 1.5;
-
-            text-indent: 0;
-        }
-
-
-        /* =====================================================
-           PARÁGRAFOS
-        ====================================================== */
-
-        p {
-
             margin: 0;
-
             line-height: 1.5;
+            text-indent: 0;
+            page-break-after: always;
+            break-after: page;
+        }
 
+        /* DATA */
+        .subtitulo {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 9cm;
+            margin-bottom: 1cm;
+            line-height: 1.5;
+            text-indent: 0;
+        }
+
+        /* PARÁGRAFOS */
+        p {
+            margin: 0 0 12pt 0;
+            line-height: 1.5;
             text-align: justify;
-
             text-indent: 1.25cm;
         }
 
-
-        /* =====================================================
-           TÍTULOS DAS SEÇÕES
-        ====================================================== */
-
+        /* SEÇÕES */
         .secao {
-
             font-weight: bold;
-
-            margin-top: 12pt;
-
-            margin-bottom: 6pt;
-
+            margin-top: 18pt;
+            margin-bottom: 12pt;
             text-align: left;
-
             line-height: 1.5;
-
             text-indent: 0;
         }
 
-
-        /* =====================================================
-           LISTAS
-        ====================================================== */
-
+        /* LISTAS */
         ul,
         ol {
-
-            margin-top: 0;
-
-            margin-bottom: 0;
-
+            margin-top: 6pt;
+            margin-bottom: 12pt;
             padding-left: 1.25cm;
         }
 
-
         li {
-
-            margin-bottom: 6pt;
-
+            margin-bottom: 8pt;
             line-height: 1.5;
-
             text-align: justify;
+            padding-left: 2pt;
         }
 
-
-        /* =====================================================
-           BOTÃO VOLTAR
-        ====================================================== */
-
+        /* BOTÃO VOLTAR */
         .voltar {
-
             display: block;
-
             width: fit-content;
-
             margin: 30px auto;
-
             padding: 10px 18px;
-
             background-color: #234d20;
-
             color: #ffffff;
-
             text-decoration: none;
-
             border-radius: 6px;
-
             font-family: Arial, Helvetica, sans-serif;
-
             font-size: 14px;
         }
 
-
-        /* =====================================================
-           IMPRESSÃO
-        ====================================================== */
-
+        /* IMPRESSÃO */
         @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
 
             html,
             body {
-
                 background-color: #ffffff;
             }
 
-
             .folha {
-
-                width: auto;
-
-                min-height: auto;
-
+                width: 21cm;
+                min-height: 29.7cm;
                 margin: 0;
-
-                padding: 0;
-
+                padding: 3cm 2cm 2cm 3cm;
                 box-shadow: none;
             }
-
 
             .voltar {
-
                 display: none;
             }
-
         }
 
-
-        /* =====================================================
-           CELULAR
-        ====================================================== */
-
+        /* CELULAR */
         @media (max-width: 800px) {
-
             body {
-
                 background-color: #ffffff;
             }
 
-
             .folha {
-
                 width: 100%;
-
                 min-height: auto;
-
                 margin: 0;
-
                 padding: 35px 25px;
-
                 box-shadow: none;
             }
 
-
             .cabecalho {
-
-                margin-bottom: 70px;
+                margin-bottom: 100px;
             }
 
+            .subtitulo {
+                margin-top: 100px;
+            }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
 <div class="folha">
 
-
-    <!-- =====================================================
-         CABEÇALHO
-    ====================================================== -->
-
+    <!-- CABEÇALHO -->
     <div class="cabecalho">
-
-        <p>
-            GOVERNO DO ESTADO DO RIO GRANDE DO SUL
-            SECRETARIA DE EDUCAÇÃO
-            20ª CRE – Palmeira das Missões-RS
-        </p>
-
-        <p>
-            CE DR. DORVALINO LUCIANO DE SOUZA
-            CERRO G RANDE – RS
-        </p>
-
-        <p>
-            FONE/ FAX: 5573561133
-        </p>
-
-        <p>
-            www.ceedo.com.br
-        </p>
-
-        <p>
-            medeia@medeia.org.br
-        </p>
-
+        <p>GOVERNO DO ESTADO DO RIO GRANDE DO SUL</p>
+        <p>SECRETARIA DE EDUCAÇÃO</p>
+        <p>20ª CRE – Palmeira das Missões-RS</p>
+        <p>CE DR. DORVALINO LUCIANO DE SOUZA</p>
+        <p>CERRO GRANDE – RS</p>
+        <p>FONE/FAX: 5573561133</p>
+        <p>www.ceedo.com.br</p>
+        <p>medeia@medeia.org.br</p>
     </div>
 
-
-    <!-- =====================================================
-         TÍTULO
-    ====================================================== -->
-
+    <!-- TÍTULO -->
     <p class="titulo">
         PROJETO INTERINSTITUCIONAL CAMINHO DAS PALMEIRAS
-    </p>
+    </p><br><br><br>
 
-
-    <!-- =====================================================
-         INTRODUÇÃO
-    ====================================================== -->
-
+    <!-- INTRODUÇÃO -->
     <p>
         O presente projeto, desenvolvido pela comunidade colegial do CEEDO,
         Associação Científica Medeia, comunidade de Cerro Grande-RS e de Novo
         Tiradentes-RS, tem caráter pedagógico e educativo, social e cultural.
     </p>
 
-
     <p class="subtitulo">
         CERRO GRANDE, JANEIRO DE 2022.
-    </p>
+    </p><br><br>
 
-
-    <!-- =====================================================
-         1. TEMA
-    ====================================================== -->
-
-    <p class="secao">
-        1. Tema:
-    </p>
+    <!-- 1. TEMA -->
+    <p class="secao">1. Tema:</p>
 
     <p>
         Cultivo, manejo, plantio e cuidado de Palmeiras.
     </p>
 
-
-    <!-- =====================================================
-         2. DELIMITAÇÃO
-    ====================================================== -->
-
-    <p class="secao">
-        2. Delimitação do Tema:
-    </p>
+    <!-- 2. DELIMITAÇÃO -->
+    <p class="secao">2. Delimitação do Tema:</p>
 
     <p>
         Cultivo, manejo, plantio e cuidados de Palmeira Real – Cubana e
         Australiana – Archontophoenix cunninghamianarias: história, ecologia e turismo.
     </p>
 
-
-    <!-- =====================================================
-         3. OBJETIVOS
-    ====================================================== -->
-
-    <p class="secao">
-        3) Objetivos
-    </p>
-
+    <!-- 3. OBJETIVOS -->
+    <p class="secao">3) Objetivos</p>
 
     <p>
         <strong>1. Geral:</strong>
@@ -406,14 +230,11 @@
         de modo interinstitucional e pedagógico.
     </p>
 
-
     <p class="secao">
         2) Específicos de dimensão teórico-pedagógica
     </p>
 
-
     <ul>
-
         <li>
             incentivar o cultivo de palmeiras, o manejo e cuidado para
             desenvolver ecologia e embelezar os territórios envolvidos no projeto.
@@ -460,21 +281,14 @@
             instituir a condição de sujeito e atitudes de compromisso cognitivo,
             intelectivo e prático (ético, moral, estético) com a comunidade.
         </li>
-
     </ul>
 
-
-    <!-- =====================================================
-         3.3. DIMENSÃO PRÁTICA
-    ====================================================== -->
-
+    <!-- 3.3. DIMENSÃO PRÁTICA -->
     <p class="secao">
         3.3. Específicos de dimensão prática
     </p>
 
-
     <ul>
-
         <li>
             coletar sementes de palmeiras reais – cubanas e australianas –,
             de nome científico Archontophoenix cunninghamiana;
@@ -506,18 +320,12 @@
             obter licenciamento junto ao Departamento Autônomo de Estrada
             e Rodagens do RS
         </li>
-
     </ul>
 
-
-    <!-- =====================================================
-         4. JUSTIFICATIVA
-    ====================================================== -->
-
+    <!-- 4. JUSTIFICATIVA -->
     <p class="secao">
         4. Justificativa e referências teóricas
     </p>
-
 
     <p>
         Distante dos grandes centros culturais e científicos, dos espaços
@@ -533,7 +341,6 @@
         embelezamento, do aprimoramento para a ação turística.
     </p>
 
-
     <p>
         Parece que o povo se acomoda em seus costumes e vivências, excluídos
         pela grande mídia e satisfeito com o mínimo que lhes é oferecido.
@@ -544,7 +351,6 @@
         geográficas, econômicas e culturais, e são ações incentivadoras do
         pensamento e de atitudes científicas.
     </p>
-
 
     <p>
         O Colégio, centro de cultura nas pequenas comunidades, além de centro
@@ -559,7 +365,6 @@
         a cidadania e espírito comunitário, como passos importantes na
         valorização pessoal e reconhecimento das capacidades e potencialidades pessoais.
     </p>
-
 
     <p>
         O Projeto Interinstitucional Palmeiras da história, com educação pela
@@ -577,7 +382,6 @@
         experimentos e pesquisas.
     </p>
 
-
     <p>
         Diversos trabalhos são realizados de forma colaborativa, nas diferentes
         temáticas, áreas do conhecimento e níveis de ensino, de forma a reconhecer
@@ -587,7 +391,6 @@
         demonstrem as potencialidades dos seus projetos, das suas pesquisas
         e demais trabalhos desenvolvidos.
     </p>
-
 
     <p>
         O Presente projeto interinstitucional Palmeiras da história, com educação
@@ -605,15 +408,8 @@
         de estética como ação compartilhada, de compromisso coletivo.
     </p>
 
-
-    <!-- =====================================================
-         5. METODOLOGIA
-    ====================================================== -->
-
-    <p class="secao">
-        5. Metodologia
-    </p>
-
+    <!-- 5. METODOLOGIA -->
+    <p class="secao">5. Metodologia</p>
 
     <p>
         O Projeto Político Pedagógico, Regimento do Colégio e a legislação
@@ -631,9 +427,7 @@
         neste momento, aparecem como importantes e constituem os passos do projeto.
     </p>
 
-
     <ol class="numerados">
-
         <li>
             Coleta de sementes de palmeiras reais. Germinação, preparo das
             mudas e transplante nos locais já indicados neste projeto;
@@ -691,21 +485,12 @@
             convive; 6º - ampliação da ação de plantio, para os locais indicados
             no momento anterior desse projeto.
         </li>
-
     </ol>
 
-
-    <!-- =====================================================
-         6. CRONOGRAMA
-    ====================================================== -->
-
-    <p class="secao">
-        6) Cronograma
-    </p>
-
+    <!-- 6. CRONOGRAMA -->
+    <p class="secao">6) Cronograma</p>
 
     <ol class="numerados">
-
         <li>
             Início das atividades do projeto.....................
             ........................................... Setembro de 2022;
@@ -721,18 +506,10 @@
             Desenvolvimento das aulas, dos Planos de Trabalho e das atividades
             do projeto - a partir de Setembro de 2023.
         </li>
-
     </ol>
 
-
-    <!-- =====================================================
-         7. ORÇAMENTO
-    ====================================================== -->
-
-    <p class="secao">
-        7) Orçamento
-    </p>
-
+    <!-- 7. ORÇAMENTO -->
+    <p class="secao">7) Orçamento</p>
 
     <p>
         Os custos de desenvolvimento do projeto serão custeados pelo CEEDO que
@@ -742,22 +519,12 @@
         e entidades dos dois territórios.
     </p>
 
-
-    <!-- =====================================================
-         BOTÃO VOLTAR
-    ====================================================== -->
-
-    <a
-        href="../historico_projetos.php"
-        class="voltar"
-    >
+    <!-- BOTÃO VOLTAR -->
+    <a href="../historico_projetos.php" class="voltar">
         ← Voltar para Histórico de Projetos
     </a>
 
-
 </div>
 
-
 </body>
-
 </html>
